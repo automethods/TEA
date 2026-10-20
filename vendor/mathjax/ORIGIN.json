@@ -1,0 +1,8 @@
+{
+  "name": "mathjax",
+  "version": "3.2.2",
+  "source": "https://www.npmjs.com/package/mathjax/v/3.2.2",
+  "upstreamFile": "es5/tex-svg-full.js",
+  "license": "Apache-2.0",
+  "sha256": "a4354ff94fd868aea0cc6eaaa79a57fda0588646fc46ee3700a349ee0a11cbe6"
+}

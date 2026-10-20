@@ -1,0 +1,25 @@
+{
+  "name": "@transport/technical-modules",
+  "version": "0.6.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./road-load": "./road-load/index.mjs",
+    "./battery-consumption": "./battery-consumption/index.mjs",
+    "./engine-component": "./engine-component/index.mjs",
+    "./motor-component": "./motor-component/index.mjs",
+    "./battery-motor": "./battery-motor/index.mjs",
+    "./prototype-comparison": "./prototype-comparison/index.mjs",
+    "./chassis-geometry": "./chassis-geometry/index.mjs",
+    "./automobile": "./automobile/session.mjs",
+    "./ice/*": "./ice-core/*.mjs",
+    "./service/*": "./service-workshop/src/*.js",
+    "./engine-inputs": "./engine-inputs/index.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
