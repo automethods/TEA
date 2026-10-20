@@ -1,0 +1,194 @@
+{
+  "id": "ch04",
+  "title": "4. Газообмін і наповнення",
+  "nodes": [
+    {
+      "id": "h.4",
+      "kind": "heading",
+      "level": 1,
+      "content": [
+        {
+          "kind": "text",
+          "text": "4. Газообмін і наповнення"
+        }
+      ]
+    },
+    {
+      "id": "p.ch04.1",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "Кут θ = 0° відповідає ВМТ газообміну; 180° — НМТ впуску; 360° — ВМТ згоряння; 540° — НМТ розширення; 720° — наступна ВМТ газообміну. Початок впуску 0°, закриття випуску 720°. У базовому варіанті перекриття відсутнє."
+        }
+      ]
+    },
+    {
+      "id": "p.ch04.2",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "Клапанний підйом задано як h_v(θ) = h_max·sin²[π(θ−θ_open)/(θ_close−θ_open)] усередині відкритого інтервалу, нуль поза ним. A_v = 2·min(πd_vh_v, πd_v²/4). (4.1) Прийнято два однойменні клапани на циліндр. Цей закон не є виміряною кінематикою Valvematic; зміна підйому допускається вручну."
+        }
+      ]
+    },
+    {
+      "id": "p.ch04.3",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "Для кожного клапана визначається напрям потоку за різницею тисків. За p_d/p_u ≤ [2/(k+1)]^{k/(k−1)} потік критичний. Вище критичного відношення використано ізоентропійну формулу витрати; нижче — її значення при M = 1 [5]."
+        }
+      ]
+    },
+    {
+      "id": "p.ch04.4",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "ṁ = C_d A_v p_u/√(RT_u) · Ψ; Ψ = √{2k/(k−1)·[(p_d/p_u)^{2/k}−(p_d/p_u)^{(k+1)/k}]} у докритичному режимі; Ψ = √k·[2/(k+1)]^{(k+1)/[2(k−1)]} у критичному. (4.2) p_u і T_u беруться на стороні, звідки надходить газ; зворотний потік не обрізається."
+        }
+      ]
+    },
+    {
+      "id": "p.ch04.5",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "ṁ_fresh = ṁ_in,fresh − Y_fresh·ṁ_out; Y_fresh = m_fresh/m. (4.3) На початку повторного циклу залишкова маса має нульовий маркер свіжості. При закритті впуску маса свіжої суміші фіксується для визначення циклового палива. Це маркер походження маси, а не хімічний компонент."
+        }
+      ]
+    },
+    {
+      "id": "node.snapshot.trappedMass",
+      "kind": "input",
+      "valueId": "snapshot.trappedMass"
+    },
+    {
+      "id": "node.snapshot.residualFraction",
+      "kind": "input",
+      "valueId": "snapshot.residualFraction"
+    },
+    {
+      "id": "node.calc.mfresh",
+      "kind": "calculation",
+      "valueId": "calc.mfresh"
+    },
+    {
+      "id": "node.calc.mfuel",
+      "kind": "calculation",
+      "valueId": "calc.mfuel"
+    },
+    {
+      "id": "node.snapshot.TIVC",
+      "kind": "input",
+      "valueId": "snapshot.TIVC"
+    },
+    {
+      "id": "node.snapshot.pIVC",
+      "kind": "input",
+      "valueId": "snapshot.pIVC"
+    }
+  ],
+  "values": [
+    {
+      "id": "snapshot.trappedMass",
+      "ownerNodeId": "node.snapshot.trappedMass",
+      "role": "input",
+      "symbol": "m_a",
+      "label": "Маса газу при закритті впуску",
+      "value": {
+        "kind": "quantity",
+        "value": 0,
+        "canonicalUnit": "kg"
+      }
+    },
+    {
+      "id": "snapshot.residualFraction",
+      "ownerNodeId": "node.snapshot.residualFraction",
+      "role": "input",
+      "symbol": "x_r",
+      "label": "Масова частка залишкової складової при закритті впуску",
+      "value": {
+        "kind": "float64",
+        "value": 0
+      }
+    },
+    {
+      "id": "calc.mfresh",
+      "ownerNodeId": "node.calc.mfresh",
+      "role": "calculation",
+      "symbol": "m_fresh",
+      "label": "Маса свіжої суміші, замкненої в циліндрі",
+      "valueType": "quantity",
+      "expression": {
+        "source": "ma * (1 - xr)",
+        "bindings": [
+          {
+            "token": "ma",
+            "valueId": "snapshot.trappedMass"
+          },
+          {
+            "token": "xr",
+            "valueId": "snapshot.residualFraction"
+          }
+        ]
+      },
+      "canonicalUnit": "kg"
+    },
+    {
+      "id": "calc.mfuel",
+      "ownerNodeId": "node.calc.mfuel",
+      "role": "calculation",
+      "symbol": "m_f",
+      "label": "Циклова маса палива",
+      "valueType": "quantity",
+      "expression": {
+        "source": "fresh / (1 + alpha * l0)",
+        "bindings": [
+          {
+            "token": "fresh",
+            "valueId": "calc.mfresh"
+          },
+          {
+            "token": "alpha",
+            "valueId": "input.alpha"
+          },
+          {
+            "token": "l0",
+            "valueId": "input.stoich"
+          }
+        ]
+      },
+      "canonicalUnit": "kg"
+    },
+    {
+      "id": "snapshot.TIVC",
+      "ownerNodeId": "node.snapshot.TIVC",
+      "role": "input",
+      "symbol": "T_a",
+      "label": "Температура при закритті впуску",
+      "value": {
+        "kind": "quantity",
+        "value": 0,
+        "canonicalUnit": "K"
+      }
+    },
+    {
+      "id": "snapshot.pIVC",
+      "ownerNodeId": "node.snapshot.pIVC",
+      "role": "input",
+      "symbol": "p_a",
+      "label": "Тиск при закритті впуску",
+      "value": {
+        "kind": "quantity",
+        "value": 0,
+        "canonicalUnit": "Pa"
+      }
+    }
+  ]
+}

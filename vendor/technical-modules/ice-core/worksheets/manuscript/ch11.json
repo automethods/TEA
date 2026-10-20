@@ -1,0 +1,188 @@
+{
+  "id": "ch11",
+  "title": "11. Динамічні навантаження і крутний момент",
+  "nodes": [
+    {
+      "id": "h.11",
+      "kind": "heading",
+      "level": 1,
+      "content": [
+        {
+          "kind": "text",
+          "text": "11. Динамічні навантаження і крутний момент"
+        }
+      ]
+    },
+    {
+      "id": "p.ch11.1",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "Сили визначаються з поточного p(θ), тієї ж геометрії та прийнятої приведеної маси. Конструктивне призначення деталей КШМ і типові напрями навантаження відповідають навчальному опису [8], але числові параметри старого дизельного прикладу не перенесено."
+        }
+      ]
+    },
+    {
+      "id": "node.input.recipMass",
+      "kind": "input",
+      "valueId": "input.recipMass"
+    },
+    {
+      "id": "node.input.crankP",
+      "kind": "input",
+      "valueId": "input.crankP"
+    },
+    {
+      "id": "node.calc.gasmax",
+      "kind": "calculation",
+      "valueId": "calc.gasmax"
+    },
+    {
+      "id": "p.ch11.5",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "F_j(θ) = −m_j a_p(θ); F_Σ = F_g + F_j; F_ш = F_Σ/cosβ; N = F_Σ tanβ. (11.2) Додатний напрям осьової сили збігається з напрямом переміщення поршня до НМТ. F_ш — стискальна сила вздовж шатуна зі знаком; N — бічна реакція за прийнятою схемою."
+        }
+      ]
+    },
+    {
+      "id": "p.ch11.6",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "T = F_Σ·sin(θ+β)/cosβ; K = F_Σ·cos(θ+β)/cosβ; M_ц = rT. (11.3) T і K — тангенціальна та радіальна складові навантаження, переданого шатуном. Вони не включають відцентрової сили обертальної частини шатуна: даних її маси немає. Не слід називати K готовим навантаженням підшипника."
+        }
+      ]
+    },
+    {
+      "id": "p.ch11.7",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "M_Σ(θ) = Σ M_ц[θ−j·720°/z]. (11.4) Для чотирьох циліндрів прийнято рівномірне чергування через 180°; прив’язка номерів циліндрів 1–3–4–2 — робоче припущення. Момент одного циліндра включає інерційну складову. Середній M_Σ порівнюється з P_i/ω, а не з M_e; різниця дорівнює середньому моменту механічних втрат."
+        }
+      ]
+    },
+    {
+      "id": "node.snapshot.energySwing",
+      "kind": "input",
+      "valueId": "snapshot.energySwing"
+    },
+    {
+      "id": "node.input.speedIrregularity",
+      "kind": "input",
+      "valueId": "input.speedIrregularity"
+    },
+    {
+      "id": "node.calc.inertia",
+      "kind": "calculation",
+      "valueId": "calc.inertia"
+    }
+  ],
+  "values": [
+    {
+      "id": "input.recipMass",
+      "ownerNodeId": "node.input.recipMass",
+      "role": "input",
+      "symbol": "m_j",
+      "label": "Приведена зворотно-поступальна маса одного циліндра",
+      "value": {
+        "kind": "quantity",
+        "value": 0.48,
+        "canonicalUnit": "kg"
+      }
+    },
+    {
+      "id": "input.crankP",
+      "ownerNodeId": "node.input.crankP",
+      "role": "input",
+      "symbol": "p_0",
+      "label": "Абсолютний тиск у картері",
+      "value": {
+        "kind": "quantity",
+        "value": 100000,
+        "canonicalUnit": "Pa"
+      }
+    },
+    {
+      "id": "calc.gasmax",
+      "ownerNodeId": "node.calc.gasmax",
+      "role": "calculation",
+      "symbol": "F_gmax",
+      "label": "Максимальна сила від різниці тисків",
+      "valueType": "quantity",
+      "expression": {
+        "source": "(pmax - p0) * A",
+        "bindings": [
+          {
+            "token": "pmax",
+            "valueId": "snapshot.pmax"
+          },
+          {
+            "token": "p0",
+            "valueId": "input.crankP"
+          },
+          {
+            "token": "A",
+            "valueId": "calc.area"
+          }
+        ]
+      },
+      "canonicalUnit": "N"
+    },
+    {
+      "id": "snapshot.energySwing",
+      "ownerNodeId": "node.snapshot.energySwing",
+      "role": "input",
+      "symbol": "Delta_E",
+      "label": "Розмах надлишкової енергії за цикл",
+      "value": {
+        "kind": "quantity",
+        "value": 0,
+        "canonicalUnit": "J"
+      }
+    },
+    {
+      "id": "input.speedIrregularity",
+      "ownerNodeId": "node.input.speedIrregularity",
+      "role": "input",
+      "symbol": "delta",
+      "label": "Допустима відносна нерівномірність частоти",
+      "value": {
+        "kind": "float64",
+        "value": 0.02
+      }
+    },
+    {
+      "id": "calc.inertia",
+      "ownerNodeId": "node.calc.inertia",
+      "role": "calculation",
+      "symbol": "J_total",
+      "label": "Потрібний загальний приведений момент інерції",
+      "valueType": "quantity",
+      "expression": {
+        "source": "E / (delta * omega^2)",
+        "bindings": [
+          {
+            "token": "E",
+            "valueId": "snapshot.energySwing"
+          },
+          {
+            "token": "delta",
+            "valueId": "input.speedIrregularity"
+          },
+          {
+            "token": "omega",
+            "valueId": "calc.omega"
+          }
+        ]
+      },
+      "canonicalUnit": "kg*m^2"
+    }
+  ]
+}

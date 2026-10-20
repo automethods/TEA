@@ -1,0 +1,101 @@
+{
+  "schema": "technical-module/1",
+  "moduleId": "module.service.workshop",
+  "version": "0.1.0",
+  "contractVersion": "1",
+  "runtime": "ESM numerical kernels; apps own file I/O, DOM registration and document presentation",
+  "originWorkspace": "/media/cigameca/SHARED/Work/Literature/Transport/My_books",
+  "origins": [
+    {
+      "path": "TEA/New/src/calendar.js",
+      "sha256": "1b9eb3a994466cddc03e612e9deeed1207abca0482663bdcba1decc3bf4cd6be",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/calendar.js",
+      "locator": "SLOT_HOURS, slotStart, slotEnd, stamp, dateText, wallTime, staffAvailable, overlap, timeToInterval"
+    },
+    {
+      "path": "TEA/New/src/calculations.js",
+      "sha256": "76e6ee5f6d7be0f17e2aa004ecccfd8c581f18df8c1e136265e9cb3f7c076c2f",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/calculations.js",
+      "locator": "CalculationBook, scalar"
+    },
+    {
+      "path": "TEA/New/src/scheduler.js",
+      "sha256": "36f20d64df0b3f2b747c6c1f8b660d1f3fceeebb3ef5c71a635daa3c429655d3",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/scheduler.js",
+      "locator": "evaluateSchedule"
+    },
+    {
+      "path": "TEA/New/src/planning.js",
+      "sha256": "0d9e094477a8be80f1be65759c33b7b45a342f81970044e0ab4d247479ec9f2c",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/planning.js",
+      "locator": "evaluateFleet, evaluatePlanning"
+    },
+    {
+      "path": "TEA/New/src/exercises.js",
+      "sha256": "74aed14ef2a8457a361dbea8daca23808c7dee5bc986b28ec57f0f4ad60f1b8f",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/exercises.js",
+      "locator": "evaluateAbs, evaluateHold, evaluateAdas, evaluateAnnual, evaluatePilot"
+    },
+    {
+      "path": "TEA/New/src/station.js",
+      "sha256": "13685677f4fcb86a5d4b89d1bd147736198ea4bf17ce6fbef1f7bbbc1eced472",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/station.js",
+      "locator": "evaluateStation"
+    },
+    {
+      "path": "TEA/New/src/station-layout.js",
+      "sha256": "142fce788983ebe863d031a67556310135becfb3f7e121ba4c9be89c54f26b1d",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/station-layout.js",
+      "locator": "ACCESS_LABELS, postTypeLabel, selectStationLayout"
+    },
+    {
+      "path": "TEA/New/src/station-plan.js",
+      "sha256": "b22a1a477deb7ee1ad301bfdeaa6a63b639196ee3f4c41121e375d0cb0e2864a",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/station-plan.js",
+      "locator": "PLAN_DEFAULTS, bayPoint, bayRect, bayServices, buildStationPlan"
+    },
+    {
+      "path": "TEA/New/src/station-data.js",
+      "sha256": "9f242085273e683bee1645cb78d8be956b186ed7633d9dd0d19ab3f56b8deec7",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/station-data.js",
+      "locator": "VEHICLE_MODELS, ZONES, EQUIPMENT, EQUIPMENT_IDS, stationDefaults, STATION_NUMBERS, ensureStation, validateStation"
+    },
+    {
+      "path": "TEA/New/src/presets.js",
+      "sha256": "aeeb4a980a32e142e353be9f50404582dacd84096f1641ad45ced7e2ca95c55e",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/presets.js",
+      "locator": "PRESET_VERSION, CLASS_IDS, VEHICLES, VEHICLE_CHOICES, WORKSHOPS, PLANNING_FIELDS, classDefaults, setVehicleChoice, setWorkshopChoice, addProfileDefaults, mixLabel, CLASS_DESCRIPTIONS, restoreVehicleDefaults, validVehicleMix, balanceVehicleMix, repairVehicleMix"
+    },
+    {
+      "path": "TEA/New/vendor/engdoc-runtime.js",
+      "sha256": "d1f93cd31597602fa439dce313d6030a5ec0c1ae6a3edcbd371f4e854c92684b",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/vendor/engdoc-runtime.js",
+      "locator": "Reviewed original runtime/worksheet"
+    }
+  ],
+  "modelReferences": [],
+  "variants": [
+    {
+      "id": "service-workshop/1",
+      "origin": "TEA 0.5.0",
+      "equations": [
+        "Original source equations and authored worksheets retained without physical changes"
+      ],
+      "assumptions": [
+        "Legacy quantity bases and algorithm choices retain their original meanings; the canonical SI adapters remain the public cross-project boundaries"
+      ]
+    }
+  ],
+  "ports": {
+    "commonInputs": [],
+    "outputs": []
+  },
+  "validation": [
+    "tests/foundation.test.mjs"
+  ],
+  "status": "Canonical owner; consumed by independently runnable project distributions",
+  "limitations": [
+    "Teaching labour and workshop profiles remain assumptions rather than manufacturer maintenance rules.",
+    "Workshop personnel calculations do not establish a bus-driver roster."
+  ]
+}

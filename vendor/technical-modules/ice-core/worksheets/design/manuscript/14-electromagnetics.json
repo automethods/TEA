@@ -1,0 +1,186 @@
+{
+  "id": "14-electromagnetics",
+  "title": "14. Електромашина: перше електромагнітне наближення",
+  "group": "Застосування та перевірки",
+  "scope": "electric",
+  "paragraphs": [
+    "Стаціонарна модель синхронного двигуна з постійними магнітами (PMSM) у поздовжній d та поперечній q осях має індуктивності L_d, L_q, потокозчеплення ψ_f та число пар полюсів. Струми цих осей — амплітудні; фазні входи основного проєкту — середньоквадратичні (RMS). Просторово-векторна широтно-імпульсна модуляція (SVPWM) задає ідеальну лінійну межу фазної напруги; запас не моделюється [first-order-theory].",
+    "Пошук id на обмеженій сітці мінімізує модуль струму для потрібного моменту. Це не глобальна оптимізація й не скінченно-елементний розрахунок. Втрати в сталі, насичення, розмагнічування та температура обмотки потребують уточнення.",
+    "Для оцінки габариту прийнято τgap = Bδ Aline/2 та M = π D² L τgap/2. Це оголошений коефіцієнт синусоїдального наближення; обмотка, пази й магнітне коло не проєктуються. Умовні Bδ й Aline не приписуються EMRAX або Bolt."
+  ],
+  "calculations": [
+    {
+      "value": {
+        "id": "value.em_current_peak",
+        "ownerNodeId": "node.value.em_current_peak",
+        "role": "calculation",
+        "label": "Гранична амплітуда фазного струму",
+        "symbol": "I_pk",
+        "valueType": "quantity",
+        "expression": {
+          "source": "sqrt(2)*I",
+          "bindings": [
+            {
+              "token": "I",
+              "valueId": "input.phaseCurrent"
+            }
+          ]
+        },
+        "canonicalUnit": "A"
+      },
+      "chapter": "14-electromagnetics",
+      "equationNumber": "14.1",
+      "purpose": "Гранична амплітуда фазного струму.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "Це початкова оцінка за явно введеними припущеннями, не допуск до виготовлення.",
+      "displayUnit": "A",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.em_voltage_peak",
+        "ownerNodeId": "node.value.em_voltage_peak",
+        "role": "calculation",
+        "label": "Гранична амплітуда фазної напруги",
+        "symbol": "U_pk",
+        "valueType": "quantity",
+        "expression": {
+          "source": "U/sqrt(3)",
+          "bindings": [
+            {
+              "token": "U",
+              "valueId": "input.voltageMin"
+            }
+          ]
+        },
+        "canonicalUnit": "V"
+      },
+      "chapter": "14-electromagnetics",
+      "equationNumber": "14.2",
+      "purpose": "Гранична амплітуда фазної напруги.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "Це початкова оцінка за явно введеними припущеннями, не допуск до виготовлення.",
+      "displayUnit": "V",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.em_gap_shear",
+        "ownerNodeId": "node.value.em_gap_shear",
+        "role": "calculation",
+        "label": "Прийняте середнє дотичне навантаження у зазорі",
+        "symbol": "τ_gap",
+        "valueType": "quantity",
+        "expression": {
+          "source": "B*A/2",
+          "bindings": [
+            {
+              "token": "B",
+              "valueId": "input.airGapFlux"
+            },
+            {
+              "token": "A",
+              "valueId": "input.electricLoading"
+            }
+          ]
+        },
+        "canonicalUnit": "Pa"
+      },
+      "chapter": "14-electromagnetics",
+      "equationNumber": "14.3",
+      "purpose": "Прийняте середнє дотичне навантаження у зазорі.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "Це початкова оцінка за явно введеними припущеннями, не допуск до виготовлення.",
+      "displayUnit": "Pa",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.em_diameter",
+        "ownerNodeId": "node.value.em_diameter",
+        "role": "calculation",
+        "label": "Орієнтовний активний діаметр",
+        "symbol": "D_m",
+        "valueType": "quantity",
+        "expression": {
+          "source": "(2*M/(pi*k*t))^(1/3)",
+          "bindings": [
+            {
+              "token": "M",
+              "valueId": "value.motor_req_torque"
+            },
+            {
+              "token": "pi",
+              "valueId": "constant.pi"
+            },
+            {
+              "token": "k",
+              "valueId": "input.rotorLengthRatio"
+            },
+            {
+              "token": "t",
+              "valueId": "value.em_gap_shear"
+            }
+          ]
+        },
+        "canonicalUnit": "m"
+      },
+      "chapter": "14-electromagnetics",
+      "equationNumber": "14.4",
+      "purpose": "Орієнтовний активний діаметр.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "Це початкова оцінка за явно введеними припущеннями, не допуск до виготовлення.",
+      "displayUnit": "m",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.em_length",
+        "ownerNodeId": "node.value.em_length",
+        "role": "calculation",
+        "label": "Орієнтовна активна довжина",
+        "symbol": "L_m",
+        "valueType": "quantity",
+        "expression": {
+          "source": "k*D",
+          "bindings": [
+            {
+              "token": "k",
+              "valueId": "input.rotorLengthRatio"
+            },
+            {
+              "token": "D",
+              "valueId": "value.em_diameter"
+            }
+          ]
+        },
+        "canonicalUnit": "m"
+      },
+      "chapter": "14-electromagnetics",
+      "equationNumber": "14.5",
+      "purpose": "Орієнтовна активна довжина.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "Це початкова оцінка за явно введеними припущеннями, не допуск до виготовлення.",
+      "displayUnit": "m",
+      "figureIds": []
+    }
+  ],
+  "governing": [
+    {
+      "number": "14.6",
+      "purpose": "Обмежена стаціонарна dq-перевірка PMSM за заданими сталими параметрами.",
+      "formula": "ωe=pωm; T=1.5p[ψ+(Ld−Lq)id]iq; vd=Rs id−ωeLq iq; vq=Rs iq+ωe(Ld id+ψ)",
+      "symbols": "p — число пар полюсів; ψ — потокозчеплення, Вб; Ld/Lq — індуктивності, Гн; Rs — фазний опір, Ом. id/iq і vd/vq — амплітудна Park-нормалізація. Точка шукається на скінченній сітці id; відсутність точки не доводить загальної неможливості."
+    }
+  ]
+}

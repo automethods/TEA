@@ -1,0 +1,201 @@
+{
+  "id": "07-motor",
+  "title": "7. Електромашина та інвертор",
+  "group": "Електричний тракт",
+  "scope": "electric",
+  "paragraphs": [
+    "Завдання потужності (P) й частоти обертання (n) визначає потрібний крутний момент (M). У проєктному режимі формується параметрична характеристика; у перевірочному — використовуються задані тривалі потужність і момент. Бренд електромотора не потрібен.",
+    "Огинаючу обмежують момент, потужність, фазний струм і частота. Втрати складаються з нагрівання міді трьох фаз та прийнятих втрат обертання; формула і значення символів наведені нижче. Інвертор враховується окремо. Це еквівалентна модель, а не проєктування магнітного кола.",
+    "Окрема стаціонарна перевірка синхронного двигуна з постійними магнітами (PMSM) використовує поздовжню d та поперечну q осі. Її параметри — індуктивності L_d і L_q, потокозчеплення ψ та опір R; струми задано амплітудними межами. Вона не підміняє цю еквівалентну модель й не проєктує обмотки або магнітопровід.",
+    "S1 — тривалий режим при достатньому охолодженні; peak — короткочасний режим з окремими струмовими та енергетичними межами. Паспорт виробника завжди пов’язує їх з тепловими умовами й контролером [emrax-ratings]. Для N однакових моторів вимога ділиться порівну, а результуючі момент і потужність сумуються на еквівалентному валу.",
+    "6000 хв⁻¹ у I-7 — допустима початкова робоча точка, а не універсальна гранична частота BEV. EMRAX 228 наводить пікову потужність при 5500 хв⁻¹; Brogen LCV-motor-2 має 12000 хв⁻¹ як пікову частоту. Окремо приймаються базова I-83 і максимальна I-84 частоти [emrax-ratings] [brogen-rpm]."
+  ],
+  "calculations": [
+    {
+      "value": {
+        "id": "value.motor_req_torque",
+        "ownerNodeId": "node.value.motor_req_torque",
+        "role": "calculation",
+        "label": "Потрібний момент одного мотора",
+        "symbol": "M_m_req",
+        "valueType": "quantity",
+        "expression": {
+          "source": "P/(w*N)",
+          "bindings": [
+            {
+              "token": "P",
+              "valueId": "result.motor_requirement"
+            },
+            {
+              "token": "w",
+              "valueId": "value.omega_required"
+            },
+            {
+              "token": "N",
+              "valueId": "input.evMotorCount"
+            }
+          ]
+        },
+        "canonicalUnit": "N*m"
+      },
+      "chapter": "07-motor",
+      "equationNumber": "7.1",
+      "purpose": "Поділ загального моменту між однаковими моторами.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "N*m",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.motor_phase_current",
+        "ownerNodeId": "node.value.motor_phase_current",
+        "role": "calculation",
+        "label": "Струм фази в потрібній точці",
+        "symbol": "I_ph",
+        "valueType": "quantity",
+        "expression": {
+          "source": "M/k",
+          "bindings": [
+            {
+              "token": "M",
+              "valueId": "value.motor_req_torque"
+            },
+            {
+              "token": "k",
+              "valueId": "input.torqueConstant"
+            }
+          ]
+        },
+        "canonicalUnit": "A"
+      },
+      "chapter": "07-motor",
+      "equationNumber": "7.2",
+      "purpose": "Струм фази в потрібній точці.",
+      "sourceRefs": [
+        "electrical-balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "A",
+      "figureIds": [
+        "motor-torque"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.motor_copper_loss",
+        "ownerNodeId": "node.value.motor_copper_loss",
+        "role": "calculation",
+        "label": "Втрати в опорі трьох фаз",
+        "symbol": "P_Cu",
+        "valueType": "quantity",
+        "expression": {
+          "source": "3*R*I^2",
+          "bindings": [
+            {
+              "token": "R",
+              "valueId": "input.phaseResistance"
+            },
+            {
+              "token": "I",
+              "valueId": "value.motor_phase_current"
+            }
+          ]
+        },
+        "canonicalUnit": "W"
+      },
+      "chapter": "07-motor",
+      "equationNumber": "7.3",
+      "purpose": "Втрати в опорі трьох фаз.",
+      "sourceRefs": [
+        "electrical-balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "W",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.motor_rotation_loss",
+        "ownerNodeId": "node.value.motor_rotation_loss",
+        "role": "calculation",
+        "label": "Прийняті втрати обертання",
+        "symbol": "P_rot",
+        "valueType": "quantity",
+        "expression": {
+          "source": "P*(n/b)^2",
+          "bindings": [
+            {
+              "token": "P",
+              "valueId": "input.ironLoss"
+            },
+            {
+              "token": "n",
+              "valueId": "input.ratedSpeed"
+            },
+            {
+              "token": "b",
+              "valueId": "input.motorBaseSpeed"
+            }
+          ]
+        },
+        "canonicalUnit": "W"
+      },
+      "chapter": "07-motor",
+      "equationNumber": "7.4",
+      "purpose": "Прийняті втрати обертання.",
+      "sourceRefs": [
+        "electrical-balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "W",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.motor_dc_requirement",
+        "ownerNodeId": "node.value.motor_dc_requirement",
+        "role": "calculation",
+        "label": "Потрібна потужність DC перед інвертором",
+        "symbol": "P_DC_req",
+        "valueType": "quantity",
+        "expression": {
+          "source": "(P+Cu+R)/e",
+          "bindings": [
+            {
+              "token": "P",
+              "valueId": "result.motor_requirement"
+            },
+            {
+              "token": "Cu",
+              "valueId": "value.motor_copper_loss"
+            },
+            {
+              "token": "R",
+              "valueId": "value.motor_rotation_loss"
+            },
+            {
+              "token": "e",
+              "valueId": "input.inverterEfficiency"
+            }
+          ]
+        },
+        "canonicalUnit": "W"
+      },
+      "chapter": "07-motor",
+      "equationNumber": "7.5",
+      "purpose": "Потрібна потужність DC перед інвертором.",
+      "sourceRefs": [
+        "electrical-balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "W",
+      "figureIds": [
+        "motor-power",
+        "motor-map"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "id": "ch06",
+  "title": "6. Згоряння і теплообмін",
+  "nodes": [
+    {
+      "id": "h.6",
+      "kind": "heading",
+      "level": 1,
+      "content": [
+        {
+          "kind": "text",
+          "text": "6. Згоряння і теплообмін"
+        }
+      ]
+    },
+    {
+      "id": "p.ch06.1",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "Тепловиділення є заданою скінченною за тривалістю функцією. У моделі розділено початок тепловиділення, його тривалість і форму. Кут іскри не прирівнюється автоматично до початку згоряння; модель окремої затримки займання відсутня."
+        }
+      ]
+    },
+    {
+      "id": "p.ch06.2",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "y = (θ−θ₀)/Δθ; x_b = [1−exp(−a·y^{m+1})]/[1−exp(−a)] при 0 < y < 1. (6.1) До початку згоряння x_b = 0, після кінця x_b = 1. Функція Вібе походить з літературної моделі [4, 6]; нормування знаменником у цьому проєкті — явна адаптація, щоб η_c не враховувалася двічі."
+        }
+      ]
+    },
+    {
+      "id": "p.ch06.3",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "dQ_c/dθ = η_c m_f Hᵤ dx_b/dθ. (6.2) Коефіцієнти форми, тривалість і початок задано як припущення. Вони не отримані з індикаторної діаграми Toyota та не доводять оптимальність запалювання."
+        }
+      ]
+    },
+    {
+      "id": "node.calc.qcycle",
+      "kind": "calculation",
+      "valueId": "calc.qcycle"
+    },
+    {
+      "id": "node.calc.qcomb",
+      "kind": "calculation",
+      "valueId": "calc.qcomb"
+    },
+    {
+      "id": "p.ch06.6",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "h_w = 130·p_bar^0,8·T_K^(−0,4)·V_m³^(−0,06)·(c_m + 1,4)^0,8; dQ_w/dθ = h_w A_w(T−T_w)/(6n_rpm). (6.5) Застосовано кореляцію Гогенберга в одиницях рівняння (49) [6]. A_w = 2A_p + πD x — площа двох плоских торців і відкритої стінки. Поверхні клапанів, заглиблення поршня та різні температури стінок окремо не описуються."
+        }
+      ]
+    },
+    {
+      "id": "node.snapshot.pmax",
+      "kind": "input",
+      "valueId": "snapshot.pmax"
+    },
+    {
+      "id": "node.snapshot.Tmax",
+      "kind": "input",
+      "valueId": "snapshot.Tmax"
+    }
+  ],
+  "values": [
+    {
+      "id": "calc.qcycle",
+      "ownerNodeId": "node.calc.qcycle",
+      "role": "calculation",
+      "symbol": "Q_f",
+      "label": "Хімічна енергія палива за один цикл одного циліндра",
+      "valueType": "quantity",
+      "expression": {
+        "source": "mf * Hu",
+        "bindings": [
+          {
+            "token": "mf",
+            "valueId": "calc.mfuel"
+          },
+          {
+            "token": "Hu",
+            "valueId": "input.lhv"
+          }
+        ]
+      },
+      "canonicalUnit": "J"
+    },
+    {
+      "id": "calc.qcomb",
+      "ownerNodeId": "node.calc.qcomb",
+      "role": "calculation",
+      "symbol": "Q_c",
+      "label": "Теплота, передана робочому тілу при згорянні",
+      "valueType": "quantity",
+      "expression": {
+        "source": "eta * Qf",
+        "bindings": [
+          {
+            "token": "eta",
+            "valueId": "input.etaComb"
+          },
+          {
+            "token": "Qf",
+            "valueId": "calc.qcycle"
+          }
+        ]
+      },
+      "canonicalUnit": "J"
+    },
+    {
+      "id": "snapshot.pmax",
+      "ownerNodeId": "node.snapshot.pmax",
+      "role": "input",
+      "symbol": "p_max",
+      "label": "Максимальний розрахунковий тиск",
+      "value": {
+        "kind": "quantity",
+        "value": 0,
+        "canonicalUnit": "Pa"
+      }
+    },
+    {
+      "id": "snapshot.Tmax",
+      "ownerNodeId": "node.snapshot.Tmax",
+      "role": "input",
+      "symbol": "T_max",
+      "label": "Максимальна середня температура газу",
+      "value": {
+        "kind": "quantity",
+        "value": 0,
+        "canonicalUnit": "K"
+      }
+    }
+  ]
+}

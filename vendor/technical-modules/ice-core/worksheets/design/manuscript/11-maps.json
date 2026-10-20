@@ -1,0 +1,121 @@
+{
+  "id": "11-maps",
+  "title": "11. Карти EPA та їздові сценарії",
+  "group": "Застосування та перевірки",
+  "scope": "all",
+  "paragraphs": [
+    "Агентство з охорони довкілля США (Environmental Protection Agency, EPA) публікує пакети випробувальних даних і карти силових агрегатів. У цьому розділі EPA означає джерело довідкових карт, а не сертифікацію нашого розрахунку.",
+    "Карта витрати палива — залежність ṁf(n,M), а не індикаторна діаграма. Вона не замінює геометрії, температур і сил поточного циклу ДВЗ. Ідентичність компонента, паливо, огинаюча, одиниці й пропуски зберігаються [epa-intake].",
+    "У контрольній точці виконується інтерполяція лише всередині допустимої області. Порожні й від’ємні вихідні клітинки не стають нульовою витратою. Без явного вибору карта не підміняє проєктний двигун.",
+    "Для BEV поточний автомобіль і пробіг обчислюються у розділі 10. Цей розділ показує окрему зовнішню карту для порівняння компонента; вона не замінює розрахований мотор або весь автомобіль.",
+    "Електрична карта Bolt стосується втрат мотора у тяговій області при 350 В. Інвертор, рекупераційна карта й підтверджені тривалі струмові межі не домислюються. Вона використовується для контрольної точки й графіка; загальний BEV продовжує використовувати задану еквівалентну електромашину."
+  ],
+  "calculations": [
+    {
+      "value": {
+        "id": "value.map_power",
+        "ownerNodeId": "node.value.map_power",
+        "role": "calculation",
+        "label": "Механічна потужність контрольної точки",
+        "symbol": "P_map",
+        "valueType": "quantity",
+        "expression": {
+          "source": "2*pi*n*M",
+          "bindings": [
+            {
+              "token": "pi",
+              "valueId": "constant.pi"
+            },
+            {
+              "token": "n",
+              "valueId": "input.mapSpeed"
+            },
+            {
+              "token": "M",
+              "valueId": "input.mapTorque"
+            }
+          ]
+        },
+        "canonicalUnit": "W"
+      },
+      "chapter": "11-maps",
+      "equationNumber": "11.1",
+      "purpose": "Механічна потужність контрольної точки.",
+      "sourceRefs": [
+        "epa-intake"
+      ],
+      "resultNote": "Спільна контрольна точка потрібна для коректного перерахунку карти в ККД і питому витрату.",
+      "displayUnit": "W",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.map_bsfc",
+        "ownerNodeId": "node.value.map_bsfc",
+        "role": "calculation",
+        "label": "Питома витрата за EPA-картою",
+        "symbol": "b_map",
+        "valueType": "quantity",
+        "expression": {
+          "source": "f/P",
+          "bindings": [
+            {
+              "token": "f",
+              "valueId": "result.mapFuel"
+            },
+            {
+              "token": "P",
+              "valueId": "value.map_power"
+            }
+          ]
+        },
+        "canonicalUnit": "kg/J"
+      },
+      "chapter": "11-maps",
+      "equationNumber": "11.2",
+      "purpose": "Питома витрата за EPA-картою.",
+      "sourceRefs": [
+        "epa-intake"
+      ],
+      "resultNote": "Відсутня точка карти не має числового значення й не інтерполюється за межі огинаючої.",
+      "displayUnit": "kg/J",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.map_efficiency",
+        "ownerNodeId": "node.value.map_efficiency",
+        "role": "calculation",
+        "label": "Ефективний ККД у точці EPA",
+        "symbol": "η_map",
+        "valueType": "float64",
+        "expression": {
+          "source": "P/(f*H)",
+          "bindings": [
+            {
+              "token": "P",
+              "valueId": "value.map_power"
+            },
+            {
+              "token": "f",
+              "valueId": "result.mapFuel"
+            },
+            {
+              "token": "H",
+              "valueId": "result.mapLhv"
+            }
+          ]
+        }
+      },
+      "chapter": "11-maps",
+      "equationNumber": "11.3",
+      "purpose": "Ефективний ККД у точці EPA.",
+      "sourceRefs": [
+        "epa-intake"
+      ],
+      "resultNote": "Теплоту згоряння взято з пакета конкретної карти, не з палива іншого двигуна.",
+      "displayUnit": null,
+      "figureIds": []
+    }
+  ]
+}

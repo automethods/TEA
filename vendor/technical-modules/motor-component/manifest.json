@@ -1,0 +1,103 @@
+{
+  "schema": "technical-module/1",
+  "moduleId": "module.motor.component",
+  "version": "0.1.2",
+  "contractVersion": "1",
+  "runtime": "ECMAScript module; no host state, DOM, network or filesystem I/O",
+  "originWorkspace": "/media/cigameca/SHARED/Work/Literature/Transport/My_books",
+  "origins": [
+    {
+      "path": "Engine_motor/ICE/powertrain/src/motor.mjs",
+      "sha256": "d6f6a8e5851ddea41086fe54b5e2e5452a1df88f2e2a56712482c727ad2fbd56",
+      "locator": "motorEnvelope; motorPower; boundedMotor",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/motor.mjs"
+    },
+    {
+      "path": "Engine_motor/ICE/powertrain/src/engine.mjs",
+      "sha256": "541cb7a6a6d59cb0e336fe0f2f8bb90d618d14688adf3cadd975e2b02e788f5b",
+      "locator": "RPM_TO_RAD",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/engine.mjs"
+    },
+    {
+      "path": "Engine_motor/ICE/powertrain/src/maps.mjs",
+      "sha256": "3f0f0d5ec531149a07ca7ea64dc3636d511f19240b95422d45bd9b4802cf9f68",
+      "locator": "Reviewed native package dependency",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/maps.mjs"
+    },
+    {
+      "path": "Engine_motor/ICE/powertrain/src/component-package.mjs",
+      "sha256": "fb72c70f458e4698c5cde74d2445463ef011d5e092d2849bae455d938295029e",
+      "locator": "Reviewed native package dependency",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/component-package.mjs"
+    },
+    {
+      "path": "Engine_motor/ICE/vendor/engdoc/runtime.js",
+      "sha256": "4c246b584431d58735178a1f546a7046a8dcf7b4985b464d3b4077459bfa3bf2",
+      "locator": "Reviewed native package dependency",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/vendor/engdoc/runtime.js"
+    }
+  ],
+  "modelReferences": [],
+  "variants": [
+    {
+      "id": "ice-motor-loss-grid/1",
+      "origin": "Engine_motor/ICE/powertrain/src/motor.mjs",
+      "equations": [
+        "P_shaft = torque * omega",
+        "P_input = P_shaft + mapped loss",
+        "P_DC = P_input for motor+inverter; P_input/eta_inv for positive motor-only input; P_input*eta_inv for negative motor-only input"
+      ],
+      "assumptions": [
+        "Native complete numeric-loss motor package with independently supplied profile",
+        "Signed shaft/DC power: positive motoring consumption; negative generation",
+        "No reflection of positive torque data into regeneration",
+        "Continuous rating by default; peak queries require explicit exposure within source duty",
+        "Regeneration uses native envelope and DC-budget bisection; remaining braking is friction braking"
+      ]
+    }
+  ],
+  "ports": {
+    "commonInputs": [
+      "motorAngularSpeedRadPerS",
+      "motorShaftTorqueNm",
+      "inverterEfficiency",
+      "motorTerminalVoltageV"
+    ],
+    "outputs": [
+      "motorShaftPowerW",
+      "motorElectricalPowerW",
+      "mappedLossPowerW",
+      "additionalInverterLossPowerW",
+      "motorShaftTorqueNm"
+    ],
+    "regenerationInputs": [
+      "batteryChargePowerLimitW"
+    ],
+    "limitOutputs": [
+      "motorTorqueLimitNm"
+    ]
+  },
+  "configuration": {
+    "rating": "continuous or peak",
+    "peakExposureS": "required elapsed peak-duty exposure for a peak query"
+  },
+  "nativeFormat": "powertrain-component-package/1",
+  "dependencies": [
+    "../engine-component/component-package.mjs",
+    "../engine-component/maps.mjs",
+    "../engine-component/runtime.mjs"
+  ],
+  "implementationAuthority": "SI adapter uses the canonical ice-core numerical kernels; all application copies are verified distributions.",
+  "validation": [
+    "tests/motor-component.test.mjs"
+  ],
+  "status": "Adopted by Automobile and ICE through the common pinned bundle.",
+  "limitations": [
+    "Complete profile required; standalone Bolt loss map is not an installable motor component",
+    "Combined mapped losses cannot be separated into motor and inverter heat",
+    "No cold/thermal/current-voltage state model beyond supplied profile limits",
+    "Peak-duty recovery and repeated thermal duty are not modeled",
+    "Content hashes identify retained bytes; no publisher authentication",
+    "Battery terminal voltage is checked only when supplied and the package declares a voltage envelope; otherwise voltage compatibility remains unassessed. Loss grids remain at their source voltage/temperature."
+  ]
+}

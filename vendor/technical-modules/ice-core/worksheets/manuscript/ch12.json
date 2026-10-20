@@ -1,0 +1,256 @@
+{
+  "id": "ch12",
+  "title": "12. Попередні оцінки допоміжних систем",
+  "nodes": [
+    {
+      "id": "h.12",
+      "kind": "heading",
+      "level": 1,
+      "content": [
+        {
+          "kind": "text",
+          "text": "12. Попередні оцінки допоміжних систем"
+        }
+      ]
+    },
+    {
+      "id": "p.ch12.1",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "Ці оцінки показують порядок циркуляційних витрат за тепловою потужністю. Вони не є готовим підбором насоса, радіатора, каналів мащення або клапанного механізму. Гідравлічний опір, робочі карти, резерви на гарячий холостий хід і температурна неоднорідність потребують окремих вихідних даних."
+        }
+      ]
+    },
+    {
+      "id": "node.snapshot.Qw",
+      "kind": "input",
+      "valueId": "snapshot.Qw"
+    },
+    {
+      "id": "node.input.coolantFrictionShare",
+      "kind": "input",
+      "valueId": "input.coolantFrictionShare"
+    },
+    {
+      "id": "node.input.coolantDensity",
+      "kind": "input",
+      "valueId": "input.coolantDensity"
+    },
+    {
+      "id": "node.input.coolantCp",
+      "kind": "input",
+      "valueId": "input.coolantCp"
+    },
+    {
+      "id": "node.input.coolantDeltaT",
+      "kind": "input",
+      "valueId": "input.coolantDeltaT"
+    },
+    {
+      "id": "node.calc.coolant",
+      "kind": "calculation",
+      "valueId": "calc.coolant"
+    },
+    {
+      "id": "node.input.oilDensity",
+      "kind": "input",
+      "valueId": "input.oilDensity"
+    },
+    {
+      "id": "node.input.oilCp",
+      "kind": "input",
+      "valueId": "input.oilCp"
+    },
+    {
+      "id": "node.input.oilDeltaT",
+      "kind": "input",
+      "valueId": "input.oilDeltaT"
+    },
+    {
+      "id": "node.calc.oil",
+      "kind": "calculation",
+      "valueId": "calc.oil"
+    },
+    {
+      "id": "p.ch12.12",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "Міцність поршня, пальця, шатуна, шатунних болтів і колінчастого вала у цій версії не оголошується перевіреною. Для розрахунку необхідні розміри перерізів, матеріали, термообробка, граничні цикли, фактичні маси та допустимі напруження. Наявні максимальні сили є навантаженнями для наступного етапу, а не доказом безпечної конструкції."
+        }
+      ]
+    }
+  ],
+  "values": [
+    {
+      "id": "snapshot.Qw",
+      "ownerNodeId": "node.snapshot.Qw",
+      "role": "input",
+      "symbol": "Qdot_w",
+      "label": "Теплота через стінки циліндрів за секунду",
+      "value": {
+        "kind": "quantity",
+        "value": 0,
+        "canonicalUnit": "W"
+      }
+    },
+    {
+      "id": "input.coolantFrictionShare",
+      "ownerNodeId": "node.input.coolantFrictionShare",
+      "role": "input",
+      "symbol": "chi",
+      "label": "Частка механічних втрат у контур охолодження",
+      "value": {
+        "kind": "float64",
+        "value": 0.7
+      }
+    },
+    {
+      "id": "input.coolantDensity",
+      "ownerNodeId": "node.input.coolantDensity",
+      "role": "input",
+      "symbol": "rho_c",
+      "label": "Прийнята густина охолоджувальної рідини",
+      "value": {
+        "kind": "quantity",
+        "value": 1050,
+        "canonicalUnit": "kg/m^3"
+      }
+    },
+    {
+      "id": "input.coolantCp",
+      "ownerNodeId": "node.input.coolantCp",
+      "role": "input",
+      "symbol": "c_c",
+      "label": "Прийнята теплоємність охолоджувальної рідини",
+      "value": {
+        "kind": "quantity",
+        "value": 3600,
+        "canonicalUnit": "J/(kg*K)"
+      }
+    },
+    {
+      "id": "input.coolantDeltaT",
+      "ownerNodeId": "node.input.coolantDeltaT",
+      "role": "input",
+      "symbol": "Delta_Tc",
+      "label": "Допустимий перепад температури рідини в оцінці витрати",
+      "value": {
+        "kind": "quantity",
+        "value": 10,
+        "canonicalUnit": "K"
+      }
+    },
+    {
+      "id": "calc.coolant",
+      "ownerNodeId": "node.calc.coolant",
+      "role": "calculation",
+      "symbol": "Vdot_c",
+      "label": "Оціночна циркуляційна витрата охолоджувальної рідини",
+      "valueType": "quantity",
+      "expression": {
+        "source": "(Qw + chi * Pm) / (rho * cp * dt)",
+        "bindings": [
+          {
+            "token": "Qw",
+            "valueId": "snapshot.Qw"
+          },
+          {
+            "token": "chi",
+            "valueId": "input.coolantFrictionShare"
+          },
+          {
+            "token": "Pm",
+            "valueId": "calc.frictionP"
+          },
+          {
+            "token": "rho",
+            "valueId": "input.coolantDensity"
+          },
+          {
+            "token": "cp",
+            "valueId": "input.coolantCp"
+          },
+          {
+            "token": "dt",
+            "valueId": "input.coolantDeltaT"
+          }
+        ]
+      },
+      "canonicalUnit": "m^3/s"
+    },
+    {
+      "id": "input.oilDensity",
+      "ownerNodeId": "node.input.oilDensity",
+      "role": "input",
+      "symbol": "rho_o",
+      "label": "Прийнята густина оливи",
+      "value": {
+        "kind": "quantity",
+        "value": 850,
+        "canonicalUnit": "kg/m^3"
+      }
+    },
+    {
+      "id": "input.oilCp",
+      "ownerNodeId": "node.input.oilCp",
+      "role": "input",
+      "symbol": "c_o",
+      "label": "Прийнята теплоємність оливи",
+      "value": {
+        "kind": "quantity",
+        "value": 2100,
+        "canonicalUnit": "J/(kg*K)"
+      }
+    },
+    {
+      "id": "input.oilDeltaT",
+      "ownerNodeId": "node.input.oilDeltaT",
+      "role": "input",
+      "symbol": "Delta_To",
+      "label": "Прийнятий перепад температури оливи",
+      "value": {
+        "kind": "quantity",
+        "value": 15,
+        "canonicalUnit": "K"
+      }
+    },
+    {
+      "id": "calc.oil",
+      "ownerNodeId": "node.calc.oil",
+      "role": "calculation",
+      "symbol": "Vdot_o",
+      "label": "Оціночна витрата оливи за тепловим навантаженням",
+      "valueType": "quantity",
+      "expression": {
+        "source": "(1 - chi) * Pm / (rho * cp * dt)",
+        "bindings": [
+          {
+            "token": "chi",
+            "valueId": "input.coolantFrictionShare"
+          },
+          {
+            "token": "Pm",
+            "valueId": "calc.frictionP"
+          },
+          {
+            "token": "rho",
+            "valueId": "input.oilDensity"
+          },
+          {
+            "token": "cp",
+            "valueId": "input.oilCp"
+          },
+          {
+            "token": "dt",
+            "valueId": "input.oilDeltaT"
+          }
+        ]
+      },
+      "canonicalUnit": "m^3/s"
+    }
+  ]
+}

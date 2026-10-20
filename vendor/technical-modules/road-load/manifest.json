@@ -1,0 +1,129 @@
+{
+  "schema": "technical-module/1",
+  "moduleId": "module.vehicle.road-load",
+  "version": "0.1.1",
+  "contractVersion": "1",
+  "runtime": "ECMAScript module; no DOM, dependencies or filesystem I/O in index.mjs",
+  "originWorkspace": "/media/cigameca/SHARED/Work/Literature/Transport/My_books",
+  "origins": [
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/cycle-energy.js",
+      "sha256": "a0519dedc3917f01d403bdf8f711295d701389e7b5a8d22c6b50440e1e25b758",
+      "locator": "roadLoadFromDesign; roadLoadFromCoastdown; resistanceAt; wheelPowerAt",
+      "snapshot": "validation/origins/automobile-v0.4.36/cycle-energy.js"
+    },
+    {
+      "path": "Engine_motor/ICE/design/src/ev-road-load.mjs",
+      "sha256": "6b3f0c7891d39acc59588fd4c98b77d7b8a6f9a6328ca5db143c61745a8c73cf",
+      "locator": "roadLoadAt",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/ev-road-load.mjs"
+    }
+  ],
+  "modelReferences": [
+    {
+      "id": "model.road-load.rolling-resistance.constant-coefficient",
+      "path": "vehicle_model_library_examples_v0.12/models/road-load/rolling-resistance-constant.yaml"
+    },
+    {
+      "id": "model.road-load.aerodynamic-drag-force.constant-cd",
+      "path": "vehicle_model_library_examples_v0.12/models/road-load/aerodynamic-drag-force.yaml"
+    },
+    {
+      "id": "model.vehicle.longitudinal.force-balance",
+      "path": "vehicle_model_library_examples_v0.12/models/vehicle/longitudinal-force-balance.yaml"
+    }
+  ],
+  "variants": [
+    {
+      "id": "automobile-speed-dependent/1",
+      "origin": "Automobile/new/Vehickle_calculations_assets/cycle-energy.js",
+      "equations": [
+        "F_rr = C_rr * weightForceN * (v*3.6 > 50 ? 1 + 0.01*(v*3.6-50) : 1)",
+        "F_aero = dragFactorKgPerM * v^2",
+        "F_grade = operatingMassKg * 9.81 * sin(atan(gradeRatio))"
+      ],
+      "assumptions": [
+        "Weight force is an independent design input",
+        "Rolling force has no cos(grade) correction"
+      ]
+    },
+    {
+      "id": "ice-constant-coefficient/1",
+      "origin": "Engine_motor/ICE/design/src/ev-road-load.mjs",
+      "equations": [
+        "F_rr = operatingMassKg * 9.80665 * C_rr * cos(atan(gradeRatio))",
+        "F_aero = 0.5 * 1.225 * dragAreaM2 * v^2",
+        "F_grade = operatingMassKg * 9.80665 * sin(atan(gradeRatio))"
+      ],
+      "assumptions": [
+        "Constant rolling coefficient",
+        "Air density fixed at 1.225 kg/m^3"
+      ]
+    },
+    {
+      "id": "coastdown-polynomial/1",
+      "origin": "Automobile/new/Vehickle_calculations_assets/cycle-energy.js",
+      "equations": [
+        "F_res = F0 + F1*v + F2*v^2"
+      ],
+      "assumptions": [
+        "Coefficients retain their test mass/equipment; do not rescale for another mass",
+        "No separate rolling or aero output can be inferred"
+      ]
+    }
+  ],
+  "commonEquations": [
+    "F_inertia = operatingMassKg * rotatingMassFactor * accelerationMPerS2",
+    "P_wheel = (F_res + F_grade + F_inertia) * v"
+  ],
+  "implementationAuthority": "index.mjs owns numerical road-load variants; Automobile cycle integration uses a pinned distribution through its road-load adapter. Scalar worksheet calculations keep their existing owner.",
+  "validation": [
+    "tests/road-load.test.mjs",
+    "tests/origin-regression.test.mjs"
+  ],
+  "status": "Adopted by Automobile and ICE cycle wheel demand through distinct reviewed variants.",
+  "limitations": [
+    "Forward nonnegative speeds only",
+    "No wind model, tyre thermal model, powertrain losses or fuel consumption",
+    "Predicting wheel demand does not certify WLTP consumption"
+  ],
+  "ports": {
+    "commonInputs": [
+      "operatingMassKg",
+      "rotatingMassFactor",
+      "vehicleSpeedMPerS",
+      "accelerationMPerS2",
+      "gradeRatio"
+    ],
+    "automobile-speed-dependent/1": [
+      "rollingResistanceCoefficient",
+      "weightForceN",
+      "dragFactorKgPerM"
+    ],
+    "ice-constant-coefficient/1": [
+      "rollingResistanceCoefficient",
+      "dragAreaM2"
+    ],
+    "coastdown-polynomial/1": [
+      "coastdownF0N",
+      "coastdownF1NsPerM",
+      "coastdownF2KgPerM"
+    ],
+    "outputs": [
+      "rollingForceN",
+      "aerodynamicForceN",
+      "resistanceForceN",
+      "gradeForceN",
+      "inertiaForceN",
+      "wheelPowerW"
+    ]
+  },
+  "originDependencies": [
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/numeric.js",
+      "snapshot": "validation/origins/automobile-v0.4.36/numeric.js",
+      "sha256": "370cefadd3dff0d1dccdb1ffee8d1b3e6e4362e5da21f8c4c61a281635afc45a",
+      "locator": "finiteNumber"
+    }
+  ]
+}

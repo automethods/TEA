@@ -1,0 +1,332 @@
+{
+  "id": "ch02",
+  "title": "2. Геометричні параметри",
+  "nodes": [
+    {
+      "id": "h.2",
+      "kind": "heading",
+      "level": 1,
+      "content": [
+        {
+          "kind": "text",
+          "text": "2. Геометричні параметри"
+        }
+      ]
+    },
+    {
+      "id": "p.ch02.1",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "D — діаметр циліндра, м; S — хід поршня, м; ε — ступінь стиску; z — кількість циліндрів. Величини прийняті за геометричним джерелом [2]. L — довжина шатуна, м; вона є припущенням, а не характеристикою Toyota."
+        }
+      ]
+    },
+    {
+      "id": "node.input.bore",
+      "kind": "input",
+      "valueId": "input.bore"
+    },
+    {
+      "id": "node.input.stroke",
+      "kind": "input",
+      "valueId": "input.stroke"
+    },
+    {
+      "id": "node.input.compression",
+      "kind": "input",
+      "valueId": "input.compression"
+    },
+    {
+      "id": "node.input.cylinders",
+      "kind": "input",
+      "valueId": "input.cylinders"
+    },
+    {
+      "id": "node.input.rod",
+      "kind": "input",
+      "valueId": "input.rod"
+    },
+    {
+      "id": "node.input.rpm",
+      "kind": "input",
+      "valueId": "input.rpm"
+    },
+    {
+      "id": "node.calc.area",
+      "kind": "calculation",
+      "valueId": "calc.area"
+    },
+    {
+      "id": "node.calc.vd",
+      "kind": "calculation",
+      "valueId": "calc.vd"
+    },
+    {
+      "id": "node.calc.vtotal",
+      "kind": "calculation",
+      "valueId": "calc.vtotal"
+    },
+    {
+      "id": "node.calc.vc",
+      "kind": "calculation",
+      "valueId": "calc.vc"
+    },
+    {
+      "id": "node.calc.radius",
+      "kind": "calculation",
+      "valueId": "calc.radius"
+    },
+    {
+      "id": "node.calc.ratio",
+      "kind": "calculation",
+      "valueId": "calc.ratio"
+    },
+    {
+      "id": "node.calc.omega",
+      "kind": "calculation",
+      "valueId": "calc.omega"
+    },
+    {
+      "id": "node.calc.cm",
+      "kind": "calculation",
+      "valueId": "calc.cm"
+    }
+  ],
+  "values": [
+    {
+      "id": "input.bore",
+      "ownerNodeId": "node.input.bore",
+      "role": "input",
+      "symbol": "D",
+      "label": "Діаметр циліндра",
+      "value": {
+        "kind": "quantity",
+        "value": 0.0805,
+        "canonicalUnit": "m"
+      }
+    },
+    {
+      "id": "input.stroke",
+      "ownerNodeId": "node.input.stroke",
+      "role": "input",
+      "symbol": "S",
+      "label": "Хід поршня",
+      "value": {
+        "kind": "quantity",
+        "value": 0.0785,
+        "canonicalUnit": "m"
+      }
+    },
+    {
+      "id": "input.compression",
+      "ownerNodeId": "node.input.compression",
+      "role": "input",
+      "symbol": "epsilon",
+      "label": "Геометричний ступінь стиску",
+      "value": {
+        "kind": "float64",
+        "value": 10.7
+      }
+    },
+    {
+      "id": "input.cylinders",
+      "ownerNodeId": "node.input.cylinders",
+      "role": "input",
+      "symbol": "z",
+      "label": "Кількість циліндрів",
+      "value": {
+        "kind": "float64",
+        "value": 4
+      }
+    },
+    {
+      "id": "input.rod",
+      "ownerNodeId": "node.input.rod",
+      "role": "input",
+      "symbol": "L",
+      "label": "Міжосьова довжина шатуна",
+      "value": {
+        "kind": "quantity",
+        "value": 0.14,
+        "canonicalUnit": "m"
+      }
+    },
+    {
+      "id": "input.rpm",
+      "ownerNodeId": "node.input.rpm",
+      "role": "input",
+      "symbol": "n",
+      "label": "Частота обертання, обертів за секунду",
+      "value": {
+        "kind": "quantity",
+        "value": 73.33333333333333,
+        "canonicalUnit": "1/s"
+      }
+    },
+    {
+      "id": "calc.area",
+      "ownerNodeId": "node.calc.area",
+      "role": "calculation",
+      "symbol": "A_p",
+      "label": "Площа поршня",
+      "valueType": "quantity",
+      "expression": {
+        "source": "pi * D^2 / 4",
+        "bindings": [
+          {
+            "token": "D",
+            "valueId": "input.bore"
+          }
+        ]
+      },
+      "canonicalUnit": "m^2"
+    },
+    {
+      "id": "calc.vd",
+      "ownerNodeId": "node.calc.vd",
+      "role": "calculation",
+      "symbol": "V_h",
+      "label": "Робочий об’єм одного циліндра",
+      "valueType": "quantity",
+      "expression": {
+        "source": "A * S",
+        "bindings": [
+          {
+            "token": "A",
+            "valueId": "calc.area"
+          },
+          {
+            "token": "S",
+            "valueId": "input.stroke"
+          }
+        ]
+      },
+      "canonicalUnit": "m^3"
+    },
+    {
+      "id": "calc.vtotal",
+      "ownerNodeId": "node.calc.vtotal",
+      "role": "calculation",
+      "symbol": "V_d",
+      "label": "Робочий об’єм двигуна",
+      "valueType": "quantity",
+      "expression": {
+        "source": "z * Vh",
+        "bindings": [
+          {
+            "token": "z",
+            "valueId": "input.cylinders"
+          },
+          {
+            "token": "Vh",
+            "valueId": "calc.vd"
+          }
+        ]
+      },
+      "canonicalUnit": "m^3"
+    },
+    {
+      "id": "calc.vc",
+      "ownerNodeId": "node.calc.vc",
+      "role": "calculation",
+      "symbol": "V_c",
+      "label": "Об’єм камери стиску",
+      "valueType": "quantity",
+      "expression": {
+        "source": "Vh / (epsilon - 1)",
+        "bindings": [
+          {
+            "token": "Vh",
+            "valueId": "calc.vd"
+          },
+          {
+            "token": "epsilon",
+            "valueId": "input.compression"
+          }
+        ]
+      },
+      "canonicalUnit": "m^3"
+    },
+    {
+      "id": "calc.radius",
+      "ownerNodeId": "node.calc.radius",
+      "role": "calculation",
+      "symbol": "r",
+      "label": "Радіус кривошипа",
+      "valueType": "quantity",
+      "expression": {
+        "source": "S / 2",
+        "bindings": [
+          {
+            "token": "S",
+            "valueId": "input.stroke"
+          }
+        ]
+      },
+      "canonicalUnit": "m"
+    },
+    {
+      "id": "calc.ratio",
+      "ownerNodeId": "node.calc.ratio",
+      "role": "calculation",
+      "symbol": "lambda_k",
+      "label": "Відношення радіуса кривошипа до довжини шатуна",
+      "valueType": "float64",
+      "expression": {
+        "source": "r / L",
+        "bindings": [
+          {
+            "token": "r",
+            "valueId": "calc.radius"
+          },
+          {
+            "token": "L",
+            "valueId": "input.rod"
+          }
+        ]
+      }
+    },
+    {
+      "id": "calc.omega",
+      "ownerNodeId": "node.calc.omega",
+      "role": "calculation",
+      "symbol": "omega",
+      "label": "Кутова швидкість колінчастого вала",
+      "valueType": "quantity",
+      "expression": {
+        "source": "2 * pi * n",
+        "bindings": [
+          {
+            "token": "n",
+            "valueId": "input.rpm"
+          }
+        ]
+      },
+      "canonicalUnit": "rad/s"
+    },
+    {
+      "id": "calc.cm",
+      "ownerNodeId": "node.calc.cm",
+      "role": "calculation",
+      "symbol": "c_m",
+      "label": "Середня швидкість поршня",
+      "valueType": "quantity",
+      "expression": {
+        "source": "2 * S * n",
+        "bindings": [
+          {
+            "token": "S",
+            "valueId": "input.stroke"
+          },
+          {
+            "token": "n",
+            "valueId": "input.rpm"
+          }
+        ]
+      },
+      "canonicalUnit": "m/s"
+    }
+  ]
+}

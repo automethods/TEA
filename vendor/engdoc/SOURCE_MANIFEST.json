@@ -1,0 +1,116 @@
+{
+  "retrieved_on": "2026-09-29",
+  "source_folder_id": "1GpedVjvVZAxPJbnqTtlulVp_M-j94FgX",
+  "files": [
+    {
+      "path": "vendor/engdoc/src/presentation.ts",
+      "source_drive_file_id": "1hErZn7AjM12iGAZRoOz-aKDfjg1agoM2",
+      "sha256": "1d95220d828555665c0e16f83a06f403cddd33520d27b427168538aa1bb5b547"
+    },
+    {
+      "path": "vendor/engdoc/src/layout-tables.ts",
+      "source_drive_file_id": "1QxZ2f1a64oxYL9Fhx1zuWbYXfb84H1bW",
+      "sha256": "d9efc957bdaddcde3d583308ce1015a75ac0818c3ad7cb72bb7518e47895cea4"
+    },
+    {
+      "path": "vendor/engdoc/src/native-contract.ts",
+      "source_drive_file_id": "1rWnNvE5BmL36p_AnZD78G4x4OjFSPueq",
+      "sha256": "e8a060b8dd6ef0efe45b76e517afa44fbacd747c205711282d3c6b2c40ca64ec"
+    },
+    {
+      "path": "vendor/engdoc/src/native-session.ts",
+      "source_drive_file_id": "1TLvfUOP23TzscbetfRibyc-4QOHBW0Ht",
+      "sha256": "7f4a3783a506d47871a7d2430161f9c7825361ea60f46da2407dc58e29cae038"
+    },
+    {
+      "path": "vendor/engdoc/src/tabular.ts",
+      "source_drive_file_id": "1zAGz8UYsU3Ncd3UlggLooKLBDj7e3phv",
+      "sha256": "dc8a3e941818a1dd523076db638909f97dc0f7c43281490f808436cf820ed79c"
+    },
+    {
+      "path": "vendor/engdoc/src/access-contract.ts",
+      "source_drive_file_id": "1K0VRKJPWeN8pRNciIEcaSSVQwqkzHFze",
+      "sha256": "a2eab64479874c2e774f85b78165d3584dc44f76437db8656a280945641971ea"
+    },
+    {
+      "path": "vendor/engdoc/src/charts.ts",
+      "source_drive_file_id": "1w-IVFx_MLqQd7crEJbtkNR-nP4rJjRqI",
+      "sha256": "1677c1c70d5df3776847c3f9fddea281bbf57c3c792f43ae9eadae80e7522d68"
+    },
+    {
+      "path": "vendor/engdoc/src/csv.ts",
+      "source_drive_file_id": "1KrPndIu6RBW4KeW8ahUGmA5CnTm13I2P",
+      "sha256": "24a556dfe5be7f139593d0c6e44b64824040c69a95291321ef10d549761c3013"
+    },
+    {
+      "path": "vendor/engdoc/src/native-engine.ts",
+      "source_drive_file_id": "1kVMI6VfrCktPEypYpUupM4CI80puuAjL",
+      "sha256": "1a4224a28f78dca6899bb1e9d8db3f17dd9bf95f17efa0941143bc5473eaa12f"
+    },
+    {
+      "path": "vendor/engdoc/src/runtime.ts",
+      "source_drive_file_id": "1kU_YKGaqLEjCTgwMTppeyTJAbFTeHZ8G",
+      "sha256": "01a876a7b8e7e07035ba80d84f2e7f5087aee6b9f70fb5a3c3548d0bffe7125c"
+    },
+    {
+      "path": "vendor/engdoc/src/engine/mathjs-safe.ts",
+      "source_drive_file_id": "138V92ebzIEbGQUxwY9ntUJQehsrQPeKN",
+      "sha256": "a9d98a48798c657b8a7495a0826ab068df9666c0c2533e37f05c5ca7dc5e28bc"
+    },
+    {
+      "path": "vendor/engdoc/src/model/diagnostics.ts",
+      "source_drive_file_id": "1h6Rf8hkqp4ZlgcxQKZsU9oEtdDVeT4dG",
+      "sha256": "fd87d666b62bbd571ac4a30a2757d7195c0475b7938069c4fa0600d08d8ca9b8"
+    },
+    {
+      "path": "vendor/engdoc/src/model/document.ts",
+      "source_drive_file_id": "1hRsLlMI_OyDvmq_N9hhrRskywgP16R5b",
+      "sha256": "02c85ac1dd99820cdda8ea1b170282b314a3dde6bd06d730ee7d2dfbd586f958"
+    },
+    {
+      "path": "vendor/engdoc/src/model/expression.ts",
+      "source_drive_file_id": "1iiuJ0q722mSGYT2MD3UKzAl0zl2p0OGb",
+      "sha256": "6fda4d6f9e5fbfc73e7b5099459a178e8b6851b5c7b0383481fd0109504def81"
+    },
+    {
+      "path": "vendor/engdoc/src/model/format.ts",
+      "source_drive_file_id": "1NDna9vj-YkC2yX1M5CpSNQ3aUkfJRFjK",
+      "sha256": "905b13f4417abe34aa73d1540283057d1e192c1d4831f2c4e81a6c136699c519"
+    },
+    {
+      "path": "vendor/engdoc/src/model/ids.ts",
+      "source_drive_file_id": "19-5MjdEd8Db-qaTME_aKVhIrzPiZsRls",
+      "sha256": "1b36b8fdf4389f1424847b5872d07810046fe0255f71dc26f7ef9c232fad62fd"
+    },
+    {
+      "path": "vendor/engdoc/src/model/index.ts",
+      "source_drive_file_id": "1VedbSiZH8JcWDVf-Y5hpOVcEJ1t4NUUt",
+      "sha256": "b2392aed689d5d1043fda62a77bc3934b152b471fc1c708a4f0f62bdfd848cd1"
+    },
+    {
+      "path": "vendor/engdoc/src/model/json.ts",
+      "source_drive_file_id": "1D9lj-aFS5GDS8XGh2ffvHYfrpPzSId0g",
+      "sha256": "4445a73f399753ffa5e83359a8df8ad956283bcf4e8ace3bb16da0d386240e72"
+    },
+    {
+      "path": "vendor/engdoc/src/model/ranges.ts",
+      "source_drive_file_id": "1dmXozNLrODRZbfNg2LG3L5fH4Rrl4E25",
+      "sha256": "b606b7be59dc3779fc382e88cc9f6dd63d6a5c5339cd292c5ae9fe452230c9dd"
+    },
+    {
+      "path": "vendor/engdoc/src/model/values.ts",
+      "source_drive_file_id": "1rTCL5tQPH6VCTdyW45qfwf1MNqNWnGPL",
+      "sha256": "290f268747f563f3de547e0ccd9873d03ceea11c76b82363a733c9c74d27ed45"
+    },
+    {
+      "path": "vendor/engdoc/src/eval/evaluate.ts",
+      "source_drive_file_id": "1Epk4XvxYYGry5JvglIwTWmVSVLbCAk3P",
+      "sha256": "9ef6fec233b1bad9448a85b3e6cc79ec1b18744cde1a96d839491135b270345f"
+    },
+    {
+      "path": "vendor/engdoc/src/eval/graph.ts",
+      "source_drive_file_id": "18NF6LovaACBOIw2hwtCxs3XzmUmuWSts",
+      "sha256": "a3683daab002bf81b51f2f3a3f2da8bbb0fb96273238d478dab6197bd40acdb2"
+    }
+  ]
+}
