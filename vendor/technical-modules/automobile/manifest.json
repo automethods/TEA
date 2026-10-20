@@ -1,0 +1,383 @@
+{
+  "schema": "technical-module/1",
+  "moduleId": "module.vehicle.automobile-kernels",
+  "version": "0.1.0",
+  "contractVersion": "1",
+  "runtime": "ESM numerical kernels; apps own file I/O, DOM registration and document presentation",
+  "originWorkspace": "/media/cigameca/SHARED/Work/Literature/Transport/My_books",
+  "origins": [
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/numeric.js",
+      "sha256": "370cefadd3dff0d1dccdb1ffee8d1b3e6e4362e5da21f8c4c61a281635afc45a",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/numeric.js",
+      "locator": "createNumeric"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/layout.js",
+      "sha256": "75780e38f5449b4889974a6c5e7c2b98e3e46241ca553660cf1bd1df1d5545ef",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/layout.js",
+      "locator": "createLayoutCalculator"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/chapter3-calculations.js",
+      "sha256": "64a3729950eae27d3097558045dbeb9c6be37b1b9afac25c55177a58a154266e",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/chapter3-calculations.js",
+      "locator": "createChapter3Calculations"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/chapter4-inputs.js",
+      "sha256": "d01a65bf8ad0b7a719a0b33990d1628df8cdb7d96d5c2f620af8e9c8eb791caf",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/chapter4-inputs.js",
+      "locator": "createChapter4Inputs"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/chapter4-traction.js",
+      "sha256": "9b0bcae43df238d8f98085e80a8a0e1a6f972722c4910fef73cb7936db958737",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/chapter4-traction.js",
+      "locator": "createChapter4Traction"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/rolling-resistance-speed.js",
+      "sha256": "4f16520597286a27a08674590b3134388047be39cec66a793392d6933d13abb5",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/rolling-resistance-speed.js",
+      "locator": "createRollingResistanceSpeed"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/q-model.js",
+      "sha256": "02ca0103af37dbcf4c5914906f43dd42dbdf2e07c3c1f0f908d7e494e7e97c58",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/q-model.js",
+      "locator": "createQModel"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/powertrain-design.js",
+      "sha256": "0fda1691432daa3b00e289f98ebec9558e3b785dd2eca3a8f85175a6ac9d89a6",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/powertrain-design.js",
+      "locator": "createPowertrainDesign"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/launch-design.js",
+      "sha256": "bec1d6aed8b12ecbc343bef794ffa7a16e1ac454209fe27fd22a818997994d87",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/launch-design.js",
+      "locator": "createLaunchDesign"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/traction-characteristic.js",
+      "sha256": "5a67e4bb6ffc8cc20609ce796867e398e513acc2f14abb61d7bae150500f649f",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/traction-characteristic.js",
+      "locator": "createTractionCharacteristic"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/gearbox-ratios.js",
+      "sha256": "a4a2549b67e4c4260967649ec9f83795429780d360b8e69789ed97df55ef5b4e",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/gearbox-ratios.js",
+      "locator": "createGearboxRatios"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/gearbox-teeth.js",
+      "sha256": "6277e799c809ef633c8cdb6db0fc3fa5648a0167119235feb32dd0da1907bc2c",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/gearbox-teeth.js",
+      "locator": "createGearboxTeeth"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/gearbox-gears.js",
+      "sha256": "b290a10865cf7ca0ce0e711d7b19cb60e4e0029266f1e6958f1ab3f06f2923e5",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/gearbox-gears.js",
+      "locator": "createGearboxGears"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/gearbox-layout.js",
+      "sha256": "12d4c2ca7654ed6a3f8d2880235054a42c4fbb50ab816c809f6429027cf796ce",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/gearbox-layout.js",
+      "locator": "createGearboxLayout"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/traction-paths.js",
+      "sha256": "80c8d69f3df3371977c8e587667773ac34f0092c4029f0ca1486c6c311b2a414",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/traction-paths.js",
+      "locator": "createTractionPaths"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/performance.js",
+      "sha256": "bf823263de72b8a5e75c78d638a9ac8d285c10d9d1bb305c9e80e8ec7af38904",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/performance.js",
+      "locator": "createPerformance"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/braking.js",
+      "sha256": "042f62b79314b8674db76cac52d2485a8db77a8722aaa8c06f32ac2045505340",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/braking.js",
+      "locator": "createBraking"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/clutch.js",
+      "sha256": "5fec15635a68ee0dece4119a72cf7105b76075a064a1afc981fad06a4cfd7fbd",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/clutch.js",
+      "locator": "createClutch"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/cycle-energy.js",
+      "sha256": "7facf2b8646a6c8942216130232adfc409e811d2309836080fad3bbbac8e49f3",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/cycle-energy.js",
+      "locator": "createCycleEnergy"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/battery-design.js",
+      "sha256": "10291ee7bb20856b78ccb52c521b9e01b0fd6a5fe768fa195b55970fa41b7dde",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/battery-design.js",
+      "locator": "batteryDesignFactory"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/fuel-economy.js",
+      "sha256": "f8a3628c3cf9420b6107264e0dd344da192febb9b0af70d6aef27d6f89745280",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/fuel-economy.js",
+      "locator": "createFuelEconomy"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/driveshaft.js",
+      "sha256": "775e3d373a9f88b531fbd534891a4b700589ce61baf87881d967253995f488d5",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/driveshaft.js",
+      "locator": "createDriveshaft"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/final-drive.js",
+      "sha256": "b4277632b6b3874e6510b574f522eea057fd5e0afa03722bac045ce27d656d4a",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/final-drive.js",
+      "locator": "createFinalDrive"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/final-drive-secondary.js",
+      "sha256": "cefd3d1a3db347273f661682e3655f46b352fa4e23ac47a7ac42c430a22490c8",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/final-drive-secondary.js",
+      "locator": "createSecondary"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/differential.js",
+      "sha256": "514591339635e938404639b4be04647a15c2768c8fe7bb30e391ef03696d489c",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/differential.js",
+      "locator": "createDifferential"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/wheel-drive.js",
+      "sha256": "b53b95f7f5fb4d94ef7441db5bbe1ed586e53a39b84258589f0ed6f29958199c",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/wheel-drive.js",
+      "locator": "createWheelDrive"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/handling.js",
+      "sha256": "da2104e79b2b8d195b13026aaa9a1f54df3a67febd54b270a10aa21708ddaaf1",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/handling.js",
+      "locator": "createHandling"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/ride.js",
+      "sha256": "31691888f1c1bcec4b6fe40a51146ed44c4a6e3df642578eb3fc0d08e9421abb",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/ride.js",
+      "locator": "createRide"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/offroad.js",
+      "sha256": "1f7cd17ef20f4589cb093973235eae90fb6a99f97893d68c262966597335c6a3",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/offroad.js",
+      "locator": "createOffroad"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/suspension.js",
+      "sha256": "0064eb5fe92de5f2c087a9b20d22157e1d847e69c06f1b42b28ca58d560b4115",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/suspension.js",
+      "locator": "createSuspension"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/steering.js",
+      "sha256": "6c2a30b42bc010458d86c6bb6921d61353e06115a88c1bcc527a56a081a43766",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/steering.js",
+      "locator": "createSteering"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/brakes.js",
+      "sha256": "f7a7becbddcb048922f28804119ac053de1a92ed2a7484e1672de02eb504c448",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/brakes.js",
+      "locator": "createBrakes"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/steering-linkage.js",
+      "sha256": "f27ee2b2701fca13e5393619d1e073e053424ca99ba2fb1212915e93ed5bbd98",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/steering-linkage.js",
+      "locator": "createSteeringLinkage"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/elastic-elements.js",
+      "sha256": "462aad9964ebf9f78a650c16b3043e6b79c9bbecc9f28d179a718d41db298359",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/elastic-elements.js",
+      "locator": "createElasticElements"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/wheel-gear.js",
+      "sha256": "3aa9c957978a4298d323a265b8460a061cc56eafdca2c4596374994dcc6812de",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/wheel-gear.js",
+      "locator": "createWheelGear"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/clutch-special.js",
+      "sha256": "9ce5cd7293e0c43c9c3b3cb5b18ea5218119b8e29b196c89ae2298555eaa4f57",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/clutch-special.js",
+      "locator": "createClutchSpecial"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/mechanical-design-review.js",
+      "sha256": "6d89ea0ec1694d14e8124db1a6a2b90f85cd4faaad397e2e63b3c0ee073129ea",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/mechanical-design-review.js",
+      "locator": "createMechanicalDesignReview"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/shift-strategy.js",
+      "sha256": "435ba5cd98dafa9d1e86b8ef78058a1df1c889a1d5ff5ea40c59f8d398a2d76a",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/shift-strategy.js",
+      "locator": "createShiftStrategy"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/efficiency-maps.js",
+      "sha256": "f20ed86c0fc96a28194467dd3108e530f790b0a8e421b95df0d2e19adee3271b",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/efficiency-maps.js",
+      "locator": "createEfficiencyMaps"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/traction-diagram.js",
+      "sha256": "2858e377814449573ec327325be7e96e02d776cd70baf4453065f3b5021855b9",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/traction-diagram.js",
+      "locator": "createTractionDiagram"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/passenger-mass.js",
+      "sha256": "441b51a6017a0b8c8c376149596f4fca0b0f96440794fa1ac4fa8f37aefb6c1c",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/passenger-mass.js",
+      "locator": "createPassengerMass"
+    },
+    {
+      "path": "Automobile/new/manuscript/calculations/battery-sizing.engdoc.md",
+      "sha256": "489d99bcc308ce929be4f487c1da4ea3f2941a7f428a1beda90f5227c4f6d087",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/battery-sizing.engdoc.md",
+      "locator": "Source-authored worksheet"
+    },
+    {
+      "path": "Automobile/new/manuscript/calculations/clutch-diaphragm.engdoc.md",
+      "sha256": "61ff2cf9011d28551b3e5364e970318b9d834346dd9de2776ed99d3f2e6b4811",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/clutch-diaphragm.engdoc.md",
+      "locator": "Source-authored worksheet"
+    },
+    {
+      "path": "Automobile/new/manuscript/calculations/clutch-preliminary.engdoc.md",
+      "sha256": "2a7d2c9dcb38f9bafc66d5484bbba4e0994ffed45641b483e5c057d04f0b2f1e",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/clutch-preliminary.engdoc.md",
+      "locator": "Source-authored worksheet"
+    },
+    {
+      "path": "Automobile/new/manuscript/calculations/clutch-springs.engdoc.md",
+      "sha256": "1e2bf21bd3e2f7abbcd504ab3a3c2f8d39e4342190dba5b7959c5bb8a9fe325f",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/clutch-springs.engdoc.md",
+      "locator": "Source-authored worksheet"
+    },
+    {
+      "path": "Automobile/new/manuscript/calculations/clutch.engdoc.md",
+      "sha256": "17bd568c4fad741c452b2f940ffdaa96e5552b0fd65a553518d72408347aea65",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/clutch.engdoc.md",
+      "locator": "Source-authored worksheet"
+    },
+    {
+      "path": "Automobile/new/manuscript/calculations/driveshaft-torque-clutch.engdoc.md",
+      "sha256": "30dd587af7078be91042531d586ac59637799b8ea1c555ef643e52615f0b7859",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/driveshaft-torque-clutch.engdoc.md",
+      "locator": "Source-authored worksheet"
+    },
+    {
+      "path": "Automobile/new/manuscript/calculations/driveshaft-torque-direct.engdoc.md",
+      "sha256": "972fff60c4831d3ae8f08595f612cddf114e0b61a563b7e21f4efb500dadba4f",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/driveshaft-torque-direct.engdoc.md",
+      "locator": "Source-authored worksheet"
+    },
+    {
+      "path": "Automobile/new/manuscript/calculations/driveshaft.engdoc.md",
+      "sha256": "126b2f2002b8cda00153167547fb8789514edb62e83c4ed0d0071d596c8271a9",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/driveshaft.engdoc.md",
+      "locator": "Source-authored worksheet"
+    },
+    {
+      "path": "Automobile/new/manuscript/calculations/final-drive-secondary.engdoc.md",
+      "sha256": "c1662bfb9c20c21f19766c2ed6c28807855f4ed6fff0a9b595b85915ab6cf3e2",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/final-drive-secondary.engdoc.md",
+      "locator": "Source-authored worksheet"
+    },
+    {
+      "path": "Automobile/new/manuscript/calculations/ride.engdoc.md",
+      "sha256": "4ede044150c10ed67b9211e7de0fedde846eb142b308cc8e1215bdc465dbe40a",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/ride.engdoc.md",
+      "locator": "Source-authored worksheet"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/electric-drive-selection.js",
+      "sha256": "212b28877cd2514ba292adff7ad1973a854bdcce102362df00f37d09ee4eaad6",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/electric-drive-selection.js",
+      "locator": "createElectricDriveSelection"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/component-design-defaults.js",
+      "sha256": "22babe550df4680cf0c0e7c309aa8efac046becd1bfb3d4995a1d5e44bb6e5cb",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/component-design-defaults.js",
+      "locator": "createComponentDesignDefaults"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/transmission-schemes.js",
+      "sha256": "e768535aa28fe54b16ed010f0715e729ba713a5e3bda888030091ce8b586869d",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/transmission-schemes.js",
+      "locator": "createTransmissionSchemes"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/q-dataset.js",
+      "sha256": "126203a58ec7a024ee41cec9921d2d21f4681dfc8070ab7258ff26c1fb393d65",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/q-dataset.js",
+      "locator": "createQDataset"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/wltc-cycles.js",
+      "sha256": "41188cef463edb2efc3e141334d33a105f28a17e859fb2710c39b254591fd9c0",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/wltc-cycles.js",
+      "locator": "createWltcCycles"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/measured-efficiency-map.js",
+      "sha256": "3b9a67f388556c5f9b8cb785614490eb83427bdf640ec83f382c05875e0f3511",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/measured-efficiency-map.js",
+      "locator": "createMeasuredEfficiencyMap"
+    },
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/steering-animation.js",
+      "sha256": "18c7a40b2f02d6a6117777d8aadad5418edb3a427420b329ca8d56688ec60de3",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/steering-animation.js",
+      "locator": "createSteeringAnimation"
+    }
+  ],
+  "modelReferences": [],
+  "variants": [
+    {
+      "id": "automobile/1",
+      "origin": "Automobile 0.4.42",
+      "equations": [
+        "Original source equations and authored worksheets retained without physical changes"
+      ],
+      "assumptions": [
+        "Legacy quantity bases and algorithm choices retain their original meanings; the canonical SI adapters remain the public cross-project boundaries"
+      ]
+    }
+  ],
+  "ports": {
+    "commonInputs": [],
+    "outputs": []
+  },
+  "validation": [
+    "tests/foundation.test.mjs"
+  ],
+  "status": "Canonical owner; consumed by independently runnable project distributions",
+  "limitations": [
+    "Factory context declares numerical dependencies and worksheet evaluation callbacks; the host facade retains legacy API names and unit mappings.",
+    "This refactor does not add hybrid energy-management control, thermal models or missing source data."
+  ]
+}

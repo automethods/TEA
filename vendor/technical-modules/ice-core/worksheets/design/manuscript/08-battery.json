@@ -1,0 +1,176 @@
+{
+  "id": "08-battery",
+  "title": "8. Батарея: потужність, енергія та тривалість",
+  "group": "Електричний тракт",
+  "scope": "electric",
+  "paragraphs": [
+    "Модель із внутрішнім опором (Rint, internal resistance) представляє батарею джерелом напруги холостого ходу (OCV, U_oc) та опором R. Клемна напруга визначається з падіння напруги на опорі; втрати становлять I²R. Рівняння потужності вибирає фізичний корінь струму, який переходить у I = P/U_oc при R → 0. Межі струму, напруги та ступеня заряду (SOC) застосовуються одночасно; дефіцит потужності зберігається.",
+    "Послідовність проєктування: клас і потрібні люди та вантаж → маса бази й допустима повна маса → масовий бюджет батареї → вибір енергії, числа пакетів або бажаного пробігу → маршрут → струми, витрата і досяжний пробіг. Окремі I-105 та I-106 залишені для навчальної перевірки сталого навантаження; її результати не підміняють маршрут.",
+    "У основному розрахунку із заданим резервом заряду напруга холостого ходу, опір і температура сталі. Окрема процедура завершення через втрату швидкості використовує редаговані залежності напруги й опору від ступеня заряду; її припущення пояснено в розділі 10. Високовольтне обладнання потребує окремої перевірки ізоляції, захистів, охолодження та виробничих вимог. Цей документ не є інструкцією зі складання батареї.",
+    "Опційна SOC/T модель 0.7 доступна в окремому Powertrain: табличні Voc, R і граничні струми, Ah-облік та один тепловий стан. Для неї потрібний явний пакет даних; поточний базовий Design залишається зі сталими параметрами, а не мовчки змінює методику.",
+    "Додатковий блок електричного пробігу використовує силу кочення, аеродинаміку, ухил та інерцію з адаптованого модуля Automobile. Енергоємність задається напряму, кількістю пакетів або підбирається за потрібним пробігом. Результат залежить від маси, швидкості, допоміжного навантаження та рекуперації [automobile-ev-adaptation] [fastsim-method].",
+    "400 В залишено початковим припущенням для навчального проєкту цього класу потужності. За тієї самої потужності подвоєння напруги приблизно вдвічі зменшує струм; це може зменшити втрати I²R і вимоги до провідників. 800 В потребує узгодження всіх високовольтних компонентів і не означає автоматичного подвоєння пробігу. Порівняння втрат вимагає параметрів реального пакета й обмоток [porsche-800v].",
+    "У I-96 доступні узгоджені шаблони 400 та 800 В і власне значення. BMW i4 xDrive40 має паспортну напругу 398,5 В [bmw-i4-voltage]; Hyundai IONIQ 5 використовує архітектуру 800 В [hyundai-800v]. Це приклади різних архітектур. За тієї самої потужності подвоєння напруги приблизно вдвічі зменшує струм, але реальні втрати залежать також від опору й компонування. Зміна напруги сама по собі не подвоює енергію або пробіг."
+  ],
+  "calculations": [
+    {
+      "value": {
+        "id": "value.battery_current_required",
+        "ownerNodeId": "node.value.battery_current_required",
+        "role": "calculation",
+        "label": "Струм батареї з урахуванням внутрішнього опору",
+        "symbol": "I_req",
+        "valueType": "quantity",
+        "expression": {
+          "source": "2*P/(U+sqrt(U^2-4*R*P))",
+          "bindings": [
+            {
+              "token": "P",
+              "valueId": "result.average_dc"
+            },
+            {
+              "token": "U",
+              "valueId": "input.voltage"
+            },
+            {
+              "token": "R",
+              "valueId": "input.resistance"
+            }
+          ]
+        },
+        "canonicalUnit": "A"
+      },
+      "chapter": "08-battery",
+      "equationNumber": "8.1",
+      "purpose": "Із рівняння P = (Voc − IR)I знаходимо фізичний корінь струму моделі внутрішнього опору батареї. Від’ємний дискримінант означає недосяжний режим, не нульовий струм.",
+      "sourceRefs": [
+        "electrical-balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "A",
+      "figureIds": [
+        "battery-current",
+        "battery-voltage"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.battery_energy_required",
+        "ownerNodeId": "node.value.battery_energy_required",
+        "role": "calculation",
+        "label": "Потрібна номінальна енергоємність",
+        "symbol": "E_req",
+        "valueType": "quantity",
+        "expression": {
+          "source": "U*I*t/(s0-smin)",
+          "bindings": [
+            {
+              "token": "U",
+              "valueId": "input.voltage"
+            },
+            {
+              "token": "I",
+              "valueId": "value.battery_current_required"
+            },
+            {
+              "token": "t",
+              "valueId": "input.duration"
+            },
+            {
+              "token": "s0",
+              "valueId": "input.socInitial"
+            },
+            {
+              "token": "smin",
+              "valueId": "input.socMin"
+            }
+          ]
+        },
+        "canonicalUnit": "J"
+      },
+      "chapter": "08-battery",
+      "equationNumber": "8.2",
+      "purpose": "Енергію визначаємо за заданою тривалістю навантаження та допустимим вікном SOC. Енергоємність не скасовує струмове обмеження батареї.",
+      "sourceRefs": [
+        "electrical-balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "J",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.battery_charge",
+        "ownerNodeId": "node.value.battery_charge",
+        "role": "calculation",
+        "label": "Еквівалентна ємність за зарядом",
+        "symbol": "Q_nom",
+        "valueType": "quantity",
+        "expression": {
+          "source": "E/U",
+          "bindings": [
+            {
+              "token": "E",
+              "valueId": "result.battery_energy"
+            },
+            {
+              "token": "U",
+              "valueId": "input.voltage"
+            }
+          ]
+        },
+        "canonicalUnit": "C"
+      },
+      "chapter": "08-battery",
+      "equationNumber": "8.3",
+      "purpose": "Еквівалентна ємність за зарядом.",
+      "sourceRefs": [
+        "electrical-balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "C",
+      "figureIds": [
+        "battery-soc"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.electric_energy_residual",
+        "ownerNodeId": "node.value.electric_energy_residual",
+        "role": "calculation",
+        "label": "Нев’язка електричного балансу",
+        "symbol": "ΔE",
+        "valueType": "quantity",
+        "expression": {
+          "source": "C-T-H",
+          "bindings": [
+            {
+              "token": "C",
+              "valueId": "result.chemical_energy"
+            },
+            {
+              "token": "T",
+              "valueId": "result.terminal_energy"
+            },
+            {
+              "token": "H",
+              "valueId": "result.battery_heat"
+            }
+          ]
+        },
+        "canonicalUnit": "J"
+      },
+      "chapter": "08-battery",
+      "equationNumber": "8.4",
+      "purpose": "Нев’язка електричного балансу.",
+      "sourceRefs": [
+        "electrical-balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "J",
+      "figureIds": [
+        "battery-power"
+      ]
+    }
+  ]
+}

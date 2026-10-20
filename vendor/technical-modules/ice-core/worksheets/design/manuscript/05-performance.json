@@ -1,0 +1,524 @@
+{
+  "id": "05-performance",
+  "title": "5. Показники, прийняті розміри та характеристики",
+  "group": "Розрахунок ДВЗ",
+  "scope": "ice",
+  "paragraphs": [
+    "Робота p–V дає індикаторну потужність; механічні втрати віднімаються окремо. Витрата палива випливає із заряду й подачі, а не з прив’язаного до марки коефіцієнта.",
+    "Швидкісна серія заново інтегрується для кожної частоти при тих самих прийнятих законах керування. Це не оптимізована заводська зовнішня характеристика. Навантажувальні точки — явно модельні; відсутня EPA-карта не підмінюється нульовою витратою.",
+    "Окремий Powertrain приймає числові пакети з ідентичністю компонента, огинаючою та областю даних. Пакети Агентства з охорони довкілля США (EPA) встановлено в Data/EPA; походження й обмеження кожного пакета наведено окремо. Розрахована характеристика цього Design залишається модельною, а не виміряною."
+  ],
+  "calculations": [
+    {
+      "value": {
+        "id": "value.omega_engine",
+        "ownerNodeId": "node.value.omega_engine",
+        "role": "calculation",
+        "label": "Кутова швидкість колінчастого вала",
+        "symbol": "ω_e",
+        "valueType": "quantity",
+        "expression": {
+          "source": "2*pi*n",
+          "bindings": [
+            {
+              "token": "n",
+              "valueId": "input.ratedSpeed"
+            },
+            {
+              "token": "pi",
+              "valueId": "constant.pi"
+            }
+          ]
+        },
+        "canonicalUnit": "rad/s"
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.1",
+      "purpose": "Кутова швидкість колінчастого вала.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "rad/s",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.cycle_rate",
+        "ownerNodeId": "node.value.cycle_rate",
+        "role": "calculation",
+        "label": "Кількість робочих циклів усіх циліндрів за секунду",
+        "symbol": "ν_c",
+        "valueType": "quantity",
+        "expression": {
+          "source": "z*n/k",
+          "bindings": [
+            {
+              "token": "z",
+              "valueId": "input.cylinders"
+            },
+            {
+              "token": "n",
+              "valueId": "input.ratedSpeed"
+            },
+            {
+              "token": "k",
+              "valueId": "result.cycle_revolutions"
+            }
+          ]
+        },
+        "canonicalUnit": "s^-1"
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.2",
+      "purpose": "Кожний циліндр чотиритактного двигуна виконує цикл за два оберти, двотактного — за один. Частоту всіх циклів використовуємо для переходу від Дж/цикл до Вт.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "1/s",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.mean_piston_speed",
+        "ownerNodeId": "node.value.mean_piston_speed",
+        "role": "calculation",
+        "label": "Середня швидкість поршня",
+        "symbol": "c_m",
+        "valueType": "quantity",
+        "expression": {
+          "source": "2*S*n",
+          "bindings": [
+            {
+              "token": "S",
+              "valueId": "value.stroke"
+            },
+            {
+              "token": "n",
+              "valueId": "input.ratedSpeed"
+            }
+          ]
+        },
+        "canonicalUnit": "m/s"
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.3",
+      "purpose": "Середня швидкість поршня.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "m/s",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.imep",
+        "ownerNodeId": "node.value.imep",
+        "role": "calculation",
+        "label": "Середній індикаторний тиск",
+        "symbol": "p_i",
+        "valueType": "quantity",
+        "expression": {
+          "source": "W/V",
+          "bindings": [
+            {
+              "token": "W",
+              "valueId": "result.work"
+            },
+            {
+              "token": "V",
+              "valueId": "value.swept_one"
+            }
+          ]
+        },
+        "canonicalUnit": "Pa"
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.4",
+      "purpose": "Середній індикаторний тиск.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "Pa",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.indicated_power",
+        "ownerNodeId": "node.value.indicated_power",
+        "role": "calculation",
+        "label": "Індикаторна потужність двигуна",
+        "symbol": "P_i",
+        "valueType": "quantity",
+        "expression": {
+          "source": "W*r",
+          "bindings": [
+            {
+              "token": "W",
+              "valueId": "result.work"
+            },
+            {
+              "token": "r",
+              "valueId": "value.cycle_rate"
+            }
+          ]
+        },
+        "canonicalUnit": "W"
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.5",
+      "purpose": "Індикаторна потужність двигуна.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "W",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.friction_power",
+        "ownerNodeId": "node.value.friction_power",
+        "role": "calculation",
+        "label": "Механічні втрати двигуна",
+        "symbol": "P_f",
+        "valueType": "quantity",
+        "expression": {
+          "source": "p*V*r",
+          "bindings": [
+            {
+              "token": "p",
+              "valueId": "result.fmep"
+            },
+            {
+              "token": "V",
+              "valueId": "value.swept_one"
+            },
+            {
+              "token": "r",
+              "valueId": "value.cycle_rate"
+            }
+          ]
+        },
+        "canonicalUnit": "W"
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.6",
+      "purpose": "Механічні втрати двигуна.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "W",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.engine_power",
+        "ownerNodeId": "node.value.engine_power",
+        "role": "calculation",
+        "label": "Ефективна потужність після прийняття розмірів",
+        "symbol": "P_ICE_calc",
+        "valueType": "quantity",
+        "expression": {
+          "source": "Pi-Pf",
+          "bindings": [
+            {
+              "token": "Pi",
+              "valueId": "value.indicated_power"
+            },
+            {
+              "token": "Pf",
+              "valueId": "value.friction_power"
+            }
+          ]
+        },
+        "canonicalUnit": "W"
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.7",
+      "purpose": "Від індикаторної потужності віднімаємо модельні механічні втрати. Лише після цього порівнюємо результат із заданою ефективною потужністю.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "W",
+      "figureIds": [
+        "power"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.bmep",
+        "ownerNodeId": "node.value.bmep",
+        "role": "calculation",
+        "label": "Середній ефективний тиск",
+        "symbol": "p_e",
+        "valueType": "quantity",
+        "expression": {
+          "source": "p_i-pf",
+          "bindings": [
+            {
+              "token": "p_i",
+              "valueId": "value.imep"
+            },
+            {
+              "token": "pf",
+              "valueId": "result.fmep"
+            }
+          ]
+        },
+        "canonicalUnit": "Pa"
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.8",
+      "purpose": "Середній ефективний тиск.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "Pa",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.engine_torque",
+        "ownerNodeId": "node.value.engine_torque",
+        "role": "calculation",
+        "label": "Ефективний момент у розрахунковій точці",
+        "symbol": "M_e",
+        "valueType": "quantity",
+        "expression": {
+          "source": "P/w",
+          "bindings": [
+            {
+              "token": "P",
+              "valueId": "value.engine_power"
+            },
+            {
+              "token": "w",
+              "valueId": "value.omega_engine"
+            }
+          ]
+        },
+        "canonicalUnit": "N*m"
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.9",
+      "purpose": "Ефективний момент у розрахунковій точці.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "N*m",
+      "figureIds": [
+        "torque-speed"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.fuel_flow",
+        "ownerNodeId": "node.value.fuel_flow",
+        "role": "calculation",
+        "label": "Масова витрата палива",
+        "symbol": "m_f",
+        "valueType": "quantity",
+        "expression": {
+          "source": "m*r",
+          "bindings": [
+            {
+              "token": "m",
+              "valueId": "result.fuelPerCycle"
+            },
+            {
+              "token": "r",
+              "valueId": "value.cycle_rate"
+            }
+          ]
+        },
+        "canonicalUnit": "kg/s"
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.10",
+      "purpose": "Масова витрата палива.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "kg/s",
+      "figureIds": [
+        "fuel-flow"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.fuel_power",
+        "ownerNodeId": "node.value.fuel_power",
+        "role": "calculation",
+        "label": "Потужність хімічної енергії палива",
+        "symbol": "P_H",
+        "valueType": "quantity",
+        "expression": {
+          "source": "m*H",
+          "bindings": [
+            {
+              "token": "m",
+              "valueId": "value.fuel_flow"
+            },
+            {
+              "token": "H",
+              "valueId": "input.lhv"
+            }
+          ]
+        },
+        "canonicalUnit": "W"
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.11",
+      "purpose": "Потужність хімічної енергії палива.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "W",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.efficiency",
+        "ownerNodeId": "node.value.efficiency",
+        "role": "calculation",
+        "label": "Ефективний ККД — модельна оцінка",
+        "symbol": "η_e",
+        "valueType": "float64",
+        "expression": {
+          "source": "P/Q",
+          "bindings": [
+            {
+              "token": "P",
+              "valueId": "value.engine_power"
+            },
+            {
+              "token": "Q",
+              "valueId": "value.fuel_power"
+            }
+          ]
+        }
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.12",
+      "purpose": "Ефективний ККД — модельна оцінка.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": null,
+      "figureIds": [
+        "efficiency"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.bsfc",
+        "ownerNodeId": "node.value.bsfc",
+        "role": "calculation",
+        "label": "Питома ефективна витрата палива в SI",
+        "symbol": "b_e",
+        "valueType": "quantity",
+        "expression": {
+          "source": "m/P",
+          "bindings": [
+            {
+              "token": "m",
+              "valueId": "value.fuel_flow"
+            },
+            {
+              "token": "P",
+              "valueId": "value.engine_power"
+            }
+          ]
+        },
+        "canonicalUnit": "kg/J"
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.13",
+      "purpose": "Питома ефективна витрата палива в SI.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "kg/J",
+      "figureIds": [
+        "bsfc"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.fuel_volume_flow",
+        "ownerNodeId": "node.value.fuel_volume_flow",
+        "role": "calculation",
+        "label": "Об’ємна витрата палива",
+        "symbol": "V_f",
+        "valueType": "quantity",
+        "expression": {
+          "source": "m/rho",
+          "bindings": [
+            {
+              "token": "m",
+              "valueId": "value.fuel_flow"
+            },
+            {
+              "token": "rho",
+              "valueId": "input.fuelDensity"
+            }
+          ]
+        },
+        "canonicalUnit": "m^3/s"
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.14",
+      "purpose": "Об’ємна витрата палива.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "m^3/s",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.engine_power_error",
+        "ownerNodeId": "node.value.engine_power_error",
+        "role": "calculation",
+        "label": "Відносна нев’язка завдання для ДВЗ",
+        "symbol": "δP_ICE",
+        "valueType": "float64",
+        "expression": {
+          "source": "(P-R)/R",
+          "bindings": [
+            {
+              "token": "P",
+              "valueId": "value.engine_power"
+            },
+            {
+              "token": "R",
+              "valueId": "input.targetPower"
+            }
+          ]
+        }
+      },
+      "chapter": "05-performance",
+      "equationNumber": "5.15",
+      "purpose": "Порівнюємо незалежно розраховану потужність із вимогою. Нев’язка не обнуляється примусовим присвоєнням результату.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": null,
+      "figureIds": []
+    }
+  ]
+}

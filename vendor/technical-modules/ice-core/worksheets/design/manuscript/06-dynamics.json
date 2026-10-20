@@ -1,0 +1,465 @@
+{
+  "id": "06-dynamics",
+  "title": "6. Кінематика, динаміка та допоміжні системи",
+  "group": "Розрахунок ДВЗ",
+  "scope": "ice",
+  "paragraphs": [
+    "Тиск і геометрія попередніх розділів без ручного копіювання визначають газові, інерційні, сумарні, шатунні та кривошипні сили. Для сумарного моменту прийнято рівномірні спалахи на один активний цикл: 360°/z або 720°/z.",
+    "За коливанням енергії визначається потрібна загальна інерція, не остаточна конструкція маховика. За тепловим потоком — попередня масова витрата охолоджувача, не напір або серійний насос. Міцність, втома, просторове урівноваження й підшипники тут не завершені.",
+    "Додатковий протокол 0.7 використовує поточні сили для попередніх осьових/Euler/Goodman, пальцевих і крутильних перевірок, а тепло — для послідовного гідравлічного контуру. Потрібна окрема явна специфікація; це не повний розрахунок деталей/ресурсу. Невідомі дані позначаються «не оцінено»."
+  ],
+  "calculations": [
+    {
+      "value": {
+        "id": "value.crank_radius",
+        "ownerNodeId": "node.value.crank_radius",
+        "role": "calculation",
+        "label": "Радіус кривошипа",
+        "symbol": "R",
+        "valueType": "quantity",
+        "canonicalUnit": "m",
+        "expression": {
+          "source": "S/2",
+          "bindings": [
+            {
+              "token": "S",
+              "valueId": "value.stroke"
+            }
+          ]
+        }
+      },
+      "chapter": "06-dynamics",
+      "equationNumber": "6.1",
+      "purpose": "Радіус кривошипа визначає плече тангенціальної сили.",
+      "sourceRefs": [
+        "balance",
+        "legacy-ice"
+      ],
+      "displayUnit": "m",
+      "resultNote": "Контрольна точка та повна діаграма отримані з активного циклу (360° або 720°) без повторного введення тиску.",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.sample_gas_force",
+        "ownerNodeId": "node.value.sample_gas_force",
+        "role": "calculation",
+        "label": "Сила тиску газів у контрольній точці",
+        "symbol": "F_g",
+        "valueType": "quantity",
+        "canonicalUnit": "N",
+        "expression": {
+          "source": "(p-pc)*A",
+          "bindings": [
+            {
+              "token": "p",
+              "valueId": "result.sample_pressure"
+            },
+            {
+              "token": "pc",
+              "valueId": "input.crankPressure"
+            },
+            {
+              "token": "A",
+              "valueId": "value.area"
+            }
+          ]
+        }
+      },
+      "chapter": "06-dynamics",
+      "equationNumber": "6.2",
+      "purpose": "Від тиску в циліндрі віднімаємо тиск у картері; абсолютний тиск не є самою газовою силою.",
+      "sourceRefs": [
+        "balance",
+        "legacy-ice"
+      ],
+      "displayUnit": "N",
+      "resultNote": "Контрольна точка та повна діаграма отримані з активного циклу (360° або 720°) без повторного введення тиску.",
+      "figureIds": [
+        "gas-force"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.sample_inertia_force",
+        "ownerNodeId": "node.value.sample_inertia_force",
+        "role": "calculation",
+        "label": "Сила інерції зворотно-поступальної маси",
+        "symbol": "F_j",
+        "valueType": "quantity",
+        "canonicalUnit": "N",
+        "expression": {
+          "source": "-m*a",
+          "bindings": [
+            {
+              "token": "m",
+              "valueId": "input.recipMass"
+            },
+            {
+              "token": "a",
+              "valueId": "result.sample_acceleration"
+            }
+          ]
+        }
+      },
+      "chapter": "06-dynamics",
+      "equationNumber": "6.3",
+      "purpose": "Інерційна сила має протилежний знак до прискорення поршня.",
+      "sourceRefs": [
+        "balance",
+        "legacy-ice"
+      ],
+      "displayUnit": "N",
+      "resultNote": "Контрольна точка та повна діаграма отримані з активного циклу (360° або 720°) без повторного введення тиску.",
+      "figureIds": [
+        "inertia-force"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.sample_total_force",
+        "ownerNodeId": "node.value.sample_total_force",
+        "role": "calculation",
+        "label": "Результуюча осьова сила",
+        "symbol": "F_Σ",
+        "valueType": "quantity",
+        "canonicalUnit": "N",
+        "expression": {
+          "source": "G+J",
+          "bindings": [
+            {
+              "token": "G",
+              "valueId": "value.sample_gas_force"
+            },
+            {
+              "token": "J",
+              "valueId": "value.sample_inertia_force"
+            }
+          ]
+        }
+      },
+      "chapter": "06-dynamics",
+      "equationNumber": "6.4",
+      "purpose": "Алгебраїчно підсумовуємо сили в одній системі знаків; не додаємо їхні модулі.",
+      "sourceRefs": [
+        "balance",
+        "legacy-ice"
+      ],
+      "displayUnit": "N",
+      "resultNote": "Контрольна точка та повна діаграма отримані з активного циклу (360° або 720°) без повторного введення тиску.",
+      "figureIds": [
+        "total-force",
+        "forces"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.sample_side_force",
+        "ownerNodeId": "node.value.sample_side_force",
+        "role": "calculation",
+        "label": "Нормальна сила на стінку циліндра",
+        "symbol": "N_side",
+        "valueType": "quantity",
+        "canonicalUnit": "N",
+        "expression": {
+          "source": "F*tan(b)",
+          "bindings": [
+            {
+              "token": "F",
+              "valueId": "value.sample_total_force"
+            },
+            {
+              "token": "b",
+              "valueId": "result.sample_beta"
+            }
+          ]
+        }
+      },
+      "chapter": "06-dynamics",
+      "equationNumber": "6.5",
+      "purpose": "Поперечна складова визначається поточним кутом нахилу шатуна.",
+      "sourceRefs": [
+        "balance",
+        "legacy-ice"
+      ],
+      "displayUnit": "N",
+      "resultNote": "Контрольна точка та повна діаграма отримані з активного циклу (360° або 720°) без повторного введення тиску.",
+      "figureIds": [
+        "side-force"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.sample_rod_force",
+        "ownerNodeId": "node.value.sample_rod_force",
+        "role": "calculation",
+        "label": "Поздовжня сила в шатуні",
+        "symbol": "S_rod",
+        "valueType": "quantity",
+        "canonicalUnit": "N",
+        "expression": {
+          "source": "F/cos(b)",
+          "bindings": [
+            {
+              "token": "F",
+              "valueId": "value.sample_total_force"
+            },
+            {
+              "token": "b",
+              "valueId": "result.sample_beta"
+            }
+          ]
+        }
+      },
+      "chapter": "06-dynamics",
+      "equationNumber": "6.6",
+      "purpose": "Сила вздовж шатуна: FΣ/cos β. Суперечливий запис старого RTF не перенесено.",
+      "sourceRefs": [
+        "balance",
+        "legacy-ice"
+      ],
+      "displayUnit": "N",
+      "resultNote": "Контрольна точка та повна діаграма отримані з активного циклу (360° або 720°) без повторного введення тиску.",
+      "figureIds": [
+        "rod-force"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.sample_tangent_force",
+        "ownerNodeId": "node.value.sample_tangent_force",
+        "role": "calculation",
+        "label": "Тангенціальна сила кривошипа",
+        "symbol": "T",
+        "valueType": "quantity",
+        "canonicalUnit": "N",
+        "expression": {
+          "source": "F*sin(t+b)/cos(b)",
+          "bindings": [
+            {
+              "token": "F",
+              "valueId": "value.sample_total_force"
+            },
+            {
+              "token": "t",
+              "valueId": "result.sample_theta"
+            },
+            {
+              "token": "b",
+              "valueId": "result.sample_beta"
+            }
+          ]
+        }
+      },
+      "chapter": "06-dynamics",
+      "equationNumber": "6.7",
+      "purpose": "Тангенціальна складова створює крутний момент; θ і β передані як кути.",
+      "sourceRefs": [
+        "balance",
+        "legacy-ice"
+      ],
+      "displayUnit": "N",
+      "resultNote": "Контрольна точка та повна діаграма отримані з активного циклу (360° або 720°) без повторного введення тиску.",
+      "figureIds": [
+        "tangent-force"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.sample_radial_force",
+        "ownerNodeId": "node.value.sample_radial_force",
+        "role": "calculation",
+        "label": "Радіальна сила кривошипа",
+        "symbol": "Z",
+        "valueType": "quantity",
+        "canonicalUnit": "N",
+        "expression": {
+          "source": "F*cos(t+b)/cos(b)",
+          "bindings": [
+            {
+              "token": "F",
+              "valueId": "value.sample_total_force"
+            },
+            {
+              "token": "t",
+              "valueId": "result.sample_theta"
+            },
+            {
+              "token": "b",
+              "valueId": "result.sample_beta"
+            }
+          ]
+        }
+      },
+      "chapter": "06-dynamics",
+      "equationNumber": "6.8",
+      "purpose": "Радіальна складова навантажує опори; вона не множиться на R як корисний момент.",
+      "sourceRefs": [
+        "balance",
+        "legacy-ice"
+      ],
+      "displayUnit": "N",
+      "resultNote": "Контрольна точка та повна діаграма отримані з активного циклу (360° або 720°) без повторного введення тиску.",
+      "figureIds": [
+        "radial-force"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.sample_torque",
+        "ownerNodeId": "node.value.sample_torque",
+        "role": "calculation",
+        "label": "Момент одного циліндра в контрольній точці",
+        "symbol": "M_c",
+        "valueType": "quantity",
+        "canonicalUnit": "N*m",
+        "expression": {
+          "source": "T*R",
+          "bindings": [
+            {
+              "token": "T",
+              "valueId": "value.sample_tangent_force"
+            },
+            {
+              "token": "R",
+              "valueId": "value.crank_radius"
+            }
+          ]
+        }
+      },
+      "chapter": "06-dynamics",
+      "equationNumber": "6.9",
+      "purpose": "Момент обчислюємо з тангенціальної сили та радіуса кривошипа.",
+      "sourceRefs": [
+        "balance",
+        "legacy-ice"
+      ],
+      "displayUnit": "N*m",
+      "resultNote": "Контрольна точка та повна діаграма отримані з активного циклу (360° або 720°) без повторного введення тиску.",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.mean_indicated_torque",
+        "ownerNodeId": "node.value.mean_indicated_torque",
+        "role": "calculation",
+        "label": "Середній індикаторний момент усього двигуна",
+        "symbol": "M_i_avg",
+        "valueType": "quantity",
+        "canonicalUnit": "N*m",
+        "expression": {
+          "source": "W*z/(2*pi*k)",
+          "bindings": [
+            {
+              "token": "W",
+              "valueId": "result.work"
+            },
+            {
+              "token": "z",
+              "valueId": "input.cylinders"
+            },
+            {
+              "token": "pi",
+              "valueId": "constant.pi"
+            },
+            {
+              "token": "k",
+              "valueId": "result.cycle_revolutions"
+            }
+          ]
+        }
+      },
+      "chapter": "06-dynamics",
+      "equationNumber": "6.10",
+      "purpose": "Інтеграл сумарного моменту за один активний цикл дорівнює роботі всіх циліндрів. Ділимо на 2πk рад, де k — кількість обертів на цикл; механічні втрати ще не віднято.",
+      "sourceRefs": [
+        "balance",
+        "legacy-ice"
+      ],
+      "displayUnit": "N*m",
+      "resultNote": "Не плутати з ефективним середнім моментом Mₑ = Pₑ/ω, де втрати вже враховано.",
+      "figureIds": [
+        "torque",
+        "energy"
+      ]
+    },
+    {
+      "value": {
+        "id": "value.total_inertia",
+        "ownerNodeId": "node.value.total_inertia",
+        "role": "calculation",
+        "label": "Потрібна загальна інерція приведена до вала",
+        "symbol": "J_req",
+        "valueType": "quantity",
+        "expression": {
+          "source": "E/(d*w^2)",
+          "bindings": [
+            {
+              "token": "E",
+              "valueId": "result.energySwing"
+            },
+            {
+              "token": "d",
+              "valueId": "input.inertiaIrregularity"
+            },
+            {
+              "token": "w",
+              "valueId": "value.omega_engine"
+            }
+          ]
+        },
+        "canonicalUnit": "kg*m^2"
+      },
+      "chapter": "06-dynamics",
+      "equationNumber": "6.11",
+      "purpose": "За розмахом надлишкової енергії визначаємо потрібну загальну інерцію на валу. Інерцію інших обертових деталей треба відняти окремо перед проєктуванням маховика.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "kg*m^2",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.coolant_mass_flow",
+        "ownerNodeId": "node.value.coolant_mass_flow",
+        "role": "calculation",
+        "label": "Попередня потрібна масова витрата охолоджувача",
+        "symbol": "m_c",
+        "valueType": "quantity",
+        "expression": {
+          "source": "(Q+0.7*Pf)/(c*dT)",
+          "bindings": [
+            {
+              "token": "Q",
+              "valueId": "result.Qw"
+            },
+            {
+              "token": "Pf",
+              "valueId": "value.friction_power"
+            },
+            {
+              "token": "c",
+              "valueId": "input.coolantCp"
+            },
+            {
+              "token": "dT",
+              "valueId": "input.coolantRise"
+            }
+          ]
+        },
+        "canonicalUnit": "kg/s"
+      },
+      "chapter": "06-dynamics",
+      "equationNumber": "6.12",
+      "purpose": "Попередня потрібна масова витрата охолоджувача.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "kg/s",
+      "figureIds": []
+    }
+  ]
+}

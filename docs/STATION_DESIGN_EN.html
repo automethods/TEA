@@ -1,0 +1,233 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Workshop / fleet technological design · TEA 0.5.0</title><style>
+@page{size:A4;margin:18mm 17mm 20mm}*{box-sizing:border-box}body{max-width:920px;margin:32px auto;padding:0 22px;font:11pt/1.45 Arial,sans-serif;color:#172d36}h1{font-size:23pt;line-height:1.2;border-bottom:2px solid #227c83;padding-bottom:14px}h2{font-size:15pt;margin-top:24px}h3{font-size:12pt}h1,h2,h3,thead{break-after:avoid}p,li{orphans:3;widows:3}table{width:100%;border-collapse:collapse;font-size:9pt;margin:14px 0;table-layout:auto}th,td{border:1px solid #91a8af;padding:5px;vertical-align:top;overflow-wrap:anywhere}thead{display:table-header-group}tr{break-inside:avoid}th{background:#edf4f4;text-align:left}a{color:#116b78;overflow-wrap:anywhere}blockquote{border-left:3px solid #c49c4a;padding:8px 14px;background:#faf7ee;margin:16px 0}pre{white-space:pre-wrap;background:#eef3f4;padding:10px;font-size:9pt}code{font-size:.92em}.math-display{overflow-x:auto;text-align:center;margin:16px 0}mjx-container{max-width:100%}.guide-tools{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid #a9bec4;font-size:10pt}.guide-tools button{padding:6px 12px;background:#227c83;border:0;border-radius:4px;color:white;cursor:pointer}@media print{body{max-width:none;margin:0;padding:0;font-size:10.5pt}.guide-tools{display:none}a{color:inherit;text-decoration:none}.math-display{overflow:visible}h1{break-before:page}h1:first-of-type{break-before:auto}}
+</style><style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style><style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style><style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style><style id="MJX-SVG-styles">
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+</style></head><body><nav class="guide-tools"><button onclick="window.print()">Print / save PDF</button><a href="STATION_DESIGN_UA.html">UA</a><a href="STATION_DESIGN_EN.pdf">PDF</a></nav><main><h1>Workshop / fleet technological design · TEA 0.5.0</h1>
+<p>The main screen designs a production workshop. “Separate learning exercises” in the sidebar opens the earlier ABS, ADAS, waiting, scheduling and log cases. Their hours are not added to the main workshop.</p>
+<h2>How to carry out the work</h2>
+<ol>
+<li>In section 1 choose a commercial workshop or an owned fleet, and either a new design or a check of existing resources.</li>
+<li>Check the inputs in section 2. For a workshop, specify order shares, the monthly programme and labour allowances; for a fleet, specify vehicle counts, mileage, maintenance intervals and labour allowances. All initial values are already filled in.</li>
+<li>Check the manufacturer's vehicle dimensions against the source. The category table defines purpose, seats and category gross mass, rather than one set of dimensions for every vehicle in that category.</li>
+<li>Sections 3–4 show labour by zone, available time, bays and staffing. A new design calculates these automatically. An existing-workshop check preserves the entered resource limits.</li>
+<li>Choose lifts and refine prices, geometry and layout. Coordinate inputs move a bay or its equipment. “Restore automatic layout” removes manual coordinates.</li>
+<li>In section 6 check the building plan and the selected bay's equipment. Equipment numbers match the schedule and cost estimate. A mobile-column set shares one common item number.</li>
+<li>Check the service rate, wages and investment in section 7. Conclusions must use the volume the business can actually deliver, rather than unlimited demand.</li>
+<li>Save JSON to resume work. The A4 export contains inputs, equations, substitutions and references. The second export is two A1 sheets: the building and the equipped bay. Select the bay in section 2. Print at 100% without browser headers/footers.</li>
+</ol>
+<h2>Meaning of the main assumptions</h2>
+<ul>
+<li>Workshop shares are visit shares, identical for every job type and month. Editing transfers the difference to a neighbouring class, preserving a 100% total.</li>
+<li>Labour is calculated separately for each category. Light and heavy vehicles receive separate bay groups; within each group, the maximum envelope is used rather than the mean.</li>
+<li>For a fleet, major service replaces minor service. Tyre and diagnostic work are allocated from total labour without double counting. The major-service interval must be a multiple of the minor interval. Intervals are teaching assumptions, not OEM service schedules.</li>
+<li>The main tyre bay covers removal, fitting and balancing. Wheel alignment and ADAS remain a separate exercise, and their equipment is excluded from the main estimate.</li>
+<li>Bay labour is divided by the simultaneous crew size. Off-bay labour contributes to staffing. Individual available time is not multiplied by business shifts. Staffing cannot be less than one accepted crew; distributing people across shifts requires a calendar schedule.</li>
+<li>Toyota, Mercedes-Benz, MAN and Ford dimensions come from primary manufacturer material for the specified variants. For Isuzu, the catalogue confirms chassis mass; body dimensions are a separate assumption. Axle loads are design assumptions explicitly identified in the interface.</li>
+<li>MAHA technical ratings are separate from sketch symbols and budget prices. Mass/axle load is only part of the check: suitable support points, wheelbase and each wheel's load are required. Tyre sets and compressor are selection specifications, not a ready purchase order for a specific model.</li>
+<li>The plan is a technological sketch. Aisles are an assumed geometric estimate without swept-turn simulation. The project does not calculate structures, foundations, escape routes, fire compartments, ventilation, electrical distribution or the site plan. The MAN electric-bus teaching example does not cover high-voltage traction-system maintenance.</li>
+<li>Parking uses flow and waiting during opening hours; it is excluded from building area. Fleet repair visits are estimated from labour for one workshop repair; the site plan needs its own arrival log.</li>
+<li>Prices, wages, rates, clearances and available-time fractions are editable assumptions. Capital budget includes equipment, installation, area fit-out and contingency. Land/building purchase, parts, taxes and financing are not modelled separately. All prices must use one basis without separate VAT.</li>
+<li>Revenue is limited by demand and capacity. An unsuitable lift gives its group's throughput a zero value. Geometry warnings make the economic result conditional. For a fleet, the result means avoided outsourcing cost, not service sales.</li>
+</ul>
+<h2>Examples</h2>
+<ul>
+<li><code>examples/TEA-improved.json</code>: new workshop for M1.</li>
+<li><code>examples/TEA-mixed.json</code>: mixed M1 / N1 / N2 workshop; the second sheet shows a heavy repair bay.</li>
+<li><code>examples/TEA-atp.json</code>: fleet of 100 M1 + 20 N2.</li>
+<li>Two ready PDFs for the mixed example: A4 report and a two-sheet A1 set.</li>
+<li><code>TEA-mixed-building.svg</code>, <code>TEA-mixed-post.svg</code>: the same scaled vector diagrams without a sheet border.</li>
+</ul>
+<h2>Opening older variants</h2>
+<p>Files from 0.1–0.2.1 preserve previous inputs, shares and teaching records. If no technological design exists, the 0.3.0 set with specified vehicle models is added. Earlier generic dimensions remain in the exercises; the new design uses the explicit vehicles in section 2. Saved result modules are not executed: opening a project rebuilds the calculation from current inputs.</p>
+<h2>Release verification</h2>
+<p>Automated arithmetic checks cover a separate manual reference calculation, all categories, M1/M2 31/69, a mixed fleet, fleet maintenance without double counting, capacity limits, loss, coordinates and saving. DOM checks run the actual field/button handlers with a calculation-worker adapter. They do not test the browser's native print dialog. PDF examples were rendered and inspected; SVG scale is preserved at 100% printing.</p>
+<h2>Drawings 0.3.2</h2>
+<p>The PDF template specifies A1 numerically as 841 × 594 mm, without outer page margins. The border is inset 20 mm on the left and 5 mm at the top, right and bottom, following Appendix D of DSTU 9243.4:2023. The 185 × 55 mm title block is adapted from form H.1 (Appendix H); it is a teaching form without automatic checking signatures, registration numbers or additional original-document tracking boxes. The mark НП is explained as an educational project.</p>
+<p>Building and bay drawings are oriented automatically within the drawing field; a scale is selected from a list to fit without cropping. Rotation changes presentation only, not source coordinates. Labels remain horizontal. Numbers 001–003 identify support rooms in the new room schedule; circled numbers identify equipment. The bay shows vehicle dimension chains and clearances from bay boundaries; these do not replace manufacturer installation dimensions.</p>
+<p>The A4 report reduces both diagrams and groups them with characteristics; use A1 to read dimensions. For a physical printer, select A1, 100% scale and no browser headers/footers. Verify the saved PDF's page dimensions rather than relying only on an “A1” heading. The supplied 0.3.1 review PDF actually contained A4 pages; the ready 0.3.2 examples were checked as two A1 pages.</p>
+<h2>Building plan 0.4.0</h2>
+<p>External dimensions now include wall thickness, while internal dimensions remain the basis for area and coordinates. Partitions separate reception, storage/component work, welfare and utility rooms. Windows are omitted near gates/exterior doors; the openings schedule shows actual counts.</p>
+<p>Each bay receives a schematic route from ВР1; the selected bay also receives a route to ВР2. Row and paired arrangements use a shared side aisle and transverse aisles. Centre-line segments are checked against other bay rectangles. An unsuitable manual route is flagged. Gate/door swing arcs are not vehicle trajectories. Turning radius, body swept envelope and simultaneous two-way movement are not checked.</p>
+<p>Connection symbols repeat in the detailed bay and legend. Water/air: DSTU B A.2.4-8:2009, Table 7, 14а/б; sockets: DSTU B A.2.4-19:2008, Table 3, 10.2/10.3. Architectural representation: DSTU 9243.7:2023. All three sources are in the bibliography. В/П/Е on the combined dash-dot route are defined project symbols for separate above-floor services; sizes, flows, pressure, electrical protection and installation levels are not established by this sketch.</p>
+<p>The release history is no longer shown in user sections. The current version remains in the header; full history is in files and the Git bundle. Variants from 0.3.2 receive only missing wall/opening parameters; all other entered data is retained.</p>
+<h2>Calculated layout 0.5.0</h2>
+<p>Basis: [36] = VNTU laboratory work 7, defining the two bay types and the suitability of drive-through bays for large vehicles; [37] = section 6.4 of VNTU methodological guidance, covering separate and paired rows. These teaching sources are not current building regulations. Their old regulatory values have not been copied. Independent bays are retained for a mixed repair programme; a production line needs separate coordination of operations and takt time.</p>
+<p>Bay counts, staffing and labour are determined first and are not reduced to obtain a compact plan. Automatic mode tests 1–12 bays per row, without exceeding total bay count, separate or paired dead-end rows, and three rules: all dead-end; drive-through from the specified vehicle length; all drive-through. The side aisle is shared and every bay has independent access; a drive-through bay gets a second transverse aisle. Its equipment is placed beside the vehicle, and the equipment width is included in its envelope. Queues and parking outside the building are excluded from the target area.</p>
+<p>Candidates are compared lexicographically: 1) fit of the external envelope and height into the specified existing building, where applicable; 2) dead-end bay count for vehicles at or above the length threshold; 3) internal area; 4) perimeter when areas are equal. The editable 8 m threshold, 9 m minimum bay-group width, aisle-width rule L + 2 m and clearances are project assumptions. The objective does not mean maximum profit. The comparison table shows the extra area needed to avoid reversing; the changed area feeds the fit-out budget. If no alternative fits, a warning is issued rather than confirmation of suitability.</p>
+<p>Two movement types remain: dead-end = forwards to the stopping point, then reverse into the aisle; drive-through = forwards through the opposite end. Both centre-line routes are checked against other bay rectangles, room boundaries and the clear drive-through lane around fixed equipment. Turning radius, manoeuvring envelope, simultaneous movement and traffic safety are not modelled. All bays are 90° to the transverse aisle; angled bays, external access routes and alternative support-room positions are not searched. Manual coordinates are applied after comparison and may worsen the result.</p>
+<p>Rooms 001–004 are bounded by exterior walls, a full-thickness front partition and half the side partitions at room boundaries. Area equations use clear dimensions; door recesses are excluded. Hall 005 occupies the entire area up to the front partition, including aisles. Clear room areas plus partition strips equal internal building area. Room drawings show underlined areas to 0.1 m²; the lower-right sheet position is preserved when the view rotates. The schedule and area labels follow clause 5.3.2 of DSTU 9243.7:2023; fire-hazard categories remain undefined.</p>
+<p>Migration from 0.4.0 adds missing fields. Existing manual coordinates select a manual grid; other projects receive automatic selection. Previous bays-per-row and row-type values remain in JSON and are accessible in manual mode. Equipment coordinates are retained; after changing bay type, check warnings or restore automatic layout.</p></main></body></html>

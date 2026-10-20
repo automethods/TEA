@@ -1,0 +1,333 @@
+{
+  "id": "10-vehicle",
+  "title": "10. Автомобіль: швидкість, витрата енергії та пробіг",
+  "group": "Система",
+  "scope": "vehicle",
+  "paragraphs": [
+    "Для BEV та електричного режиму гібрида використано поточну розраховану електромашину, батарею та повну масу з вантажем. Характеристики з іншого автомобіля не підставляються.",
+    "Максимальну швидкість обмежують частота мотора, редуктор і доступна тривала потужність. Пробіг наведено для вибраного режиму та вікна SOC; окремо показано енергію батареї й оцінку енергії з мережі."
+  ],
+  "calculations": [
+    {
+      "value": {
+        "id": "value.vehicle_shaft_speed",
+        "ownerNodeId": "node.value.vehicle_shaft_speed",
+        "role": "calculation",
+        "label": "Поточна частота вихідного вала",
+        "symbol": "n_shaft",
+        "valueType": "quantity",
+        "expression": {
+          "source": "v*i/(2*pi*r)",
+          "bindings": [
+            {
+              "token": "v",
+              "valueId": "input.vehicleSpeed"
+            },
+            {
+              "token": "i",
+              "valueId": "input.driveRatio"
+            },
+            {
+              "token": "r",
+              "valueId": "input.wheelRadius"
+            },
+            {
+              "token": "pi",
+              "valueId": "constant.pi"
+            }
+          ]
+        },
+        "canonicalUnit": "s^-1"
+      },
+      "chapter": "10-vehicle",
+      "equationNumber": "10.1",
+      "purpose": "Поточна частота вихідного вала.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "1/s",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.wheel_available",
+        "ownerNodeId": "node.value.wheel_available",
+        "role": "calculation",
+        "label": "Доступна тягова потужність на колесах",
+        "symbol": "P_w_av",
+        "valueType": "quantity",
+        "expression": {
+          "source": "P*e",
+          "bindings": [
+            {
+              "token": "P",
+              "valueId": "result.vehicle_shaft_capacity"
+            },
+            {
+              "token": "e",
+              "valueId": "input.driveEfficiency"
+            }
+          ]
+        },
+        "canonicalUnit": "W"
+      },
+      "chapter": "10-vehicle",
+      "equationNumber": "10.2",
+      "purpose": "Доступна тягова потужність на колесах.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "W",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.normal_force",
+        "ownerNodeId": "node.value.normal_force",
+        "role": "calculation",
+        "label": "Нормальна складова ваги",
+        "symbol": "N",
+        "valueType": "quantity",
+        "expression": {
+          "source": "m*g/sqrt(1+i^2)",
+          "bindings": [
+            {
+              "token": "m",
+              "valueId": "input.mass"
+            },
+            {
+              "token": "g",
+              "valueId": "constant.gravity"
+            },
+            {
+              "token": "i",
+              "valueId": "input.grade"
+            }
+          ]
+        },
+        "canonicalUnit": "N"
+      },
+      "chapter": "10-vehicle",
+      "equationNumber": "10.3",
+      "purpose": "Нормальна складова ваги.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "N",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.rolling_force",
+        "ownerNodeId": "node.value.rolling_force",
+        "role": "calculation",
+        "label": "Опір коченню",
+        "symbol": "F_roll",
+        "valueType": "quantity",
+        "expression": {
+          "source": "N*f",
+          "bindings": [
+            {
+              "token": "N",
+              "valueId": "value.normal_force"
+            },
+            {
+              "token": "f",
+              "valueId": "input.rolling"
+            }
+          ]
+        },
+        "canonicalUnit": "N"
+      },
+      "chapter": "10-vehicle",
+      "equationNumber": "10.4",
+      "purpose": "Опір коченню.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "N",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.grade_force",
+        "ownerNodeId": "node.value.grade_force",
+        "role": "calculation",
+        "label": "Сила опору ухилу",
+        "symbol": "F_grade",
+        "valueType": "quantity",
+        "expression": {
+          "source": "N*i",
+          "bindings": [
+            {
+              "token": "N",
+              "valueId": "value.normal_force"
+            },
+            {
+              "token": "i",
+              "valueId": "input.grade"
+            }
+          ]
+        },
+        "canonicalUnit": "N"
+      },
+      "chapter": "10-vehicle",
+      "equationNumber": "10.5",
+      "purpose": "Сила опору ухилу.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "N",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.aero_force",
+        "ownerNodeId": "node.value.aero_force",
+        "role": "calculation",
+        "label": "Аеродинамічний опір",
+        "symbol": "F_air",
+        "valueType": "quantity",
+        "expression": {
+          "source": "rho*A*v^2/2",
+          "bindings": [
+            {
+              "token": "rho",
+              "valueId": "constant.air_density"
+            },
+            {
+              "token": "A",
+              "valueId": "input.cdArea"
+            },
+            {
+              "token": "v",
+              "valueId": "input.vehicleSpeed"
+            }
+          ]
+        },
+        "canonicalUnit": "N"
+      },
+      "chapter": "10-vehicle",
+      "equationNumber": "10.6",
+      "purpose": "Аеродинамічний опір.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "N",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.wheel_demand",
+        "ownerNodeId": "node.value.wheel_demand",
+        "role": "calculation",
+        "label": "Потрібна сила на колесах",
+        "symbol": "F_req",
+        "valueType": "quantity",
+        "expression": {
+          "source": "R+G+A",
+          "bindings": [
+            {
+              "token": "R",
+              "valueId": "value.rolling_force"
+            },
+            {
+              "token": "G",
+              "valueId": "value.grade_force"
+            },
+            {
+              "token": "A",
+              "valueId": "value.aero_force"
+            }
+          ]
+        },
+        "canonicalUnit": "N"
+      },
+      "chapter": "10-vehicle",
+      "equationNumber": "10.7",
+      "purpose": "Потрібна сила на колесах.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "N",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.wheel_power",
+        "ownerNodeId": "node.value.wheel_power",
+        "role": "calculation",
+        "label": "Потрібна потужність на колесах",
+        "symbol": "P_w",
+        "valueType": "quantity",
+        "expression": {
+          "source": "F*v",
+          "bindings": [
+            {
+              "token": "F",
+              "valueId": "value.wheel_demand"
+            },
+            {
+              "token": "v",
+              "valueId": "input.vehicleSpeed"
+            }
+          ]
+        },
+        "canonicalUnit": "W"
+      },
+      "chapter": "10-vehicle",
+      "equationNumber": "10.8",
+      "purpose": "Потрібна потужність на колесах.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "W",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.power_advised",
+        "ownerNodeId": "node.value.power_advised",
+        "role": "calculation",
+        "label": "Допоміжна потреба вихідного вала із запасом",
+        "symbol": "P_advised",
+        "valueType": "quantity",
+        "expression": {
+          "source": "P*k/e",
+          "bindings": [
+            {
+              "token": "P",
+              "valueId": "value.wheel_power"
+            },
+            {
+              "token": "k",
+              "valueId": "decision.power_margin"
+            },
+            {
+              "token": "e",
+              "valueId": "input.driveEfficiency"
+            }
+          ]
+        },
+        "canonicalUnit": "W"
+      },
+      "chapter": "10-vehicle",
+      "equationNumber": "10.9",
+      "purpose": "Допоміжна потреба вихідного вала із запасом.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "W",
+      "figureIds": []
+    }
+  ]
+}

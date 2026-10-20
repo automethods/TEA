@@ -1,0 +1,407 @@
+{
+  "id": "ch08",
+  "title": "8. Індикаторні й ефективні показники",
+  "nodes": [
+    {
+      "id": "h.8",
+      "kind": "heading",
+      "level": 1,
+      "content": [
+        {
+          "kind": "text",
+          "text": "8. Індикаторні й ефективні показники"
+        }
+      ]
+    },
+    {
+      "id": "p.ch08.1",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "Розрізняємо індикаторну роботу за повний цикл, механічні втрати й корисну потужність на валу. Потужності насосів охолодження та мащення окремо вдруге не віднімаються: їх детальна карта у першому варіанті не відома."
+        }
+      ]
+    },
+    {
+      "id": "node.calc.imep",
+      "kind": "calculation",
+      "valueId": "calc.imep"
+    },
+    {
+      "id": "node.calc.pi",
+      "kind": "calculation",
+      "valueId": "calc.pi"
+    },
+    {
+      "id": "node.input.frictionA",
+      "kind": "input",
+      "valueId": "input.frictionA"
+    },
+    {
+      "id": "node.input.frictionB",
+      "kind": "input",
+      "valueId": "input.frictionB"
+    },
+    {
+      "id": "node.input.frictionC",
+      "kind": "input",
+      "valueId": "input.frictionC"
+    },
+    {
+      "id": "node.input.frictionD",
+      "kind": "input",
+      "valueId": "input.frictionD"
+    },
+    {
+      "id": "node.calc.fmep",
+      "kind": "calculation",
+      "valueId": "calc.fmep"
+    },
+    {
+      "id": "node.calc.frictionP",
+      "kind": "calculation",
+      "valueId": "calc.frictionP"
+    },
+    {
+      "id": "node.calc.pe",
+      "kind": "calculation",
+      "valueId": "calc.pe"
+    },
+    {
+      "id": "node.calc.torque",
+      "kind": "calculation",
+      "valueId": "calc.torque"
+    },
+    {
+      "id": "node.calc.fuelFlow",
+      "kind": "calculation",
+      "valueId": "calc.fuelFlow"
+    },
+    {
+      "id": "node.calc.fuelPower",
+      "kind": "calculation",
+      "valueId": "calc.fuelPower"
+    },
+    {
+      "id": "node.calc.efficiency",
+      "kind": "calculation",
+      "valueId": "calc.efficiency"
+    },
+    {
+      "id": "node.calc.bsfcSI",
+      "kind": "calculation",
+      "valueId": "calc.bsfcSI"
+    },
+    {
+      "id": "p.ch08.16",
+      "kind": "paragraph",
+      "content": [
+        {
+          "kind": "text",
+          "text": "Енергетичний баланс: P_f = P_e + P_m + Q̇_w + (Ḣ_out−Ḣ_in) + P_неповн + dU/dt. (8.11) Нев’язка обчислюється з усіх незалежно інтегрованих складових. Залишок не називається «неврахованими втратами» для примусового зведення суми до 100 %. Величина Q̇_w — теплота через стінки циліндра, не повна теплова потужність радіатора."
+        }
+      ]
+    }
+  ],
+  "values": [
+    {
+      "id": "calc.imep",
+      "ownerNodeId": "node.calc.imep",
+      "role": "calculation",
+      "symbol": "p_i",
+      "label": "Середній індикаторний тиск повного циклу",
+      "valueType": "quantity",
+      "expression": {
+        "source": "Wi / Vh",
+        "bindings": [
+          {
+            "token": "Wi",
+            "valueId": "snapshot.work"
+          },
+          {
+            "token": "Vh",
+            "valueId": "calc.vd"
+          }
+        ]
+      },
+      "canonicalUnit": "Pa"
+    },
+    {
+      "id": "calc.pi",
+      "ownerNodeId": "node.calc.pi",
+      "role": "calculation",
+      "symbol": "P_i",
+      "label": "Індикаторна потужність двигуна",
+      "valueType": "quantity",
+      "expression": {
+        "source": "Wi * z * n / 2",
+        "bindings": [
+          {
+            "token": "Wi",
+            "valueId": "snapshot.work"
+          },
+          {
+            "token": "z",
+            "valueId": "input.cylinders"
+          },
+          {
+            "token": "n",
+            "valueId": "input.rpm"
+          }
+        ]
+      },
+      "canonicalUnit": "W"
+    },
+    {
+      "id": "input.frictionA",
+      "ownerNodeId": "node.input.frictionA",
+      "role": "input",
+      "symbol": "A_m",
+      "label": "Постійна складова механічних втрат A",
+      "value": {
+        "kind": "quantity",
+        "value": 40000,
+        "canonicalUnit": "Pa"
+      }
+    },
+    {
+      "id": "input.frictionB",
+      "ownerNodeId": "node.input.frictionB",
+      "role": "input",
+      "symbol": "B_m",
+      "label": "Коефіцієнт механічних втрат при p_max",
+      "value": {
+        "kind": "float64",
+        "value": 0.005
+      }
+    },
+    {
+      "id": "input.frictionC",
+      "ownerNodeId": "node.input.frictionC",
+      "role": "input",
+      "symbol": "C_m",
+      "label": "Коефіцієнт механічних втрат при середній швидкості поршня",
+      "value": {
+        "kind": "quantity",
+        "value": 4000,
+        "canonicalUnit": "Pa*s/m"
+      }
+    },
+    {
+      "id": "input.frictionD",
+      "ownerNodeId": "node.input.frictionD",
+      "role": "input",
+      "symbol": "D_m",
+      "label": "Коефіцієнт квадратичного члена механічних втрат",
+      "value": {
+        "kind": "quantity",
+        "value": 100,
+        "canonicalUnit": "Pa*s^2/m^2"
+      }
+    },
+    {
+      "id": "calc.fmep",
+      "ownerNodeId": "node.calc.fmep",
+      "role": "calculation",
+      "symbol": "p_m",
+      "label": "Середній тиск механічних втрат",
+      "valueType": "quantity",
+      "expression": {
+        "source": "A + B * pmax + C * cm + D * cm^2",
+        "bindings": [
+          {
+            "token": "A",
+            "valueId": "input.frictionA"
+          },
+          {
+            "token": "B",
+            "valueId": "input.frictionB"
+          },
+          {
+            "token": "C",
+            "valueId": "input.frictionC"
+          },
+          {
+            "token": "D",
+            "valueId": "input.frictionD"
+          },
+          {
+            "token": "pmax",
+            "valueId": "snapshot.pmax"
+          },
+          {
+            "token": "cm",
+            "valueId": "calc.cm"
+          }
+        ]
+      },
+      "canonicalUnit": "Pa"
+    },
+    {
+      "id": "calc.frictionP",
+      "ownerNodeId": "node.calc.frictionP",
+      "role": "calculation",
+      "symbol": "P_m",
+      "label": "Потужність механічних втрат",
+      "valueType": "quantity",
+      "expression": {
+        "source": "pm * Vh * z * n / 2",
+        "bindings": [
+          {
+            "token": "pm",
+            "valueId": "calc.fmep"
+          },
+          {
+            "token": "Vh",
+            "valueId": "calc.vd"
+          },
+          {
+            "token": "z",
+            "valueId": "input.cylinders"
+          },
+          {
+            "token": "n",
+            "valueId": "input.rpm"
+          }
+        ]
+      },
+      "canonicalUnit": "W"
+    },
+    {
+      "id": "calc.pe",
+      "ownerNodeId": "node.calc.pe",
+      "role": "calculation",
+      "symbol": "P_e",
+      "label": "Ефективна потужність",
+      "valueType": "quantity",
+      "expression": {
+        "source": "Pi - Pm",
+        "bindings": [
+          {
+            "token": "Pi",
+            "valueId": "calc.pi"
+          },
+          {
+            "token": "Pm",
+            "valueId": "calc.frictionP"
+          }
+        ]
+      },
+      "canonicalUnit": "W"
+    },
+    {
+      "id": "calc.torque",
+      "ownerNodeId": "node.calc.torque",
+      "role": "calculation",
+      "symbol": "M_e",
+      "label": "Середній ефективний крутний момент",
+      "valueType": "quantity",
+      "expression": {
+        "source": "Pe / omega",
+        "bindings": [
+          {
+            "token": "Pe",
+            "valueId": "calc.pe"
+          },
+          {
+            "token": "omega",
+            "valueId": "calc.omega"
+          }
+        ]
+      },
+      "canonicalUnit": "N*m"
+    },
+    {
+      "id": "calc.fuelFlow",
+      "ownerNodeId": "node.calc.fuelFlow",
+      "role": "calculation",
+      "symbol": "G_f",
+      "label": "Масова витрата палива",
+      "valueType": "quantity",
+      "expression": {
+        "source": "mf * z * n / 2",
+        "bindings": [
+          {
+            "token": "mf",
+            "valueId": "calc.mfuel"
+          },
+          {
+            "token": "z",
+            "valueId": "input.cylinders"
+          },
+          {
+            "token": "n",
+            "valueId": "input.rpm"
+          }
+        ]
+      },
+      "canonicalUnit": "kg/s"
+    },
+    {
+      "id": "calc.fuelPower",
+      "ownerNodeId": "node.calc.fuelPower",
+      "role": "calculation",
+      "symbol": "P_f",
+      "label": "Потік хімічної енергії палива",
+      "valueType": "quantity",
+      "expression": {
+        "source": "Gf * Hu",
+        "bindings": [
+          {
+            "token": "Gf",
+            "valueId": "calc.fuelFlow"
+          },
+          {
+            "token": "Hu",
+            "valueId": "input.lhv"
+          }
+        ]
+      },
+      "canonicalUnit": "W"
+    },
+    {
+      "id": "calc.efficiency",
+      "ownerNodeId": "node.calc.efficiency",
+      "role": "calculation",
+      "symbol": "eta_e",
+      "label": "Ефективний ККД",
+      "valueType": "float64",
+      "expression": {
+        "source": "Pe / Pf",
+        "bindings": [
+          {
+            "token": "Pe",
+            "valueId": "calc.pe"
+          },
+          {
+            "token": "Pf",
+            "valueId": "calc.fuelPower"
+          }
+        ]
+      }
+    },
+    {
+      "id": "calc.bsfcSI",
+      "ownerNodeId": "node.calc.bsfcSI",
+      "role": "calculation",
+      "symbol": "g_e",
+      "label": "Питома ефективна витрата палива у SI",
+      "valueType": "quantity",
+      "expression": {
+        "source": "Gf / Pe",
+        "bindings": [
+          {
+            "token": "Gf",
+            "valueId": "calc.fuelFlow"
+          },
+          {
+            "token": "Pe",
+            "valueId": "calc.pe"
+          }
+        ]
+      },
+      "canonicalUnit": "kg/J"
+    }
+  ]
+}

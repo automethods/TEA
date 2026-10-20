@@ -1,0 +1,350 @@
+{
+  "id": "12-strength",
+  "title": "12. Міцність і ресурс: перше наближення",
+  "group": "Застосування та перевірки",
+  "scope": "ice",
+  "paragraphs": [
+    "Навантаження передаються з поточного циклу. Шатун — стрижень; палець — балка на двох опорах; вал — круглий переріз на кручення. Матеріали, концентрації й геометрія за замовчуванням умовні та редаговані [first-order-assumptions].",
+    "Goodman використовує амплітуду й середнє напруження повного блоку; корисний вплив стискального середнього не зараховується. Euler застосовний лише коли критичне напруження нижче заданої пружної межі. Це попередні перевірки, а не просторовий розрахунок колінчастого вала [first-order-theory].",
+    "S–N: логарифмічна інтерполяція між двома введеними опорами. Один повтор блоку — 360° або 720° відповідно до обраної тактності. За межами S–N інтервалу ресурс не екстраполюється; вказується лише межа або брак даних. Немає автоматично підтвердженої кривої втоми матеріалу, rainflow чи незалежної перевірки ресурсу."
+  ],
+  "calculations": [
+    {
+      "value": {
+        "id": "value.rod_stress_amplitude",
+        "ownerNodeId": "node.value.rod_stress_amplitude",
+        "role": "calculation",
+        "label": "Номінальна амплітуда напруження шатуна",
+        "symbol": "σ_a",
+        "valueType": "quantity",
+        "expression": {
+          "source": "(hi-lo)/(2*A)",
+          "bindings": [
+            {
+              "token": "hi",
+              "valueId": "result.rodMax"
+            },
+            {
+              "token": "lo",
+              "valueId": "result.rodMin"
+            },
+            {
+              "token": "A",
+              "valueId": "input.rodArea"
+            }
+          ]
+        },
+        "canonicalUnit": "Pa"
+      },
+      "chapter": "12-strength",
+      "equationNumber": "12.1",
+      "purpose": "Номінальна амплітуда напруження шатуна.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "Це початкова оцінка за явно введеними припущеннями, не допуск до виготовлення.",
+      "displayUnit": "Pa",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.rod_stress_mean",
+        "ownerNodeId": "node.value.rod_stress_mean",
+        "role": "calculation",
+        "label": "Середнє осьове напруження, розтяг додатний",
+        "symbol": "σ_m",
+        "valueType": "quantity",
+        "expression": {
+          "source": "-(hi+lo)/(2*A)",
+          "bindings": [
+            {
+              "token": "hi",
+              "valueId": "result.rodMax"
+            },
+            {
+              "token": "lo",
+              "valueId": "result.rodMin"
+            },
+            {
+              "token": "A",
+              "valueId": "input.rodArea"
+            }
+          ]
+        },
+        "canonicalUnit": "Pa"
+      },
+      "chapter": "12-strength",
+      "equationNumber": "12.2",
+      "purpose": "Середнє осьове напруження, розтяг додатний.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "Це початкова оцінка за явно введеними припущеннями, не допуск до виготовлення.",
+      "displayUnit": "Pa",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.goodman_utilization",
+        "ownerNodeId": "node.value.goodman_utilization",
+        "role": "calculation",
+        "label": "Використання витривалості за Goodman",
+        "symbol": "U_G",
+        "valueType": "float64",
+        "expression": {
+          "source": "K*a/E+K*m/U",
+          "bindings": [
+            {
+              "token": "K",
+              "valueId": "input.stressConcentration"
+            },
+            {
+              "token": "a",
+              "valueId": "value.rod_stress_amplitude"
+            },
+            {
+              "token": "E",
+              "valueId": "input.enduranceStress"
+            },
+            {
+              "token": "m",
+              "valueId": "result.tensileMean"
+            },
+            {
+              "token": "U",
+              "valueId": "input.ultimateStress"
+            }
+          ]
+        }
+      },
+      "chapter": "12-strength",
+      "equationNumber": "12.3",
+      "purpose": "Використання витривалості за Goodman.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "U_G ≤ 1 проходить лише цей спрощений критерій. Середнє стискальне напруження прийнято рівним нулю для цього критерію.",
+      "displayUnit": null,
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.euler_force",
+        "ownerNodeId": "node.value.euler_force",
+        "role": "calculation",
+        "label": "Критична сила Euler слабкого перерізу",
+        "symbol": "F_E",
+        "valueType": "quantity",
+        "expression": {
+          "source": "pi^2*E*I/(K*l)^2",
+          "bindings": [
+            {
+              "token": "pi",
+              "valueId": "constant.pi"
+            },
+            {
+              "token": "E",
+              "valueId": "input.youngModulus"
+            },
+            {
+              "token": "I",
+              "valueId": "input.rodIy"
+            },
+            {
+              "token": "K",
+              "valueId": "input.rodLengthFactor"
+            },
+            {
+              "token": "l",
+              "valueId": "value.rod_length"
+            }
+          ]
+        },
+        "canonicalUnit": "N"
+      },
+      "chapter": "12-strength",
+      "equationNumber": "12.4",
+      "purpose": "Критична сила Euler слабкого перерізу.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "Це початкова оцінка за явно введеними припущеннями, не допуск до виготовлення.",
+      "displayUnit": "N",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.pin_second_moment",
+        "ownerNodeId": "node.value.pin_second_moment",
+        "role": "calculation",
+        "label": "Осьовий момент інерції перерізу пальця",
+        "symbol": "I_p",
+        "valueType": "quantity",
+        "expression": {
+          "source": "pi*(d^4-di^4)/64",
+          "bindings": [
+            {
+              "token": "pi",
+              "valueId": "constant.pi"
+            },
+            {
+              "token": "d",
+              "valueId": "input.pinOuter"
+            },
+            {
+              "token": "di",
+              "valueId": "input.pinInner"
+            }
+          ]
+        },
+        "canonicalUnit": "m^4"
+      },
+      "chapter": "12-strength",
+      "equationNumber": "12.5",
+      "purpose": "Осьовий момент інерції перерізу пальця.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "Це початкова оцінка за явно введеними припущеннями, не допуск до виготовлення.",
+      "displayUnit": "m^4",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.pin_bending",
+        "ownerNodeId": "node.value.pin_bending",
+        "role": "calculation",
+        "label": "Напруження згину пальця: центральне навантаження",
+        "symbol": "σ_p",
+        "valueType": "quantity",
+        "expression": {
+          "source": "K*F*l*d/(8*I)",
+          "bindings": [
+            {
+              "token": "K",
+              "valueId": "input.stressConcentration"
+            },
+            {
+              "token": "F",
+              "valueId": "result.maxRodForce"
+            },
+            {
+              "token": "l",
+              "valueId": "input.pinSpan"
+            },
+            {
+              "token": "d",
+              "valueId": "input.pinOuter"
+            },
+            {
+              "token": "I",
+              "valueId": "value.pin_second_moment"
+            }
+          ]
+        },
+        "canonicalUnit": "Pa"
+      },
+      "chapter": "12-strength",
+      "equationNumber": "12.6",
+      "purpose": "Напруження згину пальця: центральне навантаження.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "Це початкова оцінка за явно введеними припущеннями, не допуск до виготовлення.",
+      "displayUnit": "Pa",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.pin_bearing",
+        "ownerNodeId": "node.value.pin_bearing",
+        "role": "calculation",
+        "label": "Середній проєкційний тиск пальця",
+        "symbol": "p_p",
+        "valueType": "quantity",
+        "expression": {
+          "source": "F/(d*b)",
+          "bindings": [
+            {
+              "token": "F",
+              "valueId": "result.maxRodForce"
+            },
+            {
+              "token": "d",
+              "valueId": "input.pinOuter"
+            },
+            {
+              "token": "b",
+              "valueId": "input.pinBearingLength"
+            }
+          ]
+        },
+        "canonicalUnit": "Pa"
+      },
+      "chapter": "12-strength",
+      "equationNumber": "12.7",
+      "purpose": "Середній проєкційний тиск пальця.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "Це початкова оцінка за явно введеними припущеннями, не допуск до виготовлення.",
+      "displayUnit": "Pa",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.shaft_shear",
+        "ownerNodeId": "node.value.shaft_shear",
+        "role": "calculation",
+        "label": "Кручення еквівалентної суцільної ділянки",
+        "symbol": "τ_s",
+        "valueType": "quantity",
+        "expression": {
+          "source": "16*K*M/(pi*d^3)",
+          "bindings": [
+            {
+              "token": "K",
+              "valueId": "input.stressConcentration"
+            },
+            {
+              "token": "M",
+              "valueId": "result.peakIndTorque"
+            },
+            {
+              "token": "pi",
+              "valueId": "constant.pi"
+            },
+            {
+              "token": "d",
+              "valueId": "input.shaftOuter"
+            }
+          ]
+        },
+        "canonicalUnit": "Pa"
+      },
+      "chapter": "12-strength",
+      "equationNumber": "12.8",
+      "purpose": "Кручення еквівалентної суцільної ділянки.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "Це початкова оцінка за явно введеними припущеннями, не допуск до виготовлення.",
+      "displayUnit": "Pa",
+      "figureIds": []
+    }
+  ],
+  "governing": [
+    {
+      "number": "12.9",
+      "purpose": "Еквівалентна амплітуда за прийнятим лінійним Goodman, без кредитування стискального середнього напруження.",
+      "formula": "σeq = Kf σa / (1 − Kf max(σm,0)/σu)",
+      "symbols": "Kf — прийнятий коефіцієнт концентрації; σa, σm — амплітуда і середнє напруження, Па; σu — межа міцності, Па. Знаменник має бути додатним."
+    },
+    {
+      "number": "12.10",
+      "purpose": "Ресурс визначається інтерполяцією лише між двома введеними S–N опорами.",
+      "formula": "b = ln(σ₂/σ₁)/ln(N₂/N₁); N = N₁ (σeq/σ₁)^(1/b); t = N/(30n)",
+      "symbols": "N₁, N₂ — задані числа циклів; σ₁, σ₂ — їхні амплітуди, Па; n — частота двигуна, хв⁻¹; t — умовна тривалість, год. Один блок — обраний цикл 360° або 720°, не спектр навантаження. За межами опор точне N не повертається."
+    }
+  ]
+}

@@ -1,0 +1,281 @@
+{
+  "id": "03-preparation",
+  "title": "3. Розрахункові припущення й початкові розміри",
+  "group": "Розрахунок ДВЗ",
+  "scope": "all",
+  "paragraphs": [
+    "Теоретичну потребу повітря визначає елементний склад C/H/O та масова частка кисню в повітрі 0,23. Ефективні теплоємності cv(T)=675+0,25T і R=287 не є хімічно рівноважними властивостями продуктів.",
+    "У проєктному режимі початковий p_e0 визначає тільки перше наближення D. Ітераційний розв’язувач далі шукає D при заданому S/D за ефективною потужністю повторно інтегрованого циклу. У перевірочному режимі D та S задані.",
+    "Розрахований діаметр і хід не є креслярськими номіналами. Для попереднього прийняття можна округлити D і S угору за кроком I-177, типовий крок 1 мм, та перерахувати. Цілі міліметри не обов’язкові для серійного двигуна: BMW наводить D = 82 мм, S = 94,6 мм [bmw-bore-stroke]."
+  ],
+  "calculations": [
+    {
+      "value": {
+        "id": "value.omega_required",
+        "ownerNodeId": "node.value.omega_required",
+        "role": "calculation",
+        "label": "Кутова швидкість заданого вихідного вала",
+        "symbol": "ω_req",
+        "valueType": "quantity",
+        "expression": {
+          "source": "2*pi*n",
+          "bindings": [
+            {
+              "token": "n",
+              "valueId": "input.ratedSpeed"
+            },
+            {
+              "token": "pi",
+              "valueId": "constant.pi"
+            }
+          ]
+        },
+        "canonicalUnit": "rad/s"
+      },
+      "chapter": "03-preparation",
+      "equationNumber": "3.1",
+      "purpose": "Кутова швидкість заданого вихідного вала.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "rad/s",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.torque_required",
+        "ownerNodeId": "node.value.torque_required",
+        "role": "calculation",
+        "label": "Потрібний момент у заданій точці, не максимальний",
+        "symbol": "M_req",
+        "valueType": "quantity",
+        "expression": {
+          "source": "P/w",
+          "bindings": [
+            {
+              "token": "P",
+              "valueId": "input.targetPower"
+            },
+            {
+              "token": "w",
+              "valueId": "value.omega_required"
+            }
+          ]
+        },
+        "canonicalUnit": "N*m"
+      },
+      "chapter": "03-preparation",
+      "equationNumber": "3.2",
+      "purpose": "За заданими потужністю та частотою визначаємо момент у номінальній точці. Це не пошук максимального моменту за всією характеристикою.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "N*m",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.stoich",
+        "ownerNodeId": "node.value.stoich",
+        "role": "calculation",
+        "label": "Теоретична масова потреба повітря",
+        "symbol": "l_0",
+        "valueType": "float64",
+        "expression": {
+          "source": "((8/3)*C+8*H-O)/0.23",
+          "bindings": [
+            {
+              "token": "C",
+              "valueId": "input.carbon"
+            },
+            {
+              "token": "H",
+              "valueId": "input.hydrogen"
+            },
+            {
+              "token": "O",
+              "valueId": "input.oxygen"
+            }
+          ]
+        }
+      },
+      "chapter": "03-preparation",
+      "equationNumber": "3.3",
+      "purpose": "За масовими частками елементів визначаємо теоретичну потребу повітря. Частка кисню повітря 0,23 — прийнята величина цієї методики.",
+      "sourceRefs": [
+        "balance",
+        "surrogate-fuel"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": null,
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.area",
+        "ownerNodeId": "node.value.area",
+        "role": "calculation",
+        "label": "Площа поршня",
+        "symbol": "A_p",
+        "valueType": "quantity",
+        "expression": {
+          "source": "pi*D^2/4",
+          "bindings": [
+            {
+              "token": "D",
+              "valueId": "value.bore"
+            },
+            {
+              "token": "pi",
+              "valueId": "constant.pi"
+            }
+          ]
+        },
+        "canonicalUnit": "m^2"
+      },
+      "chapter": "03-preparation",
+      "equationNumber": "3.4",
+      "purpose": "Площа поршня.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "m^2",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.swept_one",
+        "ownerNodeId": "node.value.swept_one",
+        "role": "calculation",
+        "label": "Робочий об’єм одного циліндра",
+        "symbol": "V_h",
+        "valueType": "quantity",
+        "expression": {
+          "source": "A*S",
+          "bindings": [
+            {
+              "token": "A",
+              "valueId": "value.area"
+            },
+            {
+              "token": "S",
+              "valueId": "value.stroke"
+            }
+          ]
+        },
+        "canonicalUnit": "m^3"
+      },
+      "chapter": "03-preparation",
+      "equationNumber": "3.5",
+      "purpose": "Робочий об’єм одного циліндра.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "m^3",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.displacement",
+        "ownerNodeId": "node.value.displacement",
+        "role": "calculation",
+        "label": "Сумарний робочий об’єм",
+        "symbol": "V_Σ",
+        "valueType": "quantity",
+        "expression": {
+          "source": "V*z",
+          "bindings": [
+            {
+              "token": "V",
+              "valueId": "value.swept_one"
+            },
+            {
+              "token": "z",
+              "valueId": "input.cylinders"
+            }
+          ]
+        },
+        "canonicalUnit": "m^3"
+      },
+      "chapter": "03-preparation",
+      "equationNumber": "3.6",
+      "purpose": "Сумарний робочий об’єм.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "m^3",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.clearance",
+        "ownerNodeId": "node.value.clearance",
+        "role": "calculation",
+        "label": "Об’єм камери стиску одного циліндра",
+        "symbol": "V_c",
+        "valueType": "quantity",
+        "expression": {
+          "source": "V/(e-1)",
+          "bindings": [
+            {
+              "token": "V",
+              "valueId": "value.swept_one"
+            },
+            {
+              "token": "e",
+              "valueId": "input.compression"
+            }
+          ]
+        },
+        "canonicalUnit": "m^3"
+      },
+      "chapter": "03-preparation",
+      "equationNumber": "3.7",
+      "purpose": "З прийнятого ступеня стиску та робочого об’єму знаходимо геометричний об’єм камери стиску.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "m^3",
+      "figureIds": []
+    },
+    {
+      "value": {
+        "id": "value.rod_length",
+        "ownerNodeId": "node.value.rod_length",
+        "role": "calculation",
+        "label": "Міжосьова довжина шатуна",
+        "symbol": "l",
+        "valueType": "quantity",
+        "expression": {
+          "source": "S/(2*k)",
+          "bindings": [
+            {
+              "token": "S",
+              "valueId": "value.stroke"
+            },
+            {
+              "token": "k",
+              "valueId": "input.rodRatio"
+            }
+          ]
+        },
+        "canonicalUnit": "m"
+      },
+      "chapter": "03-preparation",
+      "equationNumber": "3.8",
+      "purpose": "Міжосьова довжина шатуна.",
+      "sourceRefs": [
+        "balance"
+      ],
+      "resultNote": "Результат передається залежним розрахункам без повторного введення.",
+      "displayUnit": "m",
+      "figureIds": []
+    }
+  ]
+}
