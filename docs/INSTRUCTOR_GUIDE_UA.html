@@ -1,0 +1,581 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Проєкт багатомарочної СТО</title><style>
+@page{size:A4;margin:18mm 17mm 20mm}*{box-sizing:border-box}body{max-width:920px;margin:32px auto;padding:0 22px;font:11pt/1.45 Arial,sans-serif;color:#172d36}h1{font-size:23pt;line-height:1.2;border-bottom:2px solid #227c83;padding-bottom:14px}h2{font-size:15pt;margin-top:24px}h3{font-size:12pt}h1,h2,h3,thead{break-after:avoid}p,li{orphans:3;widows:3}table{width:100%;border-collapse:collapse;font-size:9pt;margin:14px 0;table-layout:auto}th,td{border:1px solid #91a8af;padding:5px;vertical-align:top;overflow-wrap:anywhere}thead{display:table-header-group}tr{break-inside:avoid}th{background:#edf4f4;text-align:left}a{color:#116b78;overflow-wrap:anywhere}blockquote{border-left:3px solid #c49c4a;padding:8px 14px;background:#faf7ee;margin:16px 0}pre{white-space:pre-wrap;background:#eef3f4;padding:10px;font-size:9pt}code{font-size:.92em}.math-display{overflow-x:auto;text-align:center;margin:16px 0}mjx-container{max-width:100%}.guide-tools{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid #a9bec4;font-size:10pt}.guide-tools button{padding:6px 12px;background:#227c83;border:0;border-radius:4px;color:white;cursor:pointer}@media print{body{max-width:none;margin:0;padding:0;font-size:10.5pt}.guide-tools{display:none}a{color:inherit;text-decoration:none}.math-display{overflow:visible}h1{break-before:page}h1:first-of-type{break-before:auto}}
+</style><style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style><style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style><style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style><style id="MJX-SVG-styles">
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+</style></head><body><nav class="guide-tools"><button onclick="window.print()">Друкувати / зберегти PDF</button><a href="INSTRUCTOR_GUIDE_EN.html">EN</a><a href="INSTRUCTOR_GUIDE_UA.pdf">PDF</a></nav><main><h1>Проєкт багатомарочної СТО</h1>
+<h2>Посібник викладача</h2>
+<p><strong>Супровідний матеріал для викладача • 2026</strong></p>
+<p>Примітка до онлайн-видання: назви аркушів і посилання на клітинки належать до початкових навчальних матеріалів. Електронна таблиця до цього онлайн-видання не входить; у застосунку користуйтеся назвами вхідних полів і нумерованими розділами.</p>
+<h2>1. Призначення пілота</h2>
+<p>Пакет призначений для переходу від переважно річного технологічного розрахунку до проєкту, який пов’язує технічне рішення щодо автомобіля, навантаження майстерні та виконання замовлень у часі. Основний кейс — наявна багатомарочна СТО з чотирма робочими позиціями, змішаним набором нарядів і одним діагностичним випадком ABS.</p>
+<p>Усі виробничі дані синтетичні. Це дозволяє відтворити розрахунок і керовано змінювати обмеження. Пакет не є статистичним описом українських СТО, не встановлює нових нормативів і не замінює вимог кафедри до оформлення курсового проєкту.</p>
+<p>Навчальний результат вважається досягнутим, коли студент може пояснити зв’язок «дані → операції → ресурси → розклад → результат» і вносить здійсненну зміну, не приховуючи конфліктів або незавершених робіт.</p>
+<h2>2. Перед початком занять</h2>
+<p>Відкрийте спільну розрахункову книгу STO_calculation_UA.xlsx у програмі, якою користуватиметься група. Переконайтеся, що формули перераховуються і перемикання сценаріїв змінює результати. Перегляньте базовий, поліпшений та ручний режими. Збережіть незмінений контрольний примірник для оцінювання.</p>
+<p>Оголосіть студентам, що базовий і поліпшений розклади є опрацьованими прикладами. Оцінювання проводиться за власним ручним варіантом, розрахунками, діагностичним рішенням і захистом. Прозора книга потрібна для вивчення залежностей; приховування формул не є метою пілота.</p>
+<p>До видачі завдання визначте:</p>
+<ul>
+<li>Рівень самостійності: заповнення входів, самостійний розрахунок вибраних підсумків або повне пояснення наявних формул.</li>
+<li>Конкретну змінну умову ручного варіанта та спосіб її внесення через підтримувані поля.</li>
+<li>Формат і обсяг звіту, форму захисту та графічні вимоги кафедри.</li>
+<li>Джерела точних технічних параметрів, якщо додається реальний автомобіль або обладнання.</li>
+</ul>
+<p>Якщо навчальний план вимагає два аркуші А1, збережіть цю вимогу. Рекомендований зміст — план позицій з обладнанням та часова або технологічна схема, але склад аркушів визначається чинним завданням кафедри. Пілот не вводить власного обов’язкового стандарту креслення.</p>
+<h2>3. Рекомендована послідовність роботи</h2>
+<table>
+<thead>
+<tr>
+<th>Етап</th>
+<th>Робота студентів</th>
+<th>Контрольна точка викладача</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Постановка задачі</td>
+<td>Читають паспорт, розрізняють часові величини, простежують один наряд</td>
+<td>Студент називає, що саме є синтетичним і що означає готовність</td>
+</tr>
+<tr>
+<td>2. Навантаження</td>
+<td>Перевіряють підсумки праці та позицій; аналізують доступність</td>
+<td>Одиниці й періоди узгоджені; діагностику не додано двічі</td>
+</tr>
+<tr>
+<td>3. Опрацьовані сценарії</td>
+<td>Порівнюють базовий і поліпшений плани</td>
+<td>Зміна часу діагноста відокремлена від незмінного обсягу роботи</td>
+</tr>
+<tr>
+<td>4. Ручний варіант</td>
+<td>Вносять визначене порушення умов і переплановують</td>
+<td>Пройдені перевірки ресурсів, календарів, попередників і деталей</td>
+</tr>
+<tr>
+<td>5. ABS-кейс</td>
+<td>Обчислюють сигнал, порівнюють гіпотези, складають технологічну карту</td>
+<td>Висновок локалізований доказами; пропуски не перетворено на нуль</td>
+</tr>
+<tr>
+<td>6. Проєктне рішення</td>
+<td>Обґрунтовують обладнання, схему та рекомендацію</td>
+<td>Результати узгоджені з книгою; обмеження сформульовано</td>
+</tr>
+<tr>
+<td>7. Захист</td>
+<td>Демонструють зміну одного входу</td>
+<td>Студент передбачає напрям зміни і пояснює отриманий результат</td>
+</tr>
+</tbody>
+</table>
+<p>Це послідовність навчальної роботи, а не вимога до кількості аудиторних годин. Етапи можна об’єднувати або розподіляти відповідно до освітньої програми. Для першого запуску доцільно спільно розібрати один наряд, а потім перейти до самостійного варіанта.</p>
+<h2>4. Зафіксовані припущення моделі</h2>
+<p>У наборі 38 нарядів і 57 операцій. Чотири позиції B1–B4 є окремими ресурсами. B1 і B2 призначені для загальних робіт, B3 — для колісної дільниці й геометрії коліс, B4 — для діагностики. Сумісність операцій із позиціями та працівниками визначається даними, а не довільним припущенням студента.</p>
+<p>Основний горизонт — 5–9 жовтня 2026 року, Д1–Д5; Д6 і Д7 відповідають 12 та 13 жовтня й показують залишок базового плану. Час місцевий, Europe/Kyiv. Кожен повний робочий день складається з інтервалів 08:00–12:00 і 13:00–17:00. Крок — 30 хвилин. Операція потребує одного виконавця, не ділиться і не перетинає обід або межу дня. Інтервали задаються як напіввідкриті: завершення однієї операції точно в момент початку наступної не є конфліктом.</p>
+<p>Тижневий доступний час повністю доступної позиції дорівнює 40 посто-годинам. Для діагноста за календарем 08:00–12:00 щодня базова доступність дорівнює 20 годинам. Додаткові дві години щодня збільшують її до 30 годин за той самий тиждень. Для додаткового варіанта з відсутністю час перераховують за зміненим календарем.</p>
+<p>Час доступності вже є часом, відведеним на модельовані операції. Додавання довільного коефіцієнта використання часу зменшить фонд удруге. Для подальшої адаптації реального кейсу можна задати інші календарі або окремо оцінити неохоплені роботи, але це має бути явна зміна моделі.</p>
+<p>У базовому та поліпшеному сценаріях набір і тривалість операцій зберігаються. Загальна трудомісткість не змінюється від перенесення робіт у часі. Якщо підсумок трудомісткості змінився, перевірте фільтр, видалення рядка, пропущений наряд або змішування попиту та виконаного обсягу.</p>
+<p>Готовність наряду — завершення останньої обов’язкової операції разом із перевіркою. Готовність рівно в обіцяний час — своєчасна. Непризначена або незавершена операція не має штучної дати завершення; такий наряд треба окремо показати як незавершений. Індекси Д1–Д7 рахують робочі дні. Календарний час включає ночі й вихідні; різниця номерів півгодинних інтервалів їх не враховує.</p>
+<p>Час очікування деталей відрізняється від активної праці. У цьому кейсі автомобіль звільняє позицію після кожної операції та очікує на стоянці. Очікування не додає посто-годин. Місткість стоянки й час переміщення не моделюються. Це явне спрощення, яке потрібно переглянути при адаптації до реальної станції.</p>
+<h2>5. Як читати результати: зміст еталонної відповіді</h2>
+<h3>5.1. Контрольні підсумки</h3>
+<table>
+<thead>
+<tr>
+<th>Показник</th>
+<th style="text-align: right;">Базовий</th>
+<th style="text-align: right;">Поліпшений</th>
+<th style="text-align: right;">Ручний еталон М1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Попит за всіма 38 нарядами, люд.-год</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr>
+<td>Завершено до 9 жовтня 17:00, нарядів</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">38</td>
+</tr>
+<tr>
+<td>Своєчасно за обіцяним строком, нарядів</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">38</td>
+</tr>
+<tr>
+<td>Запізнення за повним планом, нарядів</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Перенесено на наступний тиждень, нарядів</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Виконано операцій у першому тижні</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">57</td>
+</tr>
+<tr>
+<td>Виконано в першому тижні, люд.-год</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr>
+<td>Середній календарний час до готовності, год</td>
+<td style="text-align: right;">17,92</td>
+<td style="text-align: right;">5,71</td>
+<td style="text-align: right;">5,74</td>
+</tr>
+<tr>
+<td>Конфлікти перевірених призначень</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>Середній час обчислено за всіма 38 нарядами за повним планом, включно з перенесенням і вихідними у базовому сценарії. Три перенесені наряди O06, O11, O12 вже входять до десяти із запізненням; ці числа не додають. Базовий план здійсненний на розширеному горизонті, але не забезпечує виконання всього попиту протягом першого тижня.</p>
+<p>За компетентністю потрібно 55 людино-годин механічної роботи, 18 годин колісної дільниці та 27 годин діагноста. За категоріями нарядів: ТО — 25, механічний ремонт — 28, колісна дільниця — 18, діагностичні замовлення — 29 людино-годин. Останні 29 уже включають дві години механічної роботи ABS-наряду; не додавайте їх до загальної сотні повторно.</p>
+<p>Для D1 попит 27 годин відносно базової місткості 20 годин становить 135%. Фактично в першому тижні зайнято 20 із 20 годин, тобто 100%. У поліпшеному варіанті 27 із 30 годин становлять 90%. Позиція B4 має 40 годин доступності; її додавання не усуває нестачу годин D1.</p>
+<p>Незалежна помісячна таблиця містить 1 982 замовлення і 5 325,8 людино-години за заданими середніми тривалостями. Ці значення не отримано множенням детального тижня. Річні робочі дні та коефіцієнт використання ресурсів не задано, тому річну достатність штату за ними автоматично не встановлюють.</p>
+<h3>5.2. Інтерпретація</h3>
+<p>У діагностичних нарядах, крім O01, погоджений обсяг завершується діагностичним етапом і звітом. Готовність такого наряду не означає, що кожен виявлений дефект уже відремонтовано.</p>
+<p>Відокремлюйте попит за всіма операціями від виконаного обсягу. Навантаження нижче 100% не доводить здійсненності: працівник, позиція, обладнання і деталь повинні бути доступні в потрібний момент, після попередника та до строку. Висновок про обмежувальний ресурс підтверджують конкретні відкладені операції та перевірена зміна його доступності.</p>
+<p>Додаткові години D1 можуть раніше відкрити доступ до наступних робіт. Це не створює деталей і не змінює погодженого обсягу. Фінансова вигода не визначена, оскільки витрати не задано. Помісячні середні й детальний тиждень є незалежними навчальними даними; автоматично переносити тривалості або сезонність між ними не слід.</p>
+<h2>6. Організація самостійної роботи</h2>
+<p>Збережіть базовий і поліпшений приклади в студентській книзі для перевірки її роботи. Самостійна частина повинна містити умову, для якої готовий приклад не є завершеною відповіддю.</p>
+<p>У виданій вправі М1 стартовим є поліпшений план. Керування B5 = 3, B7 = 34: деталь O29-01 готова в середу о 09:00 замість 08:00. Початкові ручні призначення повторюють поліпшений приклад і потребують виправлення. Ремонт 3,5 години не вміщується між 09:00 та 12:00; переносити частину операції через обід заборонено.</p>
+<p>Один перевірений розв’язок змінює чотири початки в Сценарії H6:J62; позиція B2 і виконавець M2 залишаються тими самими:</p>
+<table>
+<thead>
+<tr>
+<th>Операція</th>
+<th style="text-align: right;">Новий код початку</th>
+<th>Новий інтервал 7 жовтня</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O18-01</td>
+<td style="text-align: right;">34</td>
+<td>09:00–11:00</td>
+</tr>
+<tr>
+<td>O18-02</td>
+<td style="text-align: right;">38</td>
+<td>11:00–11:30</td>
+</tr>
+<tr>
+<td>O29-01</td>
+<td style="text-align: right;">40</td>
+<td>13:00–16:30</td>
+</tr>
+<tr>
+<td>O29-02</td>
+<td style="text-align: right;">47</td>
+<td>16:30–17:00</td>
+</tr>
+</tbody>
+</table>
+<p>Усі 38 нарядів зберігають свої строки. Це один допустимий розклад; інший план із коректними обмеженнями оцінюється так само. Готовність O29 точно о 17:00 є своєчасною. Якщо студент переносить лише ремонт, перевірте, чи не залишив він контрольну операцію перед ремонтом.</p>
+<p>Додатковий дослід — припинення використання B1 у копії ручного сценарію. Усі механічні роботи вимагають B1 або B2, їх попит становить 55 посто-годин. Одна B2 має лише 40 годин у тижні: повне виконання в цьому горизонті неможливе вже за агрегованим обмеженням. Вимагайте доказ дефіциту щонайменше 15 посто-годин та чесний залишок, а не здійсненний тижневий план усіх 38 нарядів. Додатковий працівник не збільшує доступність B2. У цій вправі не видаляють ресурс із довідника, а залишають його без призначених операцій; це перевіряється підрахунком B1 у ручному стовпці позицій.</p>
+<p>Для захисту достатньо попросити студента продемонструвати одну змістовну зміну. Перш ніж перераховувати книгу, попросіть спрогнозувати напрям результату. Розбіжність між прогнозом і розрахунком є приводом перевірити розуміння залежності, а не вимагати завченої відповіді.</p>
+<h2>7. ABS-кейс: методика перевірки</h2>
+<p>Технічний кейс містить активний датчик швидкості колеса та синтетичні вимірювання. Навчальні параметри перетворення частоти в швидкість не є характеристиками всіх датчиків ABS. Вони мають бути явно наведені поряд із даними.</p>
+<p>Перевірте три рівні відповіді:</p>
+<ol>
+<li><strong>Розрахунок.</strong> Формула <span><mjx-container class="MathJax CtxtMenu_Attached_0" jax="SVG" tabindex="0" ctxtmenu_counter="0" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="15.509ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 6855 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-1-TEX-I-1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-1-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-1-TEX-N-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path id="MJX-1-TEX-N-22C5" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250Z"></path><path id="MJX-1-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-1-TEX-I-1D70B" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"></path><path id="MJX-1-TEX-I-1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-1-TEX-I-1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path id="MJX-1-TEX-N-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path id="MJX-1-TEX-I-1D467" d="M347 338Q337 338 294 349T231 360Q211 360 197 356T174 346T162 335T155 324L153 320Q150 317 138 317Q117 317 117 325Q117 330 120 339Q133 378 163 406T229 440Q241 442 246 442Q271 442 291 425T329 392T367 375Q389 375 411 408T434 441Q435 442 449 442H462Q468 436 468 434Q468 430 463 420T449 399T432 377T418 358L411 349Q368 298 275 214T160 106L148 94L163 93Q185 93 227 82T290 71Q328 71 360 90T402 140Q406 149 409 151T424 153Q443 153 443 143Q443 138 442 134Q425 72 376 31T278 -11Q252 -11 232 6T193 40T155 57Q111 57 76 -3Q70 -11 59 -11H54H41Q35 -5 35 -2Q35 13 93 84Q132 129 225 214T340 322Q352 338 347 338Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-1-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(762.8,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(1818.6,0)"><use data-c="33" xlink:href="#MJX-1-TEX-N-33"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(2318.6,0)"><g data-mml-node="mo"><use data-c="2C" xlink:href="#MJX-1-TEX-N-2C"></use></g></g><g data-mml-node="mn" transform="translate(2596.6,0)"><use data-c="36" xlink:href="#MJX-1-TEX-N-36"></use></g><g data-mml-node="mo" transform="translate(3318.8,0)"><use data-c="22C5" xlink:href="#MJX-1-TEX-N-22C5"></use></g><g data-mml-node="mn" transform="translate(3819,0)"><use data-c="32" xlink:href="#MJX-1-TEX-N-32"></use></g><g data-mml-node="mi" transform="translate(4319,0)"><use data-c="1D70B" xlink:href="#MJX-1-TEX-I-1D70B"></use></g><g data-mml-node="mi" transform="translate(4889,0)"><use data-c="1D45F" xlink:href="#MJX-1-TEX-I-1D45F"></use></g><g data-mml-node="mi" transform="translate(5340,0)"><use data-c="1D453" xlink:href="#MJX-1-TEX-I-1D453"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(5890,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-1-TEX-N-2F"></use></g></g><g data-mml-node="mi" transform="translate(6390,0)"><use data-c="1D467" xlink:href="#MJX-1-TEX-I-1D467"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>v</mi><mo>=</mo><mn>3</mn><mrow data-mjx-texclass="ORD"><mo>,</mo></mrow><mn>6</mn><mo>⋅</mo><mn>2</mn><mi>π</mi><mi>r</mi><mi>f</mi><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mi>z</mi></math></mjx-assistive-mml></mjx-container></span> має правильні одиниці; опорне значення сформовано за умовою; пропуск сигналу залишено недійсним спостереженням.</li>
+<li><strong>Локалізація.</strong> Студент порівнює несправність датчика, імпульсного елемента та кола з’єднання з наданими доказами. Висновок має спиратися на додаткові перевірки, а не лише на найбільше відхилення частоти.</li>
+<li><strong>Робота і перевірка.</strong> У карту включено дію, яку підтверджує встановлена причина, а також повторну перевірку сигналу та діагностичного стану за заданими умовами.</li>
+</ol>
+<p>Еталонна причина в цьому навчальному кейсі — переривчастий дефект з’єднання з боку проводки автомобіля, підтверджений наданими локалізувальними доказами. Не приймайте автоматичну заміну датчика як єдину відповідь, якщо студент ігнорує ці докази. Дія за E6 — заміна несправної автомобільної половини роз’єму або ремонтного пігтейла дозволеним комплектом, відновлення прокладання й фіксації та передбачена перевірка. За умовою M2 має компетентність для документованого ремонту цього низьковольтного з’єднання; D1 діагностує й перевіряє систему.</p>
+<p>Збережений діагностичний код не визначає однозначно несправну деталь. Для активного датчика не приймайте вимірювання опору як універсальний тест. Ці принципи підтримує використане технічне джерело HELLA; числові допуски конкретного автомобіля слід брати з його документації. [S01]</p>
+<p>Якщо студент пропонує додаткову перевірку, оцінюйте, чи вона розрізняє правдоподібні причини, чи здійсненна доступним обладнанням і чи потрібна за вже наявних доказів. Велика кількість тестів сама по собі не є кращим результатом.</p>
+<p>Обмежений аналіз функції та наслідків несправності можна пов’язати з підходом RCM. Не називайте його повним дослідженням RCM і не вимагайте обчислення нового міжсервісного інтервалу без придатних даних. Завантажена редакція SAE JA1012 має бути позначена своїм роком; матеріали пілота не стверджують, що це актуальна редакція стандарту. [S08]</p>
+<h3>7.1. Числовий ключ</h3>
+<p>За r = 0,30 м і z = 48: довжина кола 1,884956 м; коефіцієнт перетворення 0,1413717 км/год на Гц; за 140 Гц — 19,7920 км/год. Опорний канал — медіана FL, RL, RR. Поріг 5% є лише критерієм вправи.</p>
+<table>
+<thead>
+<tr>
+<th>Вікно</th>
+<th style="text-align: right;">Опорна частота Гц</th>
+<th style="text-align: right;">Швидкість FR до роботи км/год</th>
+<th style="text-align: right;">Відхилення до роботи %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">14,2785</td>
+<td style="text-align: right;">1,0000</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">16,9646</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align: right;">140</td>
+<td style="text-align: right;">19,7920</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align: right;">140</td>
+<td style="text-align: right;">Немає даних</td>
+<td style="text-align: right;">Не обчислюється</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align: right;">140</td>
+<td style="text-align: right;">9,8960</td>
+<td style="text-align: right;">−50,0000</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">21,2058</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">22,6195</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>8</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">Немає даних</td>
+<td style="text-align: right;">Не обчислюється</td>
+</tr>
+<tr>
+<td>9</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">25,4469</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>10</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">28,2743</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>11</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: right;">31,2431</td>
+<td style="text-align: right;">0,4545</td>
+</tr>
+<tr>
+<td>12</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">28,2743</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>Неузгоджені три з дванадцяти вікон: два пропуски та одне числове відхилення, разом 25%. Це частка вікон саме запису, а не оцінка річної ймовірності відмови. За E2–E5 значення 70 Гц у вікні 5 пов’язане із втратою розпізнаваних періодів; обчислені 9,8960 км/год не є доказом фактичного уповільнення колеса.</p>
+<p>Після роботи неузгоджених вікон немає; найбільший модуль відхилення 0,625% у вікні 7. Докази E2–E4 локалізують дефект автомобільного роз’єму, E5 підтверджує узгоджений сигнал із тим самим датчиком та енкодером за справного тестового підключення. E6 задає дозволений спосіб ремонту. V2–V4 підтверджують передбачені перевірки; короткий запис не доводить безвідмовності в усіх режимах.</p>
+<h3>7.2. Зв’язок із нарядом O01</h3>
+<p>Прибуття — 5 жовтня 08:00; обіцяна готовність — 7 жовтня 12:00. Діагностика D1/B4: 5 жовтня 08:00–10:00. Деталь замість 6 жовтня 08:00 готова о 13:00; затримка становить п’ять календарних годин. Ремонт M2/B2: 6 жовтня 13:00–15:00. Підсумкова перевірка D1/B4: у базовому плані 8 жовтня 11:00–12:00, у поліпшеному — 7 жовтня 11:00–12:00.</p>
+<p>Активна трудомісткість і зайнятість позицій O01 однакові за значенням — по п’ять годин: 2 + 2 + 1. Календарний час до готовності скорочується з 76 до 52 годин. Відповідне календарне очікування між активними роботами — 71 і 47 годин. Це очікування на стоянці, не праця і не зайнятість підйомника.</p>
+<h3>7.3. Рішення щодо періодичності</h3>
+<p>Ні заміна всіх датчиків через 100 000 км, ні універсальна щорічна коротка перевірка не обґрунтовані даними цього випадку. Не задано розподілу ресурсу, виявлюваного передвісника з відомим P–F чи достатності річного інтервалу. Підтверджений дефект уже порушує сигнал; обґрунтована дія зараз — усунути його й перевірити результат. Подальший аналіз потребує історії пробігу, причин, умов прояву та повторень. [S08]</p>
+<h2>8. Рубрика оцінювання — 100 балів</h2>
+<table>
+<thead>
+<tr>
+<th>Критерій</th>
+<th>Розподіл балів</th>
+<th>Що перевіряється</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Дані й припущення — 10</td>
+<td>4 походження; 3 одиниці; 3 межі</td>
+<td>Вхідні дані відтворювані, припущення явні, синтетичні значення не названо нормативами</td>
+</tr>
+<tr>
+<td>Розрахунок — 20</td>
+<td>8 трудомісткість; 6 ресурсний час; 6 інтерпретація</td>
+<td>Коректні суми й календарі, немає подвійного обліку, попит відрізняється від виконаного обсягу</td>
+</tr>
+<tr>
+<td>Ручний план — 25</td>
+<td>10 ресурси; 8 часові залежності; 7 власні зміни</td>
+<td>Немає необґрунтованих конфліктів; враховано деталі, попередників і строки; зміни пояснено</td>
+</tr>
+<tr>
+<td>Діагностика — 20</td>
+<td>6 розрахунок; 8 докази; 6 карта і перевірка</td>
+<td>Правильна інтерпретація сигналу, локалізація причини, обґрунтована дія та підтвердження результату</td>
+</tr>
+<tr>
+<td>Обладнання і графіка — 10</td>
+<td>5 вибір; 5 узгодженість</td>
+<td>Обладнання підтримує операції; схеми відповідають даним і вимогам кафедри</td>
+</tr>
+<tr>
+<td>Рекомендація — 10</td>
+<td>5 порівняння; 5 висновок</td>
+<td>Ефект пов’язано зі зміною умов, межі та потреби в даних названо</td>
+</tr>
+<tr>
+<td>Захист — 5</td>
+<td>3 пояснення; 2 демонстрація</td>
+<td>Студент знаходить джерело числа, пояснює формулу та наслідки зміни</td>
+</tr>
+<tr>
+<td><strong>Разом</strong></td>
+<td><strong>100</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Часткові бали нараховуйте за виконані складові. Виявлений і чесно пояснений дефіцит ресурсу не дорівнює прихованому конфлікту в оголошеному здійсненним плані. Для нездійсненного варіанта повна оцінка можлива за коректний доказ, якщо саме це передбачає видане завдання.</p>
+<p>Повторне використання помилкового вихідного числа не повинно автоматично спричиняти багаторазове зняття балів за одну причину. Окремо оцінюйте арифметичну помилку, невміння виявити суперечність і неправильну інженерну інтерпретацію.</p>
+<h2>9. Типові помилки та спосіб зворотного зв’язку</h2>
+<table>
+<thead>
+<tr>
+<th>Помилка</th>
+<th>Питання, яке допомагає її виправити</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Діагностику вдруге додано до загальної трудомісткості</td>
+<td>У яких первинних рядках ці людино-години вже враховані?</td>
+</tr>
+<tr>
+<td>Час очікування деталей записано як працю</td>
+<td>Що робить виконавець у цей інтервал і який ресурс справді недоступний?</td>
+</tr>
+<tr>
+<td>Дев’ять годин 08:00–17:00 прийнято за робочий фонд</td>
+<td>Які інтервали дозволяє календар?</td>
+</tr>
+<tr>
+<td>Нова позиція оголошена вирішенням браку компетентного працівника</td>
+<td>Хто саме виконає відкладену операцію і коли?</td>
+</tr>
+<tr>
+<td>Завантаження нижче 100% названо доказом здійсненності</td>
+<td>Чи доступні всі потрібні ресурси одночасно до обіцяного строку?</td>
+</tr>
+<tr>
+<td>Діагностичний код ототожнено з дефектом деталі</td>
+<td>Який доказ виключає несправність проводки або імпульсного елемента?</td>
+</tr>
+<tr>
+<td>Пропущений сигнал перетворено на нульову швидкість</td>
+<td>Це фізичне вимірювання нуля чи відсутність придатного вимірювання?</td>
+</tr>
+<tr>
+<td>Незавершений наряд названо своєчасним</td>
+<td>Де час завершення його останньої обов’язкової операції?</td>
+</tr>
+<tr>
+<td>Тиждень безумовно помножено на 52</td>
+<td>Чому цей спеціально складений тиждень репрезентує всі сезони?</td>
+</tr>
+<tr>
+<td>Заявлено оптимальність одного знайденого розкладу</td>
+<td>Які допустимі альтернативи перевірено і як доведено найкращий результат?</td>
+</tr>
+</tbody>
+</table>
+<h2>10. Перенесення на дані реальної станції</h2>
+<p>Для адаптації зберігайте структуру «наряд — операція — ресурс — час», замінюючи дані знеособленими записами. Потрібні час прибуття та готовності, активна праця, зайнятість позицій, компетентність, очікування і правила обіцяного строку. Персональні дані клієнта для розрахунку не потрібні.</p>
+<p>З’ясуйте, що означає кожне поле облікової системи: оплачувані години, відкриття наряду та час на підйомнику можуть описувати різні події. Узгодьте, чи охоплено підготовку, переміщення, консультації та контроль. Для річного попиту потрібні придатні спостереження або явний прогноз.</p>
+<p>Після пілота зафіксуйте неоднозначні поля, невиявлені студентами конфлікти та труднощі пояснення результатів. Уточніть ці місця перед розширенням банку варіантів.</p></main></body></html>

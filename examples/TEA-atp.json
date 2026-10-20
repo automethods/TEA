@@ -1,0 +1,1106 @@
+{
+  "format": "tea-project-file/2",
+  "state": {
+    "profile": "tea-project/2",
+    "applicationVersion": "0.5.0",
+    "student": "",
+    "group": "",
+    "variant": "АТП · 100 M1 та 20 N2",
+    "scenario": "improved",
+    "day": 0,
+    "selectedOrder": "O01",
+    "partsReady": 34,
+    "assignments": [
+      {
+        "operation_id": "O01-01",
+        "start_slot": 0,
+        "end_slot": 4,
+        "bay_id": "B4",
+        "staff_id": "D1",
+        "start_local": "2026-10-05T08:00",
+        "end_local": "2026-10-05T10:00"
+      },
+      {
+        "operation_id": "O01-02",
+        "start_slot": 24,
+        "end_slot": 28,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-06T13:00",
+        "end_local": "2026-10-06T15:00"
+      },
+      {
+        "operation_id": "O01-03",
+        "start_slot": 38,
+        "end_slot": 40,
+        "bay_id": "B4",
+        "staff_id": "D1",
+        "start_local": "2026-10-07T11:00",
+        "end_local": "2026-10-07T12:00"
+      },
+      {
+        "operation_id": "O02-01",
+        "start_slot": 16,
+        "end_slot": 21,
+        "bay_id": "B4",
+        "staff_id": "D1",
+        "start_local": "2026-10-06T08:00",
+        "end_local": "2026-10-06T10:30"
+      },
+      {
+        "operation_id": "O03-01",
+        "start_slot": 4,
+        "end_slot": 8,
+        "bay_id": "B4",
+        "staff_id": "D1",
+        "start_local": "2026-10-05T10:00",
+        "end_local": "2026-10-05T12:00"
+      },
+      {
+        "operation_id": "O04-01",
+        "start_slot": 32,
+        "end_slot": 38,
+        "bay_id": "B4",
+        "staff_id": "D1",
+        "start_local": "2026-10-07T08:00",
+        "end_local": "2026-10-07T11:00"
+      },
+      {
+        "operation_id": "O05-01",
+        "start_slot": 21,
+        "end_slot": 24,
+        "bay_id": "B4",
+        "staff_id": "D1",
+        "start_local": "2026-10-06T10:30",
+        "end_local": "2026-10-06T12:00"
+      },
+      {
+        "operation_id": "O06-01",
+        "start_slot": 64,
+        "end_slot": 70,
+        "bay_id": "B4",
+        "staff_id": "D1",
+        "start_local": "2026-10-09T08:00",
+        "end_local": "2026-10-09T11:00"
+      },
+      {
+        "operation_id": "O07-01",
+        "start_slot": 8,
+        "end_slot": 12,
+        "bay_id": "B4",
+        "staff_id": "D1",
+        "start_local": "2026-10-05T13:00",
+        "end_local": "2026-10-05T15:00"
+      },
+      {
+        "operation_id": "O08-01",
+        "start_slot": 48,
+        "end_slot": 53,
+        "bay_id": "B4",
+        "staff_id": "D1",
+        "start_local": "2026-10-08T08:00",
+        "end_local": "2026-10-08T10:30"
+      },
+      {
+        "operation_id": "O09-01",
+        "start_slot": 53,
+        "end_slot": 56,
+        "bay_id": "B4",
+        "staff_id": "D1",
+        "start_local": "2026-10-08T10:30",
+        "end_local": "2026-10-08T12:00"
+      },
+      {
+        "operation_id": "O10-01",
+        "start_slot": 24,
+        "end_slot": 28,
+        "bay_id": "B4",
+        "staff_id": "D1",
+        "start_local": "2026-10-06T13:00",
+        "end_local": "2026-10-06T15:00"
+      },
+      {
+        "operation_id": "O11-01",
+        "start_slot": 40,
+        "end_slot": 44,
+        "bay_id": "B4",
+        "staff_id": "D1",
+        "start_local": "2026-10-07T13:00",
+        "end_local": "2026-10-07T15:00"
+      },
+      {
+        "operation_id": "O12-01",
+        "start_slot": 56,
+        "end_slot": 60,
+        "bay_id": "B4",
+        "staff_id": "D1",
+        "start_local": "2026-10-08T13:00",
+        "end_local": "2026-10-08T15:00"
+      },
+      {
+        "operation_id": "O13-01",
+        "start_slot": 8,
+        "end_slot": 12,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-05T13:00",
+        "end_local": "2026-10-05T15:00"
+      },
+      {
+        "operation_id": "O13-02",
+        "start_slot": 12,
+        "end_slot": 13,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-05T15:00",
+        "end_local": "2026-10-05T15:30"
+      },
+      {
+        "operation_id": "O14-01",
+        "start_slot": 8,
+        "end_slot": 12,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-05T13:00",
+        "end_local": "2026-10-05T15:00"
+      },
+      {
+        "operation_id": "O14-02",
+        "start_slot": 12,
+        "end_slot": 13,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-05T15:00",
+        "end_local": "2026-10-05T15:30"
+      },
+      {
+        "operation_id": "O15-01",
+        "start_slot": 24,
+        "end_slot": 28,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-06T13:00",
+        "end_local": "2026-10-06T15:00"
+      },
+      {
+        "operation_id": "O15-02",
+        "start_slot": 28,
+        "end_slot": 29,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-06T15:00",
+        "end_local": "2026-10-06T15:30"
+      },
+      {
+        "operation_id": "O16-01",
+        "start_slot": 16,
+        "end_slot": 20,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-06T08:00",
+        "end_local": "2026-10-06T10:00"
+      },
+      {
+        "operation_id": "O16-02",
+        "start_slot": 20,
+        "end_slot": 21,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-06T10:00",
+        "end_local": "2026-10-06T10:30"
+      },
+      {
+        "operation_id": "O17-01",
+        "start_slot": 40,
+        "end_slot": 44,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-07T13:00",
+        "end_local": "2026-10-07T15:00"
+      },
+      {
+        "operation_id": "O17-02",
+        "start_slot": 44,
+        "end_slot": 45,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-07T15:00",
+        "end_local": "2026-10-07T15:30"
+      },
+      {
+        "operation_id": "O18-01",
+        "start_slot": 40,
+        "end_slot": 44,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-07T13:00",
+        "end_local": "2026-10-07T15:00"
+      },
+      {
+        "operation_id": "O18-02",
+        "start_slot": 44,
+        "end_slot": 45,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-07T15:00",
+        "end_local": "2026-10-07T15:30"
+      },
+      {
+        "operation_id": "O19-01",
+        "start_slot": 56,
+        "end_slot": 60,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-08T13:00",
+        "end_local": "2026-10-08T15:00"
+      },
+      {
+        "operation_id": "O19-02",
+        "start_slot": 60,
+        "end_slot": 61,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-08T15:00",
+        "end_local": "2026-10-08T15:30"
+      },
+      {
+        "operation_id": "O20-01",
+        "start_slot": 48,
+        "end_slot": 52,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-08T08:00",
+        "end_local": "2026-10-08T10:00"
+      },
+      {
+        "operation_id": "O20-02",
+        "start_slot": 52,
+        "end_slot": 53,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-08T10:00",
+        "end_local": "2026-10-08T10:30"
+      },
+      {
+        "operation_id": "O21-01",
+        "start_slot": 72,
+        "end_slot": 76,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-09T13:00",
+        "end_local": "2026-10-09T15:00"
+      },
+      {
+        "operation_id": "O21-02",
+        "start_slot": 76,
+        "end_slot": 77,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-09T15:00",
+        "end_local": "2026-10-09T15:30"
+      },
+      {
+        "operation_id": "O22-01",
+        "start_slot": 64,
+        "end_slot": 68,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-09T08:00",
+        "end_local": "2026-10-09T10:00"
+      },
+      {
+        "operation_id": "O22-02",
+        "start_slot": 68,
+        "end_slot": 69,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-09T10:00",
+        "end_local": "2026-10-09T10:30"
+      },
+      {
+        "operation_id": "O23-01",
+        "start_slot": 0,
+        "end_slot": 7,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-05T08:00",
+        "end_local": "2026-10-05T11:30"
+      },
+      {
+        "operation_id": "O23-02",
+        "start_slot": 7,
+        "end_slot": 8,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-05T11:30",
+        "end_local": "2026-10-05T12:00"
+      },
+      {
+        "operation_id": "O24-01",
+        "start_slot": 16,
+        "end_slot": 23,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-06T08:00",
+        "end_local": "2026-10-06T11:30"
+      },
+      {
+        "operation_id": "O24-02",
+        "start_slot": 23,
+        "end_slot": 24,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-06T11:30",
+        "end_local": "2026-10-06T12:00"
+      },
+      {
+        "operation_id": "O25-01",
+        "start_slot": 32,
+        "end_slot": 39,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-07T08:00",
+        "end_local": "2026-10-07T11:30"
+      },
+      {
+        "operation_id": "O25-02",
+        "start_slot": 39,
+        "end_slot": 40,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-07T11:30",
+        "end_local": "2026-10-07T12:00"
+      },
+      {
+        "operation_id": "O26-01",
+        "start_slot": 48,
+        "end_slot": 55,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-08T08:00",
+        "end_local": "2026-10-08T11:30"
+      },
+      {
+        "operation_id": "O26-02",
+        "start_slot": 55,
+        "end_slot": 56,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-08T11:30",
+        "end_local": "2026-10-08T12:00"
+      },
+      {
+        "operation_id": "O27-01",
+        "start_slot": 64,
+        "end_slot": 71,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-09T08:00",
+        "end_local": "2026-10-09T11:30"
+      },
+      {
+        "operation_id": "O27-02",
+        "start_slot": 71,
+        "end_slot": 72,
+        "bay_id": "B1",
+        "staff_id": "M1",
+        "start_local": "2026-10-09T11:30",
+        "end_local": "2026-10-09T12:00"
+      },
+      {
+        "operation_id": "O28-01",
+        "start_slot": 0,
+        "end_slot": 7,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-05T08:00",
+        "end_local": "2026-10-05T11:30"
+      },
+      {
+        "operation_id": "O28-02",
+        "start_slot": 7,
+        "end_slot": 8,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-05T11:30",
+        "end_local": "2026-10-05T12:00"
+      },
+      {
+        "operation_id": "O29-01",
+        "start_slot": 32,
+        "end_slot": 39,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-07T08:00",
+        "end_local": "2026-10-07T11:30"
+      },
+      {
+        "operation_id": "O29-02",
+        "start_slot": 39,
+        "end_slot": 40,
+        "bay_id": "B2",
+        "staff_id": "M2",
+        "start_local": "2026-10-07T11:30",
+        "end_local": "2026-10-07T12:00"
+      },
+      {
+        "operation_id": "O30-01",
+        "start_slot": 0,
+        "end_slot": 4,
+        "bay_id": "B3",
+        "staff_id": "W1",
+        "start_local": "2026-10-05T08:00",
+        "end_local": "2026-10-05T10:00"
+      },
+      {
+        "operation_id": "O31-01",
+        "start_slot": 4,
+        "end_slot": 8,
+        "bay_id": "B3",
+        "staff_id": "W1",
+        "start_local": "2026-10-05T10:00",
+        "end_local": "2026-10-05T12:00"
+      },
+      {
+        "operation_id": "O32-01",
+        "start_slot": 16,
+        "end_slot": 20,
+        "bay_id": "B3",
+        "staff_id": "W1",
+        "start_local": "2026-10-06T08:00",
+        "end_local": "2026-10-06T10:00"
+      },
+      {
+        "operation_id": "O33-01",
+        "start_slot": 20,
+        "end_slot": 24,
+        "bay_id": "B3",
+        "staff_id": "W1",
+        "start_local": "2026-10-06T10:00",
+        "end_local": "2026-10-06T12:00"
+      },
+      {
+        "operation_id": "O34-01",
+        "start_slot": 32,
+        "end_slot": 36,
+        "bay_id": "B3",
+        "staff_id": "W1",
+        "start_local": "2026-10-07T08:00",
+        "end_local": "2026-10-07T10:00"
+      },
+      {
+        "operation_id": "O35-01",
+        "start_slot": 36,
+        "end_slot": 40,
+        "bay_id": "B3",
+        "staff_id": "W1",
+        "start_local": "2026-10-07T10:00",
+        "end_local": "2026-10-07T12:00"
+      },
+      {
+        "operation_id": "O36-01",
+        "start_slot": 48,
+        "end_slot": 52,
+        "bay_id": "B3",
+        "staff_id": "W1",
+        "start_local": "2026-10-08T08:00",
+        "end_local": "2026-10-08T10:00"
+      },
+      {
+        "operation_id": "O37-01",
+        "start_slot": 52,
+        "end_slot": 56,
+        "bay_id": "B3",
+        "staff_id": "W1",
+        "start_local": "2026-10-08T10:00",
+        "end_local": "2026-10-08T12:00"
+      },
+      {
+        "operation_id": "O38-01",
+        "start_slot": 64,
+        "end_slot": 68,
+        "bay_id": "B3",
+        "staff_id": "W1",
+        "start_local": "2026-10-09T08:00",
+        "end_local": "2026-10-09T10:00"
+      }
+    ],
+    "operationEdits": {},
+    "abs": {
+      "radius": 0.3,
+      "z": 48,
+      "limit": 5,
+      "dr": 0.003,
+      "df": 1,
+      "frequency": 140,
+      "frequencies": {}
+    },
+    "adas": {
+      "start": "2026-10-06T09:30",
+      "due": "2026-10-06T15:30",
+      "available": "2026-10-06T13:00",
+      "alignment": 1.5,
+      "procedure": 1,
+      "wait": 5,
+      "required": true,
+      "mode": "outside",
+      "oem": true,
+      "equipment": false,
+      "access": true,
+      "trained": true,
+      "occupiesBay": true
+    },
+    "pilot": [
+      {
+        "id": "RQ01",
+        "accepted": true,
+        "reason": "",
+        "arrival": "2026-10-05T08:00",
+        "due": "2026-10-05T12:00",
+        "start": "2026-10-05T08:15",
+        "labour": 2,
+        "bay": 2.5,
+        "wait": 0.5,
+        "ready": "2026-10-05T11:30",
+        "issued": "2026-10-05T12:30",
+        "note": "Синтетичний приклад"
+      },
+      {
+        "id": "RQ02",
+        "accepted": true,
+        "reason": "",
+        "arrival": "2026-10-05T09:00",
+        "due": "2026-10-05T15:00",
+        "start": "2026-10-05T10:00",
+        "labour": 3,
+        "bay": 3.5,
+        "wait": 1,
+        "ready": "2026-10-05T14:30",
+        "issued": "2026-10-05T17:00",
+        "note": "Синтетичний приклад"
+      },
+      {
+        "id": "RQ03",
+        "accepted": false,
+        "reason": "Немає компетенції/обладнання",
+        "arrival": "2026-10-05T10:00",
+        "due": "2026-10-05T16:00",
+        "start": "",
+        "labour": null,
+        "bay": null,
+        "wait": null,
+        "ready": "",
+        "issued": "",
+        "note": "Звернення не прийнято"
+      },
+      {
+        "id": "RQ04",
+        "accepted": true,
+        "reason": "",
+        "arrival": "2026-10-06T08:00",
+        "due": "2026-10-06T13:00",
+        "start": "2026-10-06T08:30",
+        "labour": 2.5,
+        "bay": 2.5,
+        "wait": 2,
+        "ready": "2026-10-06T13:30",
+        "issued": "2026-10-06T15:00",
+        "note": "Синтетичний приклад"
+      },
+      {
+        "id": "RQ05",
+        "accepted": false,
+        "reason": "Деталь недоступна у строк",
+        "arrival": "2026-10-06T09:00",
+        "due": "2026-10-06T14:00",
+        "start": "",
+        "labour": null,
+        "bay": null,
+        "wait": null,
+        "ready": "",
+        "issued": "",
+        "note": "Звернення не прийнято"
+      }
+    ],
+    "parking": [
+      {
+        "orderId": "RQ01",
+        "start": "2026-10-05T11:30",
+        "end": "2026-10-05T12:30",
+        "reason": "Готовий, очікує клієнта"
+      },
+      {
+        "orderId": "RQ02",
+        "start": "2026-10-05T11:30",
+        "end": "2026-10-05T12:30",
+        "reason": "Очікування деталі/погодження"
+      },
+      {
+        "orderId": "RQ02",
+        "start": "2026-10-05T14:30",
+        "end": "2026-10-05T17:00",
+        "reason": "Готовий, очікує клієнта"
+      },
+      {
+        "orderId": "RQ04",
+        "start": "2026-10-06T10:00",
+        "end": "2026-10-06T12:00",
+        "reason": "Очікування деталі/погодження"
+      },
+      {
+        "orderId": "RQ04",
+        "start": "2026-10-06T13:30",
+        "end": "2026-10-06T15:00",
+        "reason": "Готовий, очікує клієнта"
+      }
+    ],
+    "months": [
+      {
+        "month": 1,
+        "counts": {
+          "maintenance": 44,
+          "mechanical": 32,
+          "wheel": 18,
+          "diagnostic": 26
+        }
+      },
+      {
+        "month": 2,
+        "counts": {
+          "maintenance": 46,
+          "mechanical": 34,
+          "wheel": 20,
+          "diagnostic": 28
+        }
+      },
+      {
+        "month": 3,
+        "counts": {
+          "maintenance": 52,
+          "mechanical": 38,
+          "wheel": 42,
+          "diagnostic": 32
+        }
+      },
+      {
+        "month": 4,
+        "counts": {
+          "maintenance": 56,
+          "mechanical": 42,
+          "wheel": 70,
+          "diagnostic": 34
+        }
+      },
+      {
+        "month": 5,
+        "counts": {
+          "maintenance": 58,
+          "mechanical": 44,
+          "wheel": 38,
+          "diagnostic": 36
+        }
+      },
+      {
+        "month": 6,
+        "counts": {
+          "maintenance": 56,
+          "mechanical": 42,
+          "wheel": 24,
+          "diagnostic": 34
+        }
+      },
+      {
+        "month": 7,
+        "counts": {
+          "maintenance": 54,
+          "mechanical": 40,
+          "wheel": 22,
+          "diagnostic": 32
+        }
+      },
+      {
+        "month": 8,
+        "counts": {
+          "maintenance": 54,
+          "mechanical": 42,
+          "wheel": 24,
+          "diagnostic": 34
+        }
+      },
+      {
+        "month": 9,
+        "counts": {
+          "maintenance": 58,
+          "mechanical": 44,
+          "wheel": 40,
+          "diagnostic": 36
+        }
+      },
+      {
+        "month": 10,
+        "counts": {
+          "maintenance": 60,
+          "mechanical": 46,
+          "wheel": 76,
+          "diagnostic": 38
+        }
+      },
+      {
+        "month": 11,
+        "counts": {
+          "maintenance": 54,
+          "mechanical": 42,
+          "wheel": 66,
+          "diagnostic": 34
+        }
+      },
+      {
+        "month": 12,
+        "counts": {
+          "maintenance": 46,
+          "mechanical": 36,
+          "wheel": 28,
+          "diagnostic": 30
+        }
+      }
+    ],
+    "notes": {
+      "hypotheses": "",
+      "decision": "",
+      "verification": "",
+      "conclusion": "",
+      "equipment": ""
+    },
+    "presetVersion": "0.2.0",
+    "classData": {
+      "M1": {
+        "label": "M1 · легковий, до 8 пасажирських місць",
+        "length": 4.5,
+        "width": 1.8,
+        "mass": 2,
+        "radius": 0.3,
+        "hours": {
+          "maintenance": 2.5,
+          "mechanical": 4,
+          "wheel": 2,
+          "diagnostic": 2.2
+        }
+      },
+      "M2": {
+        "label": "M2 · автобус, максимальна маса ≤ 5 т",
+        "length": 6.5,
+        "width": 2.1,
+        "mass": 4.5,
+        "radius": 0.36,
+        "hours": {
+          "maintenance": 4,
+          "mechanical": 6,
+          "wheel": 3,
+          "diagnostic": 3.2
+        }
+      },
+      "M3": {
+        "label": "M3 · автобус, максимальна маса > 5 т",
+        "length": 12,
+        "width": 2.55,
+        "mass": 18,
+        "radius": 0.49,
+        "hours": {
+          "maintenance": 5,
+          "mechanical": 8,
+          "wheel": 4,
+          "diagnostic": 4
+        }
+      },
+      "N1": {
+        "label": "N1 · вантажний, максимальна маса ≤ 3,5 т",
+        "length": 5.5,
+        "width": 2,
+        "mass": 3.5,
+        "radius": 0.34,
+        "hours": {
+          "maintenance": 3,
+          "mechanical": 5,
+          "wheel": 2.5,
+          "diagnostic": 2.6
+        }
+      },
+      "N2": {
+        "label": "N2 · вантажний, максимальна маса > 3,5–12 т",
+        "length": 7.5,
+        "width": 2.4,
+        "mass": 10,
+        "radius": 0.43,
+        "hours": {
+          "maintenance": 4.5,
+          "mechanical": 7,
+          "wheel": 3.5,
+          "diagnostic": 3.6
+        }
+      },
+      "N3": {
+        "label": "N3 · вантажний, максимальна маса > 12 т",
+        "length": 9,
+        "width": 2.55,
+        "mass": 18,
+        "radius": 0.5,
+        "hours": {
+          "maintenance": 6,
+          "mechanical": 10,
+          "wheel": 4.5,
+          "diagnostic": 4.5
+        }
+      }
+    },
+    "vehiclePreset": "M1",
+    "vehicleMix": {
+      "M1": 100,
+      "M2": 0,
+      "M3": 0,
+      "N1": 0,
+      "N2": 0,
+      "N3": 0
+    },
+    "workshopPreset": "light",
+    "planning": {
+      "days": 250,
+      "hours": 8,
+      "shifts": 1,
+      "bayUtil": 0.85,
+      "attendance": 0.9,
+      "crew": 1,
+      "plannedBays": 4,
+      "plannedWorkers": 4,
+      "parkingSpaces": 6,
+      "waitBefore": 2,
+      "waitReady": 2,
+      "peakFactor": 1.3,
+      "endClearance": 1.5,
+      "sideClearance": 1,
+      "auxArea": 50,
+      "maxLength": 6.5,
+      "maxWidth": 2.3,
+      "maxMass": 3.5
+    },
+    "bayShare": {
+      "maintenance": 0.9,
+      "mechanical": 0.7,
+      "wheel": 0.95,
+      "diagnostic": 0.9
+    },
+    "diagnosticClass": "M1",
+    "design": {
+      "layoutMode": "auto",
+      "postAccess": "auto",
+      "throughLength": 8,
+      "minPostWidth": 9,
+      "wall": 0.3,
+      "partition": 0.12,
+      "gateWidth": 4,
+      "gateHeight": 4.5,
+      "doorWidth": 1,
+      "windowWidth": 1.8,
+      "windowHeight": 1.5,
+      "windowSill": 1.2,
+      "windowPitch": 6,
+      "workspace": "design",
+      "mode": "new",
+      "programme": "atp",
+      "vehicles": {
+        "M1": {
+          "name": "Toyota Corolla 1.8 Hybrid Hatchback",
+          "length": 4.37,
+          "width": 1.79,
+          "height": 1.435,
+          "mass": 1.82,
+          "axle": 1.1,
+          "source": "S18",
+          "basis": "Габарити та повна маса — каталог Toyota; навантаження осі 1,1 т — прийняте для ескізу."
+        },
+        "M2": {
+          "name": "Mercedes-Benz Sprinter Transfer 45, 5,0 т",
+          "length": 7.367,
+          "width": 2.02,
+          "height": 2.86,
+          "mass": 5,
+          "axle": 3.5,
+          "source": "S19",
+          "basis": "Варіант 2019: 18+1 місць, 7 367 × 2 020 × 2 860 мм, 5,0 т. Навантаження осі — припущення."
+        },
+        "M3": {
+          "name": "MAN Lion’s City 12 E LE",
+          "length": 12.2,
+          "width": 2.55,
+          "height": 3.32,
+          "mass": 20,
+          "axle": 13,
+          "source": "S20",
+          "basis": "Габарити — технічний лист MAN. Проєктна маса 20 т та вісь 13 т — припущення: уточніть за паспортом комплектації."
+        },
+        "N1": {
+          "name": "Ford Transit 350 L2 H2 FWD, 3,5 т",
+          "length": 5.531,
+          "width": 2.059,
+          "height": 2.542,
+          "mass": 3.5,
+          "axle": 2.15,
+          "source": "S21",
+          "basis": "Габарити EcoBlue L2/H2; вибрано виконання 3,5 т. Ширина без дзеркал; вісь 2,15 т — проєктне припущення."
+        },
+        "N2": {
+          "name": "Isuzu N75.190, розрахунковий кузов",
+          "length": 6.7,
+          "width": 2.5,
+          "height": 3.5,
+          "mass": 7.5,
+          "axle": 5.6,
+          "source": "S22",
+          "basis": "Каталог підтверджує шасі 7,5 т. Габарит завершеного автомобіля та навантаження осі — прийнятий проєктний конверт, не паспорт кузова."
+        },
+        "N3": {
+          "name": "Isuzu F135.240, розрахунковий кузов",
+          "length": 8.5,
+          "width": 2.55,
+          "height": 3.8,
+          "mass": 13.5,
+          "axle": 9.5,
+          "source": "S22",
+          "basis": "Каталог підтверджує шасі 13,5 т. Габарит завершеного автомобіля та навантаження осі — прийнятий проєктний конверт, не паспорт кузова."
+        }
+      },
+      "fleet": {
+        "M1": {
+          "count": 100,
+          "dailyKm": 180,
+          "days": 250,
+          "availability": 0.9,
+          "interval1": 15000,
+          "interval2": 30000,
+          "t1": 2.5,
+          "t2": 5,
+          "repair": 1,
+          "diagnostic": 0.08,
+          "wheel": 0.12
+        },
+        "M2": {
+          "count": 0,
+          "dailyKm": 180,
+          "days": 250,
+          "availability": 0.9,
+          "interval1": 15000,
+          "interval2": 30000,
+          "t1": 4,
+          "t2": 8,
+          "repair": 2,
+          "diagnostic": 0.08,
+          "wheel": 0.12
+        },
+        "M3": {
+          "count": 0,
+          "dailyKm": 180,
+          "days": 250,
+          "availability": 0.9,
+          "interval1": 15000,
+          "interval2": 30000,
+          "t1": 5,
+          "t2": 10,
+          "repair": 3,
+          "diagnostic": 0.08,
+          "wheel": 0.12
+        },
+        "N1": {
+          "count": 0,
+          "dailyKm": 180,
+          "days": 250,
+          "availability": 0.9,
+          "interval1": 15000,
+          "interval2": 30000,
+          "t1": 3,
+          "t2": 6,
+          "repair": 1.5,
+          "diagnostic": 0.08,
+          "wheel": 0.12
+        },
+        "N2": {
+          "count": 20,
+          "dailyKm": 180,
+          "days": 250,
+          "availability": 0.9,
+          "interval1": 15000,
+          "interval2": 30000,
+          "t1": 4.5,
+          "t2": 9,
+          "repair": 2.5,
+          "diagnostic": 0.08,
+          "wheel": 0.12
+        },
+        "N3": {
+          "count": 0,
+          "dailyKm": 180,
+          "days": 250,
+          "availability": 0.9,
+          "interval1": 15000,
+          "interval2": 30000,
+          "t1": 6,
+          "t2": 12,
+          "repair": 3.5,
+          "diagnostic": 0.08,
+          "wheel": 0.12
+        }
+      },
+      "peak": 1.15,
+      "crew": 1,
+      "side": 1.2,
+      "end": 1.5,
+      "walkway": 1.2,
+      "apron": 6,
+      "auxDepth": 4,
+      "columns": 4,
+      "selectedBay": 5,
+      "layoutStyle": "double",
+      "wage": 30000,
+      "admin": 1,
+      "adminWage": 26000,
+      "fixedMonthly": 60000,
+      "rate": 1100,
+      "variable": 150,
+      "electricity": 8,
+      "duty": 0.3,
+      "fitout": 3000,
+      "installation": 0.12,
+      "reserve": 0.1,
+      "years": 10,
+      "outsourceRate": 1200,
+      "demandFactor": 1,
+      "existingWorkers": 4,
+      "existingWidth": 24,
+      "existingDepth": 18,
+      "existingHeight": 5.5,
+      "existing": {
+        "light_general": 2,
+        "light_diagnostic": 2,
+        "light_wheel": 2,
+        "heavy_general": 1,
+        "heavy_diagnostic": 1,
+        "heavy_wheel": 1
+      },
+      "prices": {
+        "lift65": 420000,
+        "mobile30": 1450000,
+        "diagnostic": 100000,
+        "tyreLight": 230000,
+        "tyreHeavy": 650000,
+        "bench": 40000,
+        "compressor": 160000,
+        "extraction": 60000
+      },
+      "choices": {
+        "light": "lift65",
+        "heavy": "mobile30"
+      },
+      "bayOverrides": {},
+      "equipmentOverrides": {},
+      "notes": ""
+    }
+  }
+}

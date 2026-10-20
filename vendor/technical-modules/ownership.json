@@ -1,0 +1,1279 @@
+{
+  "schema": "technical-calculation-ownership/1",
+  "libraryVersion": "0.6.0",
+  "files": [
+    {
+      "origin": "Engine_motor/ICE/src/geometry.mjs",
+      "implementation": "ice-core/src/geometry.mjs",
+      "beforeSha256": "486ddb6af378aae0183eed850c0be3d21ce1daf1e340dbb454d5a129377a9740",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/src/geometry.mjs",
+      "exports": [
+        "RAD",
+        "geometry",
+        "trapz"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/src/thermo.mjs",
+      "implementation": "ice-core/src/thermo.mjs",
+      "beforeSha256": "1c62fea8b79463c734f7b7f25003d4da469b4a4141186808fa917873e7c3f88d",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/src/thermo.mjs",
+      "exports": [
+        "GAS_R",
+        "CV_A",
+        "cv",
+        "u",
+        "enthalpy",
+        "gamma",
+        "temperature",
+        "orifice",
+        "valveArea",
+        "burn",
+        "heatCoefficient"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/src/cycle.mjs",
+      "implementation": "ice-core/src/cycle.mjs",
+      "beforeSha256": "6563606105ecfb1787ab88f252d2a0fda413c49a0b910b5c19089467944edb49",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/src/cycle.mjs",
+      "exports": [
+        "simulate",
+        "dynamics",
+        "interpolate",
+        "evaluatePoint"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/src/inputs.mjs",
+      "implementation": "ice-core/src/inputs.mjs",
+      "beforeSha256": "36da3249d865cb3e67e8fef6fed659bb81728939ebff4b96cc160df2ef3f143b",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/src/inputs.mjs",
+      "exports": [
+        "validateInputs"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/src/native-evaluate.mjs",
+      "implementation": "ice-core/src/native-evaluate.mjs",
+      "beforeSha256": "fe837f1ffc81722dbe9549c78ebf6ec12d46085761392dbb4136978fdb9517f3",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/src/native-evaluate.mjs",
+      "exports": [
+        "expression",
+        "evaluateNative"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/ice.mjs",
+      "implementation": "ice-core/design/src/ice.mjs",
+      "beforeSha256": "dc57eb2aa6659564df34b866289530d8e23c7513076a387c4c8a982ae9f8e919",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/ice.mjs",
+      "exports": [
+        "engineTarget",
+        "engineSpeed",
+        "fuelAirRatio",
+        "cycleParameters",
+        "injectionLaw",
+        "combustionLaw",
+        "simulateCycle",
+        "cylinderTorqueAt",
+        "enginePoint",
+        "sizeEngine",
+        "engineCharacteristics"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/two-stroke.mjs",
+      "implementation": "ice-core/design/src/two-stroke.mjs",
+      "beforeSha256": "72a51c8bb41d58d25c6d9c1ada29d6d1298dd40bc58c5fe39f35c060aa0e47b2",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/two-stroke.mjs",
+      "exports": [
+        "simulateTwoStroke"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/electric.mjs",
+      "implementation": "ice-core/design/src/electric.mjs",
+      "beforeSha256": "0372938829f8112fb1fc1d12f356d70e7dcec98e191b06073eeaa201d7d410b5",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/electric.mjs",
+      "exports": [
+        "motorLoss",
+        "motorEnvelopeSI",
+        "motorPoint",
+        "boundedMotorSI",
+        "currentForPower",
+        "batteryConfig",
+        "designElectrical"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/bev-performance.mjs",
+      "implementation": "ice-core/design/src/bev-performance.mjs",
+      "beforeSha256": "699009575be229fa292a708244d20016bc574532ac316fbc39a13be9c487159e",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/bev-performance.mjs",
+      "exports": [
+        "experimentBattery",
+        "traceSpeed",
+        "traceTolerance",
+        "violationTimer",
+        "performanceProcedureCases"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/bev-procedures.mjs",
+      "implementation": "ice-core/design/src/bev-procedures.mjs",
+      "beforeSha256": "1966b8ca92cb2e95c07092c193fde300b7190f6760758bdee65dc605f8c976b6",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/bev-procedures.mjs",
+      "exports": [
+        "bevProcedureCases"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/ev-performance.mjs",
+      "implementation": "ice-core/design/src/ev-performance.mjs",
+      "beforeSha256": "d5c1d7b382dcc8c1a96c55aed9fa2ec41aafc30e61339fc0d0e272573bd817bb",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/ev-performance.mjs",
+      "exports": [
+        "electricAcceleration"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/ev-range.mjs",
+      "implementation": "ice-core/design/src/ev-range.mjs",
+      "beforeSha256": "902be449ade9c269787fbf7265ead295841b641dec54aab20165056bc3e73652",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/ev-range.mjs",
+      "exports": [
+        "batteryPackProposal",
+        "electricClassProposal",
+        "electricMassBasis",
+        "electricDriveRatio",
+        "refinedBatteryParams",
+        "voltageArchitectureProposal",
+        "roadEnergy",
+        "designElectricVehicle"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/ev-road-load.mjs",
+      "implementation": "ice-core/design/src/ev-road-load.mjs",
+      "beforeSha256": "6b3f0c7891d39acc59588fd4c98b77d7b8a6f9a6328ca5db143c61745a8c73cf",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/ev-road-load.mjs",
+      "exports": [
+        "parseElectricCycle",
+        "roadLoadAt",
+        "electricCycle",
+        "electricCycleInfo"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/hybrid-cycle.mjs",
+      "implementation": "ice-core/design/src/hybrid-cycle.mjs",
+      "beforeSha256": "953bba13b3d5a4629db0b78024dee0280665e1b7aea8e75e7c46b2c52eee0afd",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/hybrid-cycle.mjs",
+      "exports": [
+        "hybridRoadCycle"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/design-iteration.mjs",
+      "implementation": "ice-core/design/src/design-iteration.mjs",
+      "beforeSha256": "70a08b41ee9d7529020d24fa539c14f0069f96de7f3541cb6456347d38d8d959",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/design-iteration.mjs",
+      "exports": [
+        "matchesIterationParams",
+        "selectElectricalRatings",
+        "mechanicalScreen",
+        "iterateDesign"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/schema.mjs",
+      "implementation": "ice-core/design/src/schema.mjs",
+      "beforeSha256": "253dd0b1ee1d4eab6cd92ce87abbf938c67b46d52c4c0aa164115d08759f51eb",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/schema.mjs",
+      "exports": [
+        "VERSION",
+        "FORMAT",
+        "scopeActive",
+        "activeFields",
+        "validateParams",
+        "formFromParams",
+        "readForm",
+        "proposedDefaults",
+        "commitProposal",
+        "readWorkspace",
+        "compatibleExamples"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/datasets.mjs",
+      "implementation": "ice-core/design/src/datasets.mjs",
+      "beforeSha256": "a325dd3e5c31fcd6d68a37e3b3098c222384a0e6a6631c7fffa170c55d202349",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/datasets.mjs",
+      "exports": [
+        "readDefaultCSV",
+        "readClassCSV",
+        "classProposal",
+        "rpmAdvice",
+        "recommendedValue"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/graph.mjs",
+      "implementation": "ice-core/design/src/graph.mjs",
+      "beforeSha256": "360a60779578182fac2cefaf5f0f014b03a856704756e23330526867f036746c",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/graph.mjs",
+      "exports": [
+        "nativeUnit",
+        "fingerprint",
+        "CalculationGraph"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/native-views.mjs",
+      "implementation": "ice-core/design/src/native-views.mjs",
+      "beforeSha256": "62298a543b43d804cb8ff3612b58070e24597c29b5ec858b5af7641b432b0491",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/native-views.mjs",
+      "exports": [
+        "appendNativeViews"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/project.mjs",
+      "implementation": "ice-core/design/src/project.mjs",
+      "beforeSha256": "12bd91947cf0edc9a2ffc44afd887270086dab8e23013c475184d87758b78f34",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/project.mjs",
+      "exports": [
+        "calculateDesign",
+        "evaluateSystemPoint",
+        "addRoadDemand",
+        "vehiclePowerProposal"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/supplements.mjs",
+      "implementation": "ice-core/design/src/supplements.mjs",
+      "beforeSha256": "f9f11f8f5d2693e645245af51ce36fcdc6dc5cbd63ccf6d09d327d1e6273a963",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/supplements.mjs",
+      "exports": [
+        "fatigueLife",
+        "controllerResponse",
+        "addSupplements"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/engineering-review.mjs",
+      "implementation": "ice-core/design/src/engineering-review.mjs",
+      "beforeSha256": "fd7922c8a8a34a7e07404db5818311614abe6d55bae9826bddc639429a18638c",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/engineering-review.mjs",
+      "exports": [
+        "goodmanScreen",
+        "rodScreen",
+        "pinScreen",
+        "shaftScreen",
+        "coolantDuty",
+        "pmsmPoint",
+        "reviewDesign",
+        "engineeringReviewHTML"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/transfer.mjs",
+      "implementation": "ice-core/design/src/transfer.mjs",
+      "beforeSha256": "ca44015e009ffdd28daeac9d0ba21728a0c0e504fcf36114d63c91bd71083e52",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/transfer.mjs",
+      "exports": [
+        "makeTransfer",
+        "importTransfer"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/validation.mjs",
+      "implementation": "ice-core/design/src/validation.mjs",
+      "beforeSha256": "28674e6deda2b958756a3b111b28396a86e7225f0398918d45993a6ee1df05d5",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/validation.mjs",
+      "exports": [
+        "validatePairsCSV"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/design/src/wltc.mjs",
+      "implementation": "ice-core/design/src/wltc.mjs",
+      "beforeSha256": "d75a2a567018f4bc1f371a429d1dd53042fb543583977a24e9a86af8810f96f6",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/wltc.mjs",
+      "exports": [
+        "isWLTC",
+        "wltcProfile"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/maps.mjs",
+      "implementation": "ice-core/powertrain/src/maps.mjs",
+      "beforeSha256": "3f0f0d5ec531149a07ca7ea64dc3636d511f19240b95422d45bd9b4802cf9f68",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/maps.mjs",
+      "exports": [
+        "increasing",
+        "validateMap",
+        "bracket",
+        "linear",
+        "operatingDomain",
+        "lookup",
+        "parseCSV"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/component-package.mjs",
+      "implementation": "ice-core/powertrain/src/component-package.mjs",
+      "beforeSha256": "fb72c70f458e4698c5cde74d2445463ef011d5e092d2849bae455d938295029e",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/component-package.mjs",
+      "exports": [
+        "makeComponentPackage",
+        "installComponent"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/battery-map.mjs",
+      "implementation": "ice-core/powertrain/src/battery-map.mjs",
+      "beforeSha256": "4979d79dd3bf3ee2d6441bdda31a852fcd9ee7e9d00a44444b40a375f42b0d5d",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/battery-map.mjs",
+      "exports": [
+        "validateBatteryModel",
+        "batteryModelAt",
+        "thermalStep"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/battery.mjs",
+      "implementation": "ice-core/powertrain/src/battery.mjs",
+      "beforeSha256": "2514348d6e32b3484a930075da0bf38da12444e622435051e550c71ae48eed35",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/battery.mjs",
+      "exports": [
+        "batteryLimits",
+        "batteryStep"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/engine.mjs",
+      "implementation": "ice-core/powertrain/src/engine.mjs",
+      "beforeSha256": "541cb7a6a6d59cb0e336fe0f2f8bb90d618d14688adf3cadd975e2b02e788f5b",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/engine.mjs",
+      "exports": [
+        "RPM_TO_RAD",
+        "envelope",
+        "fuel",
+        "operatingPoint"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/motor.mjs",
+      "implementation": "ice-core/powertrain/src/motor.mjs",
+      "beforeSha256": "d6f6a8e5851ddea41086fe54b5e2e5452a1df88f2e2a56712482c727ad2fbd56",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/motor.mjs",
+      "exports": [
+        "motorEnvelope",
+        "motorPower",
+        "boundedMotor"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/calibration.mjs",
+      "implementation": "ice-core/powertrain/src/calibration.mjs",
+      "beforeSha256": "8cdac448ce5612e03bba36053dc19f67aaebf218fabd9ca555915570361d29c7",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/calibration.mjs",
+      "exports": [
+        "fitWillans",
+        "validateCalibrationEvidence"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/vehicle.mjs",
+      "implementation": "ice-core/powertrain/src/vehicle.mjs",
+      "beforeSha256": "952f8d60deef5aad056c3a928a168ec5dd7c6acdf930176fcecdc4ff6c31acb5",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/vehicle.mjs",
+      "exports": [
+        "G",
+        "roadLoad",
+        "validateConfig",
+        "validateCycle",
+        "expandCycle"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/simulation.mjs",
+      "implementation": "ice-core/powertrain/src/simulation.mjs",
+      "beforeSha256": "f2c1a2c8c11080a697704837faa374a6343c129e690d362086ee7e55b360864f",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/simulation.mjs",
+      "exports": [
+        "components",
+        "solvePoint",
+        "simulateMission",
+        "performance"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/requirements.mjs",
+      "implementation": "ice-core/powertrain/src/requirements.mjs",
+      "beforeSha256": "cd1dcfffc852ffc61034368da03f5717a1ed597a3da5514ef66ab2fa5b4760dc",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/requirements.mjs",
+      "exports": [
+        "accelerate",
+        "steadyRange",
+        "assessRequirements",
+        "integratedRange"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/setup.mjs",
+      "implementation": "ice-core/powertrain/src/setup.mjs",
+      "beforeSha256": "6839baa3db820db135a41918e9315446933ebc3dc2a8e01ce419d0cafeff2c44",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/setup.mjs",
+      "exports": [
+        "engineDefaults",
+        "motorDefaults",
+        "makePatch",
+        "validatePatch",
+        "presetDefaults",
+        "migrateWorkspace"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/advisor.mjs",
+      "implementation": "ice-core/powertrain/src/advisor.mjs",
+      "beforeSha256": "3e743da247fa5f255d87bb13df484729830242ea8188d428d5f799631b3f8957",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/advisor.mjs",
+      "exports": [
+        "candidatePatches",
+        "evaluateCandidate",
+        "sortCandidates"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/alpha-import.mjs",
+      "implementation": "ice-core/powertrain/src/alpha-import.mjs",
+      "beforeSha256": "c76ef349289c5839d41d1203402760c573c278cdc4395c7a7a24b32f8c9594e9",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/alpha-import.mjs",
+      "exports": [
+        "numericMatrix",
+        "readMatlabArray",
+        "normalizeAlphaEngine",
+        "normalizeAlphaMotor"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/map-audit.mjs",
+      "implementation": "ice-core/powertrain/src/map-audit.mjs",
+      "beforeSha256": "0409eefaf4158034db4da37abb03c4828a795d3ceea767d9ab92a994c0006c36",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/map-audit.mjs",
+      "exports": [
+        "auditMapCSV"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/mission-audit.mjs",
+      "implementation": "ice-core/powertrain/src/mission-audit.mjs",
+      "beforeSha256": "e5a177a91a8f0cc94fd0cf20e1fc2571c8751cea1ac42eca82e8b16038a5d5cc",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/mission-audit.mjs",
+      "exports": [
+        "matchTerminalSoc",
+        "sensitivityMission"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/validation.mjs",
+      "implementation": "ice-core/powertrain/src/validation.mjs",
+      "beforeSha256": "f6acddd427fba2cfcdfb6e3e2cf2e3474f234ee7302ef0c4240c7debbb4ce24a",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/validation.mjs",
+      "exports": [
+        "mapFromLongCSV",
+        "compareTrips"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/native.mjs",
+      "implementation": "ice-core/powertrain/src/native.mjs",
+      "beforeSha256": "d3fb635dd960d6600954e3d3dd6464f6cb6dcab453c2d51fa81ada12ee2faf42",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/native.mjs",
+      "exports": [
+        "nativeDocument"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/powertrain/src/project.mjs",
+      "implementation": "ice-core/powertrain/src/project.mjs",
+      "beforeSha256": "0e61e4a49b3b36b07fb9a7cf711f8cc0bebfe1fa6bc82fd81447a93020b6c57a",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/project.mjs",
+      "exports": [
+        "VERSION",
+        "calculatePowertrain"
+      ]
+    },
+    {
+      "origin": "Engine_motor/ICE/vendor/engdoc/runtime.js",
+      "implementation": "ice-core/vendor/engdoc/runtime.js",
+      "beforeSha256": "4c246b584431d58735178a1f546a7046a8dcf7b4985b464d3b4077459bfa3bf2",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/vendor/engdoc/runtime.js",
+      "upstreamUnchanged": true
+    },
+    {
+      "origin": "Engine_motor/ICE/vendor/engdoc/native-contract.js",
+      "implementation": "ice-core/vendor/engdoc/native-contract.js",
+      "beforeSha256": "9f1e0c60b99b75a7a82e0d677c3bc1e453e2568f4bf912df9179350ee69f4c70",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/vendor/engdoc/native-contract.js",
+      "upstreamUnchanged": true
+    },
+    {
+      "origin": "Engine_motor/ICE/vendor/text-work-20260924/runtime.mjs",
+      "implementation": "ice-core/vendor/text-work-20260924/runtime.mjs",
+      "beforeSha256": "e45df1be6d025cc04245db4708a3913d563188e1ac0bd91e7f31a149d0de1ee3",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/vendor/text-work-20260924/runtime.mjs",
+      "upstreamUnchanged": true
+    },
+    {
+      "origin": "TEA/New/src/calendar.js",
+      "implementation": "service-workshop/src/calendar.js",
+      "beforeSha256": "1b9eb3a994466cddc03e612e9deeed1207abca0482663bdcba1decc3bf4cd6be",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/calendar.js",
+      "exports": [
+        "SLOT_HOURS",
+        "slotStart",
+        "slotEnd",
+        "stamp",
+        "dateText",
+        "wallTime",
+        "staffAvailable",
+        "overlap",
+        "timeToInterval"
+      ]
+    },
+    {
+      "origin": "TEA/New/src/calculations.js",
+      "implementation": "service-workshop/src/calculations.js",
+      "beforeSha256": "76e6ee5f6d7be0f17e2aa004ecccfd8c581f18df8c1e136265e9cb3f7c076c2f",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/calculations.js",
+      "exports": [
+        "CalculationBook",
+        "scalar"
+      ]
+    },
+    {
+      "origin": "TEA/New/src/scheduler.js",
+      "implementation": "service-workshop/src/scheduler.js",
+      "beforeSha256": "36f20d64df0b3f2b747c6c1f8b660d1f3fceeebb3ef5c71a635daa3c429655d3",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/scheduler.js",
+      "exports": [
+        "evaluateSchedule"
+      ]
+    },
+    {
+      "origin": "TEA/New/src/planning.js",
+      "implementation": "service-workshop/src/planning.js",
+      "beforeSha256": "0d9e094477a8be80f1be65759c33b7b45a342f81970044e0ab4d247479ec9f2c",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/planning.js",
+      "exports": [
+        "evaluateFleet",
+        "evaluatePlanning"
+      ]
+    },
+    {
+      "origin": "TEA/New/src/exercises.js",
+      "implementation": "service-workshop/src/exercises.js",
+      "beforeSha256": "74aed14ef2a8457a361dbea8daca23808c7dee5bc986b28ec57f0f4ad60f1b8f",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/exercises.js",
+      "exports": [
+        "evaluateAbs",
+        "evaluateHold",
+        "evaluateAdas",
+        "evaluateAnnual",
+        "evaluatePilot"
+      ]
+    },
+    {
+      "origin": "TEA/New/src/station.js",
+      "implementation": "service-workshop/src/station.js",
+      "beforeSha256": "13685677f4fcb86a5d4b89d1bd147736198ea4bf17ce6fbef1f7bbbc1eced472",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/station.js",
+      "exports": [
+        "evaluateStation"
+      ]
+    },
+    {
+      "origin": "TEA/New/src/station-layout.js",
+      "implementation": "service-workshop/src/station-layout.js",
+      "beforeSha256": "142fce788983ebe863d031a67556310135becfb3f7e121ba4c9be89c54f26b1d",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/station-layout.js",
+      "exports": [
+        "ACCESS_LABELS",
+        "postTypeLabel",
+        "selectStationLayout"
+      ]
+    },
+    {
+      "origin": "TEA/New/src/station-plan.js",
+      "implementation": "service-workshop/src/station-plan.js",
+      "beforeSha256": "b22a1a477deb7ee1ad301bfdeaa6a63b639196ee3f4c41121e375d0cb0e2864a",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/station-plan.js",
+      "exports": [
+        "PLAN_DEFAULTS",
+        "bayPoint",
+        "bayRect",
+        "bayServices",
+        "buildStationPlan"
+      ]
+    },
+    {
+      "origin": "TEA/New/src/station-data.js",
+      "implementation": "service-workshop/src/station-data.js",
+      "beforeSha256": "9f242085273e683bee1645cb78d8be956b186ed7633d9dd0d19ab3f56b8deec7",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/station-data.js",
+      "exports": [
+        "VEHICLE_MODELS",
+        "ZONES",
+        "EQUIPMENT",
+        "EQUIPMENT_IDS",
+        "stationDefaults",
+        "STATION_NUMBERS",
+        "ensureStation",
+        "validateStation"
+      ]
+    },
+    {
+      "origin": "TEA/New/src/presets.js",
+      "implementation": "service-workshop/src/presets.js",
+      "beforeSha256": "aeeb4a980a32e142e353be9f50404582dacd84096f1641ad45ced7e2ca95c55e",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/src/presets.js",
+      "exports": [
+        "PRESET_VERSION",
+        "CLASS_IDS",
+        "VEHICLES",
+        "VEHICLE_CHOICES",
+        "WORKSHOPS",
+        "PLANNING_FIELDS",
+        "classDefaults",
+        "setVehicleChoice",
+        "setWorkshopChoice",
+        "addProfileDefaults",
+        "mixLabel",
+        "CLASS_DESCRIPTIONS",
+        "restoreVehicleDefaults",
+        "validVehicleMix",
+        "balanceVehicleMix",
+        "repairVehicleMix"
+      ]
+    },
+    {
+      "origin": "TEA/New/vendor/engdoc-runtime.js",
+      "implementation": "service-workshop/vendor/engdoc-runtime.js",
+      "beforeSha256": "d1f93cd31597602fa439dce313d6030a5ec0c1ae6a3edcbd371f4e854c92684b",
+      "snapshot": "validation/origins/pre-foundation/TEA/New/vendor/engdoc-runtime.js",
+      "upstreamUnchanged": true
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/numeric.js",
+      "implementation": "automobile/numeric.mjs",
+      "beforeSha256": "370cefadd3dff0d1dccdb1ffee8d1b3e6e4362e5da21f8c4c61a281635afc45a",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/numeric.js",
+      "factory": "createNumeric",
+      "hostGlobal": "VehicleNumeric"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/layout.js",
+      "implementation": "automobile/layout.mjs",
+      "beforeSha256": "75780e38f5449b4889974a6c5e7c2b98e3e46241ca553660cf1bd1df1d5545ef",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/layout.js",
+      "factory": "createLayoutCalculator",
+      "hostGlobal": "VehicleLayoutCalculator"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/chapter3-calculations.js",
+      "implementation": "automobile/chapter3-calculations.mjs",
+      "beforeSha256": "64a3729950eae27d3097558045dbeb9c6be37b1b9afac25c55177a58a154266e",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/chapter3-calculations.js",
+      "factory": "createChapter3Calculations",
+      "hostGlobal": "VehicleChapter3Calculations"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/chapter4-inputs.js",
+      "implementation": "automobile/chapter4-inputs.mjs",
+      "beforeSha256": "d01a65bf8ad0b7a719a0b33990d1628df8cdb7d96d5c2f620af8e9c8eb791caf",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/chapter4-inputs.js",
+      "factory": "createChapter4Inputs",
+      "hostGlobal": "VehicleChapter4Inputs"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/chapter4-traction.js",
+      "implementation": "automobile/chapter4-traction.mjs",
+      "beforeSha256": "9b0bcae43df238d8f98085e80a8a0e1a6f972722c4910fef73cb7936db958737",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/chapter4-traction.js",
+      "factory": "createChapter4Traction",
+      "hostGlobal": "VehicleChapter4Traction"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/rolling-resistance-speed.js",
+      "implementation": "automobile/rolling-resistance-speed.mjs",
+      "beforeSha256": "4f16520597286a27a08674590b3134388047be39cec66a793392d6933d13abb5",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/rolling-resistance-speed.js",
+      "factory": "createRollingResistanceSpeed",
+      "hostGlobal": "VehicleRollingResistanceSpeed"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/q-model.js",
+      "implementation": "automobile/q-model.mjs",
+      "beforeSha256": "02ca0103af37dbcf4c5914906f43dd42dbdf2e07c3c1f0f908d7e494e7e97c58",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/q-model.js",
+      "factory": "createQModel",
+      "hostGlobal": "VehicleQModel"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/powertrain-design.js",
+      "implementation": "automobile/powertrain-design.mjs",
+      "beforeSha256": "0fda1691432daa3b00e289f98ebec9558e3b785dd2eca3a8f85175a6ac9d89a6",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/powertrain-design.js",
+      "factory": "createPowertrainDesign",
+      "hostGlobal": "VehiclePowertrainDesign"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/launch-design.js",
+      "implementation": "automobile/launch-design.mjs",
+      "beforeSha256": "bec1d6aed8b12ecbc343bef794ffa7a16e1ac454209fe27fd22a818997994d87",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/launch-design.js",
+      "factory": "createLaunchDesign",
+      "hostGlobal": "VehicleLaunchDesign"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/traction-characteristic.js",
+      "implementation": "automobile/traction-characteristic.mjs",
+      "beforeSha256": "5a67e4bb6ffc8cc20609ce796867e398e513acc2f14abb61d7bae150500f649f",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/traction-characteristic.js",
+      "factory": "createTractionCharacteristic",
+      "hostGlobal": "VehicleTractionCharacteristic"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/gearbox-ratios.js",
+      "implementation": "automobile/gearbox-ratios.mjs",
+      "beforeSha256": "a4a2549b67e4c4260967649ec9f83795429780d360b8e69789ed97df55ef5b4e",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/gearbox-ratios.js",
+      "factory": "createGearboxRatios",
+      "hostGlobal": "VehicleGearboxRatios"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/gearbox-teeth.js",
+      "implementation": "automobile/gearbox-teeth.mjs",
+      "beforeSha256": "6277e799c809ef633c8cdb6db0fc3fa5648a0167119235feb32dd0da1907bc2c",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/gearbox-teeth.js",
+      "factory": "createGearboxTeeth",
+      "hostGlobal": "VehicleGearboxTeeth"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/gearbox-gears.js",
+      "implementation": "automobile/gearbox-gears.mjs",
+      "beforeSha256": "b290a10865cf7ca0ce0e711d7b19cb60e4e0029266f1e6958f1ab3f06f2923e5",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/gearbox-gears.js",
+      "factory": "createGearboxGears",
+      "hostGlobal": "VehicleGearboxGears"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/gearbox-layout.js",
+      "implementation": "automobile/gearbox-layout.mjs",
+      "beforeSha256": "12d4c2ca7654ed6a3f8d2880235054a42c4fbb50ab816c809f6429027cf796ce",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/gearbox-layout.js",
+      "factory": "createGearboxLayout",
+      "hostGlobal": "VehicleGearboxLayout"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/traction-paths.js",
+      "implementation": "automobile/traction-paths.mjs",
+      "beforeSha256": "80c8d69f3df3371977c8e587667773ac34f0092c4029f0ca1486c6c311b2a414",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/traction-paths.js",
+      "factory": "createTractionPaths",
+      "hostGlobal": "VehicleTractionPaths"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/performance.js",
+      "implementation": "automobile/performance.mjs",
+      "beforeSha256": "bf823263de72b8a5e75c78d638a9ac8d285c10d9d1bb305c9e80e8ec7af38904",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/performance.js",
+      "factory": "createPerformance",
+      "hostGlobal": "VehiclePerformance"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/braking.js",
+      "implementation": "automobile/braking.mjs",
+      "beforeSha256": "042f62b79314b8674db76cac52d2485a8db77a8722aaa8c06f32ac2045505340",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/braking.js",
+      "factory": "createBraking",
+      "hostGlobal": "VehicleBraking"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/clutch.js",
+      "implementation": "automobile/clutch.mjs",
+      "beforeSha256": "5fec15635a68ee0dece4119a72cf7105b76075a064a1afc981fad06a4cfd7fbd",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/clutch.js",
+      "factory": "createClutch",
+      "hostGlobal": "VehicleClutch"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/cycle-energy.js",
+      "implementation": "automobile/cycle-energy.mjs",
+      "beforeSha256": "7facf2b8646a6c8942216130232adfc409e811d2309836080fad3bbbac8e49f3",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/cycle-energy.js",
+      "factory": "createCycleEnergy",
+      "hostGlobal": "VehicleCycleEnergy"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/battery-design.js",
+      "implementation": "automobile/battery-design.mjs",
+      "beforeSha256": "10291ee7bb20856b78ccb52c521b9e01b0fd6a5fe768fa195b55970fa41b7dde",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/battery-design.js",
+      "factory": "batteryDesignFactory",
+      "hostGlobal": "VehicleBatteryDesign"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/fuel-economy.js",
+      "implementation": "automobile/fuel-economy.mjs",
+      "beforeSha256": "f8a3628c3cf9420b6107264e0dd344da192febb9b0af70d6aef27d6f89745280",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/fuel-economy.js",
+      "factory": "createFuelEconomy",
+      "hostGlobal": "VehicleFuelEconomy"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/driveshaft.js",
+      "implementation": "automobile/driveshaft.mjs",
+      "beforeSha256": "775e3d373a9f88b531fbd534891a4b700589ce61baf87881d967253995f488d5",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/driveshaft.js",
+      "factory": "createDriveshaft",
+      "hostGlobal": "VehicleDriveshaft"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/final-drive.js",
+      "implementation": "automobile/final-drive.mjs",
+      "beforeSha256": "b4277632b6b3874e6510b574f522eea057fd5e0afa03722bac045ce27d656d4a",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/final-drive.js",
+      "factory": "createFinalDrive",
+      "hostGlobal": "VehicleFinalDrive"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/final-drive-secondary.js",
+      "implementation": "automobile/final-drive-secondary.mjs",
+      "beforeSha256": "cefd3d1a3db347273f661682e3655f46b352fa4e23ac47a7ac42c430a22490c8",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/final-drive-secondary.js",
+      "factory": "createSecondary",
+      "hostGlobal": "VehicleFinalDriveSecondary"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/differential.js",
+      "implementation": "automobile/differential.mjs",
+      "beforeSha256": "514591339635e938404639b4be04647a15c2768c8fe7bb30e391ef03696d489c",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/differential.js",
+      "factory": "createDifferential",
+      "hostGlobal": "VehicleDifferential"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/wheel-drive.js",
+      "implementation": "automobile/wheel-drive.mjs",
+      "beforeSha256": "b53b95f7f5fb4d94ef7441db5bbe1ed586e53a39b84258589f0ed6f29958199c",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/wheel-drive.js",
+      "factory": "createWheelDrive",
+      "hostGlobal": "VehicleWheelDrive"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/handling.js",
+      "implementation": "automobile/handling.mjs",
+      "beforeSha256": "da2104e79b2b8d195b13026aaa9a1f54df3a67febd54b270a10aa21708ddaaf1",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/handling.js",
+      "factory": "createHandling",
+      "hostGlobal": "VehicleHandling"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/ride.js",
+      "implementation": "automobile/ride.mjs",
+      "beforeSha256": "31691888f1c1bcec4b6fe40a51146ed44c4a6e3df642578eb3fc0d08e9421abb",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/ride.js",
+      "factory": "createRide",
+      "hostGlobal": "VehicleRide"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/offroad.js",
+      "implementation": "automobile/offroad.mjs",
+      "beforeSha256": "1f7cd17ef20f4589cb093973235eae90fb6a99f97893d68c262966597335c6a3",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/offroad.js",
+      "factory": "createOffroad",
+      "hostGlobal": "VehicleOffroad"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/suspension.js",
+      "implementation": "automobile/suspension.mjs",
+      "beforeSha256": "0064eb5fe92de5f2c087a9b20d22157e1d847e69c06f1b42b28ca58d560b4115",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/suspension.js",
+      "factory": "createSuspension",
+      "hostGlobal": "VehicleSuspension"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/steering.js",
+      "implementation": "automobile/steering.mjs",
+      "beforeSha256": "6c2a30b42bc010458d86c6bb6921d61353e06115a88c1bcc527a56a081a43766",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/steering.js",
+      "factory": "createSteering",
+      "hostGlobal": "VehicleSteering"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/brakes.js",
+      "implementation": "automobile/brakes.mjs",
+      "beforeSha256": "f7a7becbddcb048922f28804119ac053de1a92ed2a7484e1672de02eb504c448",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/brakes.js",
+      "factory": "createBrakes",
+      "hostGlobal": "VehicleBrakes"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/steering-linkage.js",
+      "implementation": "automobile/steering-linkage.mjs",
+      "beforeSha256": "f27ee2b2701fca13e5393619d1e073e053424ca99ba2fb1212915e93ed5bbd98",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/steering-linkage.js",
+      "factory": "createSteeringLinkage",
+      "hostGlobal": "VehicleSteeringLinkage"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/elastic-elements.js",
+      "implementation": "automobile/elastic-elements.mjs",
+      "beforeSha256": "462aad9964ebf9f78a650c16b3043e6b79c9bbecc9f28d179a718d41db298359",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/elastic-elements.js",
+      "factory": "createElasticElements",
+      "hostGlobal": "VehicleElasticElements"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/wheel-gear.js",
+      "implementation": "automobile/wheel-gear.mjs",
+      "beforeSha256": "3aa9c957978a4298d323a265b8460a061cc56eafdca2c4596374994dcc6812de",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/wheel-gear.js",
+      "factory": "createWheelGear",
+      "hostGlobal": "VehicleWheelGear"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/clutch-special.js",
+      "implementation": "automobile/clutch-special.mjs",
+      "beforeSha256": "9ce5cd7293e0c43c9c3b3cb5b18ea5218119b8e29b196c89ae2298555eaa4f57",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/clutch-special.js",
+      "factory": "createClutchSpecial",
+      "hostGlobal": "VehicleClutchSpecial"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/mechanical-design-review.js",
+      "implementation": "automobile/mechanical-design-review.mjs",
+      "beforeSha256": "6d89ea0ec1694d14e8124db1a6a2b90f85cd4faaad397e2e63b3c0ee073129ea",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/mechanical-design-review.js",
+      "factory": "createMechanicalDesignReview",
+      "hostGlobal": "VehicleMechanicalDesignReview"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/shift-strategy.js",
+      "implementation": "automobile/shift-strategy.mjs",
+      "beforeSha256": "435ba5cd98dafa9d1e86b8ef78058a1df1c889a1d5ff5ea40c59f8d398a2d76a",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/shift-strategy.js",
+      "factory": "createShiftStrategy",
+      "hostGlobal": "VehicleShiftStrategy"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/efficiency-maps.js",
+      "implementation": "automobile/efficiency-maps.mjs",
+      "beforeSha256": "f20ed86c0fc96a28194467dd3108e530f790b0a8e421b95df0d2e19adee3271b",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/efficiency-maps.js",
+      "factory": "createEfficiencyMaps",
+      "hostGlobal": "VehicleEfficiencyMaps"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/traction-diagram.js",
+      "implementation": "automobile/traction-diagram.mjs",
+      "beforeSha256": "2858e377814449573ec327325be7e96e02d776cd70baf4453065f3b5021855b9",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/traction-diagram.js",
+      "factory": "createTractionDiagram",
+      "hostGlobal": "VehicleTractionDiagram"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/passenger-mass.js",
+      "implementation": "automobile/passenger-mass.mjs",
+      "beforeSha256": "441b51a6017a0b8c8c376149596f4fca0b0f96440794fa1ac4fa8f37aefb6c1c",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/passenger-mass.js",
+      "factory": "createPassengerMass",
+      "hostGlobal": "VehiclePassengerMass"
+    },
+    {
+      "origin": "Automobile/new/manuscript/calculations/battery-sizing.engdoc.md",
+      "implementation": "automobile/worksheets/battery-sizing.engdoc.md",
+      "beforeSha256": "489d99bcc308ce929be4f487c1da4ea3f2941a7f428a1beda90f5227c4f6d087",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/battery-sizing.engdoc.md",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Automobile/new/manuscript/calculations/clutch-diaphragm.engdoc.md",
+      "implementation": "automobile/worksheets/clutch-diaphragm.engdoc.md",
+      "beforeSha256": "61ff2cf9011d28551b3e5364e970318b9d834346dd9de2776ed99d3f2e6b4811",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/clutch-diaphragm.engdoc.md",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Automobile/new/manuscript/calculations/clutch-preliminary.engdoc.md",
+      "implementation": "automobile/worksheets/clutch-preliminary.engdoc.md",
+      "beforeSha256": "2a7d2c9dcb38f9bafc66d5484bbba4e0994ffed45641b483e5c057d04f0b2f1e",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/clutch-preliminary.engdoc.md",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Automobile/new/manuscript/calculations/clutch-springs.engdoc.md",
+      "implementation": "automobile/worksheets/clutch-springs.engdoc.md",
+      "beforeSha256": "1e2bf21bd3e2f7abbcd504ab3a3c2f8d39e4342190dba5b7959c5bb8a9fe325f",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/clutch-springs.engdoc.md",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Automobile/new/manuscript/calculations/clutch.engdoc.md",
+      "implementation": "automobile/worksheets/clutch.engdoc.md",
+      "beforeSha256": "17bd568c4fad741c452b2f940ffdaa96e5552b0fd65a553518d72408347aea65",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/clutch.engdoc.md",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Automobile/new/manuscript/calculations/driveshaft-torque-clutch.engdoc.md",
+      "implementation": "automobile/worksheets/driveshaft-torque-clutch.engdoc.md",
+      "beforeSha256": "30dd587af7078be91042531d586ac59637799b8ea1c555ef643e52615f0b7859",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/driveshaft-torque-clutch.engdoc.md",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Automobile/new/manuscript/calculations/driveshaft-torque-direct.engdoc.md",
+      "implementation": "automobile/worksheets/driveshaft-torque-direct.engdoc.md",
+      "beforeSha256": "972fff60c4831d3ae8f08595f612cddf114e0b61a563b7e21f4efb500dadba4f",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/driveshaft-torque-direct.engdoc.md",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Automobile/new/manuscript/calculations/driveshaft.engdoc.md",
+      "implementation": "automobile/worksheets/driveshaft.engdoc.md",
+      "beforeSha256": "126b2f2002b8cda00153167547fb8789514edb62e83c4ed0d0071d596c8271a9",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/driveshaft.engdoc.md",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Automobile/new/manuscript/calculations/final-drive-secondary.engdoc.md",
+      "implementation": "automobile/worksheets/final-drive-secondary.engdoc.md",
+      "beforeSha256": "c1662bfb9c20c21f19766c2ed6c28807855f4ed6fff0a9b595b85915ab6cf3e2",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/final-drive-secondary.engdoc.md",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Automobile/new/manuscript/calculations/ride.engdoc.md",
+      "implementation": "automobile/worksheets/ride.engdoc.md",
+      "beforeSha256": "4ede044150c10ed67b9211e7de0fedde846eb142b308cc8e1215bdc465dbe40a",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/manuscript/calculations/ride.engdoc.md",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/electric-drive-selection.js",
+      "implementation": "automobile/electric-drive-selection.mjs",
+      "beforeSha256": "212b28877cd2514ba292adff7ad1973a854bdcce102362df00f37d09ee4eaad6",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/electric-drive-selection.js",
+      "factory": "createElectricDriveSelection",
+      "hostGlobal": "VehicleElectricDriveSelection"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/component-design-defaults.js",
+      "implementation": "automobile/component-design-defaults.mjs",
+      "beforeSha256": "22babe550df4680cf0c0e7c309aa8efac046becd1bfb3d4995a1d5e44bb6e5cb",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/component-design-defaults.js",
+      "factory": "createComponentDesignDefaults",
+      "hostGlobal": "VehicleComponentDesignDefaults"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/transmission-schemes.js",
+      "implementation": "automobile/transmission-schemes.mjs",
+      "beforeSha256": "e768535aa28fe54b16ed010f0715e729ba713a5e3bda888030091ce8b586869d",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/transmission-schemes.js",
+      "factory": "createTransmissionSchemes",
+      "hostGlobal": "VehicleTransmissionSchemes"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/q-dataset.js",
+      "implementation": "automobile/q-dataset.mjs",
+      "beforeSha256": "126203a58ec7a024ee41cec9921d2d21f4681dfc8070ab7258ff26c1fb393d65",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/q-dataset.js",
+      "factory": "createQDataset",
+      "hostGlobal": "VehicleQDataset"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/wltc-cycles.js",
+      "implementation": "automobile/wltc-cycles.mjs",
+      "beforeSha256": "41188cef463edb2efc3e141334d33a105f28a17e859fb2710c39b254591fd9c0",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/wltc-cycles.js",
+      "factory": "createWltcCycles",
+      "hostGlobal": "VehicleWltcCycles"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/measured-efficiency-map.js",
+      "implementation": "automobile/measured-efficiency-map.mjs",
+      "beforeSha256": "3b9a67f388556c5f9b8cb785614490eb83427bdf640ec83f382c05875e0f3511",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/measured-efficiency-map.js",
+      "factory": "createMeasuredEfficiencyMap",
+      "hostGlobal": "VehicleMeasuredEfficiencyMap"
+    },
+    {
+      "origin": "Automobile/new/Vehickle_calculations_assets/steering-animation.js",
+      "implementation": "automobile/steering-animation.mjs",
+      "beforeSha256": "18c7a40b2f02d6a6117777d8aadad5418edb3a427420b329ca8d56688ec60de3",
+      "snapshot": "validation/origins/pre-foundation/Automobile/new/Vehickle_calculations_assets/steering-animation.js",
+      "factory": "createSteeringAnimation",
+      "hostGlobal": "VehicleSteeringAnimation"
+    },
+    {
+      "origin": "Engine_motor/ICE/manuscript/ch02.json",
+      "implementation": "ice-core/worksheets/manuscript/ch02.json",
+      "beforeSha256": "99312e25ad77f6157373d3bd8961c2b16512f4497cc46d324a78d9b791a6477e",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/manuscript/ch02.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/manuscript/ch04.json",
+      "implementation": "ice-core/worksheets/manuscript/ch04.json",
+      "beforeSha256": "dc57872c2ad8ed7b2f68a904eabbe766970e01114556fe67707afb1b9ffcf2aa",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/manuscript/ch04.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/manuscript/ch06.json",
+      "implementation": "ice-core/worksheets/manuscript/ch06.json",
+      "beforeSha256": "dfcdb1e95835b2b762db712c57571f40fda61c997b5aca2c87d1c4ba276571bb",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/manuscript/ch06.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/manuscript/ch08.json",
+      "implementation": "ice-core/worksheets/manuscript/ch08.json",
+      "beforeSha256": "41ada058c25bd58b0801aa1b91811b42f9f2c869327ba6cb08f0b5c468447b42",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/manuscript/ch08.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/manuscript/ch11.json",
+      "implementation": "ice-core/worksheets/manuscript/ch11.json",
+      "beforeSha256": "fed2bd3f540b94b530dbfa3b431dfa981e8335371db921745b82cb3ea350981a",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/manuscript/ch11.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/manuscript/ch12.json",
+      "implementation": "ice-core/worksheets/manuscript/ch12.json",
+      "beforeSha256": "c2a854fbe81b23eafbdb900c5d4f7fdc6e7691df8b827915ab5b38c478e8d7ad",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/manuscript/ch12.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/design/manuscript/03-preparation.json",
+      "implementation": "ice-core/worksheets/design/manuscript/03-preparation.json",
+      "beforeSha256": "dc8dfe1176b72e9551bd73b72edd79c6b5f46f8ffcc75fb36ff3f6117239d16c",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/manuscript/03-preparation.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/design/manuscript/05-performance.json",
+      "implementation": "ice-core/worksheets/design/manuscript/05-performance.json",
+      "beforeSha256": "1c4bd514a3a9eb2a5611aa8ee7192deb4b99a009e7ecfc6083612b7134f11a88",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/manuscript/05-performance.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/design/manuscript/06-dynamics.json",
+      "implementation": "ice-core/worksheets/design/manuscript/06-dynamics.json",
+      "beforeSha256": "d948b6d4300445a88212774e8d34392219a70018d4b25d3801f1bf85151ae4a2",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/manuscript/06-dynamics.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/design/manuscript/07-motor.json",
+      "implementation": "ice-core/worksheets/design/manuscript/07-motor.json",
+      "beforeSha256": "61cff4d84099d68ab04b3376012ddd4ea3460bcb7092ae74ebd981020fd8c1e9",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/manuscript/07-motor.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/design/manuscript/08-battery.json",
+      "implementation": "ice-core/worksheets/design/manuscript/08-battery.json",
+      "beforeSha256": "a0348732218abd8675665cdaa8aa2a71272f9dcdab1f97238a7430867e674a51",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/manuscript/08-battery.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/design/manuscript/09-hybrid.json",
+      "implementation": "ice-core/worksheets/design/manuscript/09-hybrid.json",
+      "beforeSha256": "f54cb739e8d1e090bf034c61db8157fe50c9b3485325360e19af1b1a6e1a7dfe",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/manuscript/09-hybrid.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/design/manuscript/10-vehicle.json",
+      "implementation": "ice-core/worksheets/design/manuscript/10-vehicle.json",
+      "beforeSha256": "b772e7d90af35f0d8442339ff81075ffbced1673afba3966f712856fcccc2211",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/manuscript/10-vehicle.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/design/manuscript/11-maps.json",
+      "implementation": "ice-core/worksheets/design/manuscript/11-maps.json",
+      "beforeSha256": "a4ed9bdb9e30f174a5601c3ed2d1efafd22ee5a5ca31920d3b6a55cee2003242",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/manuscript/11-maps.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/design/manuscript/12-strength.json",
+      "implementation": "ice-core/worksheets/design/manuscript/12-strength.json",
+      "beforeSha256": "a20758f94b96960ab5ad5d044b2a836068245afc5389f269e08ce4dc2feaebda",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/manuscript/12-strength.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/design/manuscript/13-control.json",
+      "implementation": "ice-core/worksheets/design/manuscript/13-control.json",
+      "beforeSha256": "ced04c9af2541e026b92f3f1da4a1a1847a4e83a707c46a0076734e0a62874bf",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/manuscript/13-control.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/design/manuscript/14-electromagnetics.json",
+      "implementation": "ice-core/worksheets/design/manuscript/14-electromagnetics.json",
+      "beforeSha256": "de4bf29cecbe334e5737b077a1bc9cf4894a50b8ecabed962467b8219327d770",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/manuscript/14-electromagnetics.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/design/manuscript/16-conclusions.json",
+      "implementation": "ice-core/worksheets/design/manuscript/16-conclusions.json",
+      "beforeSha256": "f368227b8669f7815471097cb8dc827f4b81e9ff7ea44af3326e05dee9b8b61e",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/manuscript/16-conclusions.json",
+      "authoredWorksheet": true
+    },
+    {
+      "origin": "Engine_motor/ICE/vendor/engdoc/access-contract.js",
+      "implementation": "ice-core/vendor/engdoc/access-contract.js",
+      "beforeSha256": "5a5b8062088d5319e00cd58722ceed7589b50a1624f81f2e564f14a06bb00db7",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/vendor/engdoc/access-contract.js",
+      "upstreamUnchanged": true
+    },
+    {
+      "origin": "Engine_motor/ICE/LICENSE.txt",
+      "implementation": "ice-core/LICENSE.txt",
+      "beforeSha256": "10c1086a7e980fd5c2ab6b5fd118eba5870c236166e27ceadd908d8d1b9c8017",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/LICENSE.txt",
+      "upstreamUnchanged": true
+    },
+    {
+      "origin": "Engine_motor/ICE/THIRD-PARTY-NOTICE.md",
+      "implementation": "ice-core/THIRD-PARTY-NOTICE.md",
+      "beforeSha256": "b006e9920fbb9691ecd8b97fbac96482e83dbb15c2023f0a636329affb21a762",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/THIRD-PARTY-NOTICE.md",
+      "upstreamUnchanged": true
+    },
+    {
+      "origin": "Engine_motor/ICE/vendor/text-work-20260924/THIRD-PARTY-LICENSES.txt",
+      "implementation": "ice-core/vendor/text-work-20260924/THIRD-PARTY-LICENSES.txt",
+      "beforeSha256": "e5b8d5dba40585c8b78701fa299dfe23ef4ca0bc560a2aae7f70574104cb2e8c",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/vendor/text-work-20260924/THIRD-PARTY-LICENSES.txt",
+      "upstreamUnchanged": true
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Технологічний проєкт СТО / АТП · TEA 0.5.0</title><style>
+@page{size:A4;margin:18mm 17mm 20mm}*{box-sizing:border-box}body{max-width:920px;margin:32px auto;padding:0 22px;font:11pt/1.45 Arial,sans-serif;color:#172d36}h1{font-size:23pt;line-height:1.2;border-bottom:2px solid #227c83;padding-bottom:14px}h2{font-size:15pt;margin-top:24px}h3{font-size:12pt}h1,h2,h3,thead{break-after:avoid}p,li{orphans:3;widows:3}table{width:100%;border-collapse:collapse;font-size:9pt;margin:14px 0;table-layout:auto}th,td{border:1px solid #91a8af;padding:5px;vertical-align:top;overflow-wrap:anywhere}thead{display:table-header-group}tr{break-inside:avoid}th{background:#edf4f4;text-align:left}a{color:#116b78;overflow-wrap:anywhere}blockquote{border-left:3px solid #c49c4a;padding:8px 14px;background:#faf7ee;margin:16px 0}pre{white-space:pre-wrap;background:#eef3f4;padding:10px;font-size:9pt}code{font-size:.92em}.math-display{overflow-x:auto;text-align:center;margin:16px 0}mjx-container{max-width:100%}.guide-tools{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid #a9bec4;font-size:10pt}.guide-tools button{padding:6px 12px;background:#227c83;border:0;border-radius:4px;color:white;cursor:pointer}@media print{body{max-width:none;margin:0;padding:0;font-size:10.5pt}.guide-tools{display:none}a{color:inherit;text-decoration:none}.math-display{overflow:visible}h1{break-before:page}h1:first-of-type{break-before:auto}}
+</style><style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style><style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style><style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style><style id="MJX-SVG-styles">
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+</style></head><body><nav class="guide-tools"><button onclick="window.print()">Друкувати / зберегти PDF</button><a href="STATION_DESIGN_EN.html">EN</a><a href="STATION_DESIGN_UA.pdf">PDF</a></nav><main><h1>Технологічний проєкт СТО / АТП · TEA 0.5.0</h1>
+<p>Головний екран проєктує виробничу станцію. Посилання «Окремі навчальні вправи» в бічній навігації відкриває попередні кейси ABS, ADAS, очікування, розкладу і журналів. Вони не додають свої години до основної станції.</p>
+<h2>Як виконувати роботу</h2>
+<ol>
+<li>У розділі 1 виберіть комерційну СТО або власний парк АТП, нове проєктування чи перевірку наявних ресурсів.</li>
+<li>Перевірте входи розділу 2. Для СТО задайте частки замовлень, місячну програму й трудомісткості; для АТП — кількості ТЗ, пробіг, інтервали ТО й норми праці. Всі початкові значення вже заповнені.</li>
+<li>Звірте паспортний габарит автомобіля з джерелом. Таблиця категорій визначає призначення, місця і повну масу категорії, а не єдині розміри всіх її автомобілів.</li>
+<li>Розділи 3–4 показують працю за зонами, фонди часу, пости і штат. У новому проєкті вони визначаються автоматично. У перевірці існуючої станції введені обмеження зберігаються.</li>
+<li>Виберіть підйомники, уточніть ціни, геометрію і компонування. Входи координат дозволяють перемістити пост або обладнання в ньому. «Відновити автоматичне розміщення» прибирає ручні координати.</li>
+<li>У розділі 6 звірте план корпусу і оснащення вибраного поста. Номери обладнання збігаються з експлікацією та кошторисом. Складові комплекту мобільних колон мають один спільний номер.</li>
+<li>Перевірте тариф, зарплати й інвестиції в розділі 7. Висновок має спиратися на обсяг, який підприємство може виконати, а не на необмежений попит.</li>
+<li>Збережіть JSON для продовження роботи. Експорт A4 містить входи, формули, підстановки й джерела. Другий експорт — два аркуші A1: корпус і оснащений пост. Вибраний пост задається в розділі 2. Друк: 100%, без службових колонтитулів браузера.</li>
+</ol>
+<h2>Що означають основні припущення</h2>
+<ul>
+<li>Частки СТО — частки звернень, однакові для всіх видів робіт і місяців. При редагуванні різниця переходить сусідньому класу, сума залишається 100%.</li>
+<li>Праця кожної категорії розраховується окремо. Легкі та важкі ТЗ отримують окремі групи постів; у межах групи береться максимальний габарит, а не середній.</li>
+<li>Для АТП велике ТО замінює мале. Шинні та діагностичні роботи виділяються з загальної праці, без повторного додавання. Інтервал великого ТО має бути кратним малому. Інтервали — навчальні припущення, не сервісні регламенти OEM.</li>
+<li>Головний шинний пост охоплює демонтаж, монтаж і балансування; геометрія коліс та ADAS залишаються окремою вправою, а їх оснащення не включено до основного кошторису.</li>
+<li>Постова праця ділиться на одночасний склад бригади. Праця поза постом входить до штату. Персональний фонд не множиться на зміни підприємства. Штат не може бути меншим за одну прийняту бригаду; розподіл людей між змінами потребує календарного графіка.</li>
+<li>Розміри Toyota, Mercedes-Benz, MAN і Ford взяті з первинних матеріалів виробників для вказаних виконань. Для Isuzu каталог підтверджує масу шасі; кузовний габарит прийнято окремим припущенням. Осьові навантаження є проєктними допущеннями, явно позначеними в інтерфейсі.</li>
+<li>Технічні рейтинги MAHA наведені окремо від ескізних символів і бюджетних цін. Маса / вісь — лише частина перевірки: потрібні придатні опорні точки, база і навантаження кожного колеса. Шинні комплекти і компресор — специфікація для підбору, не готова заявка на конкретну модель.</li>
+<li>План є технологічним ескізом. Проїзд — прийнята геометрична оцінка, без моделювання поворотної траєкторії. Проєкт не розраховує конструкції, фундаменти, евакуацію, пожежні відсіки, вентиляцію, електричну мережу й генплан. Навчальний приклад електробуса MAN не охоплює обслуговування високовольтної тягової системи.</li>
+<li>Стоянка оцінюється за потоком і очікуванням у відкриті години; вона не входить у площу корпусу. Для АТП ремонтні звернення оцінені через трудомісткість одного ремонту СТО; для генплану потрібен власний журнал надходжень.</li>
+<li>Ціни, зарплати, тариф, зазори і частки фондів — редаговані припущення. Капітальний бюджет: обладнання, монтаж, облаштування площі, резерв. Земля / купівля будівлі, запчастини, податки та фінансування окремо не моделюються. Усі ціни мають бути в одній базі без окремого ПДВ.</li>
+<li>Виручка обмежена попитом і потужністю. При непридатному підйомнику пропускна здатність відповідної групи нульова. При геометричних зауваженнях економічний результат залишається умовним. Для АТП результат — економія від уникнутого аутсорсингу, а не продаж послуг.</li>
+</ul>
+<h2>Приклади</h2>
+<ul>
+<li><code>examples/TEA-improved.json</code>: нова СТО для M1.</li>
+<li><code>examples/TEA-mixed.json</code>: змішана СТО M1 / N1 / N2; другий аркуш показує важкий ремонтний пост.</li>
+<li><code>examples/TEA-atp.json</code>: парк 100 M1 + 20 N2.</li>
+<li>Два готових PDF змішаного прикладу: звіт A4 та комплект із двох A1.</li>
+<li><code>TEA-mixed-building.svg</code>, <code>TEA-mixed-post.svg</code>: ті самі масштабовані векторні схеми без рамки аркуша.</li>
+</ul>
+<h2>Відкриття старих варіантів</h2>
+<p>Файли 0.1–0.2.1 зберігають попередні входи, частки й навчальні записи. Якщо технологічного проєкту ще немає, додається набір 0.3.0 із паспортними моделями. Старі узагальнені габарити лишаються у вправах; новий проєкт використовує явно вказані автомобілі розділу 2. Модулі збережених результатів не виконуються: після відкриття розрахунок будується з поточних входів.</p>
+<h2>Перевірки випуску</h2>
+<p>Автоматичні перевірки арифметики охоплюють окремий контрольний ручний розрахунок, всі категорії, M1/M2 31/69, змішаний парк, АТП без подвійного обліку ТО, обмеження потужності, збиток, координати й збереження. DOM-перевірки виконують справжні обробники полів та кнопок з адаптером розрахункового worker. Це не тест нативного діалогу друку браузера. PDF-приклади відрендерені та оглянуті; масштаб SVG зберігається за друку 100%.</p>
+<h2>Креслення 0.3.2</h2>
+<p>PDF-шаблон задає A1 числовими розмірами 841 × 594 мм, без зовнішніх полів сторінки. Рамка зміщена на 20 мм зліва й 5 мм зверху, справа та знизу за додатком Д ДСТУ 9243.4:2023. Основний напис 185 × 55 мм адаптовано з форми Г.1 (додаток Г); це навчальна форма без автоматичних підписів перевірки, реєстраційних номерів та додаткових граф обліку оригіналу. Позначка НП пояснена як навчальний проєкт.</p>
+<p>Зображення корпусу й поста автоматично орієнтуються в межах поля; масштаб обирається зі списку, щоб рисунок уміщувався без обрізання. Поворот стосується лише подання, вихідні координати не змінюються. Підписи залишаються горизонтальними. Номери 001–003 відповідають допоміжним приміщенням у новій експлікації; номери в колах — обладнанню. На посту винесено ланцюги габаритів ТЗ та відступів від меж поста; вони не замінюють монтажних розмірів виробника.</p>
+<p>У звіті A4 обидві схеми зменшені й згруповані з характеристиками; для читання розмірів використовуйте A1. На фізичному принтері виберіть A1, масштаб 100% і вимкніть колонтитули браузера. Збережений PDF перевіряють за розміром сторінок, а не лише за заголовком «A1». Наданий для перевірки PDF 0.3.1 фактично мав сторінки A4; готові приклади 0.3.2 перевірені як дві A1.</p>
+<h2>План корпусу 0.4.0</h2>
+<p>Зовнішній габарит тепер включає товщину стіни, внутрішній залишається основою площі й координат. Перегородки відокремлюють приймання, склад/агрегатні роботи, побутову й технічну кімнати. Вікна пропускаються біля воріт/зовнішніх дверей; таблиця прорізів показує фактичну кількість.</p>
+<p>Кожен пост отримує схематичний маршрут від ВР1; обраний пост додатково має маршрут до ВР2. Для рядного й парного розміщення використовується спільний бічний проїзд і поперечні проїзди. Перевіряється перетин осьових сегментів з прямокутниками інших постів. Непридатний ручний маршрут супроводжується зауваженням. Дуги відкривання воріт/дверей не є траєкторіями автомобіля. Радіус повороту, охоплення кузова та одночасний двосторонній рух не перевіряються.</p>
+<p>Символи підключення повторюються на деталізованому посту та в легенді. Вода/повітря — ДСТУ Б А.2.4-8:2009, таблиця 7, 14а/б; розетки — ДСТУ Б А.2.4-19:2008, таблиця 3, 10.2/10.3. Архітектурна графіка — ДСТУ 9243.7:2023. Усі три джерела внесено в бібліографію. В/П/Е на суміщеній штрихпунктирній трасі — пояснені проєктні познаки окремих мереж над підлогою; типорозміри, витрати, тиск, електрозахист і монтажні відмітки не визначаються цим ескізом.</p>
+<p>Журнал версій більше не показується в користувацьких розділах. Поточна версія лишається в шапці; повна історія — у файлах та Git bundle. Варіанти 0.3.2 отримують лише відсутні параметри стін/прорізів, решта введених даних зберігається.</p>
+<h2>Розрахункове компонування 0.5.0</h2>
+<p>Підстави: [36] — ВНТУ, лабораторна робота 7, визначення двох типів постів та доцільність проїзних для великогабаритних ТЗ; [37] — розділ 6.4 методичних вказівок ВНТУ, окремі й парні ряди. Ці навчальні джерела не є чинними будівельними нормами. Старі нормативні числа з них не перенесено. Для змішаної програми з ремонтом збережено незалежні пости; для потокової лінії потрібне окреме узгодження операцій і такту.</p>
+<p>Кількість постів, штат і трудомісткість визначаються раніше й не зменшуються задля компактного плану. Автоматичний режим перебирає кількість у ряду 1–12 (не більше числа постів), окремі або парні тупикові ряди та три правила: усі тупикові; проїзні від заданої довжини; усі проїзні. Бічний проїзд спільний, кожен пост має незалежний доступ; проїзний отримує другий поперечний проїзд. Обладнання такого поста розміщується збоку, його ширина включена в габарит. Черги і стоянки поза корпусом не входять у цільову площу.</p>
+<p>Кандидати порівнюються лексикографічно: 1) вписування зовнішнього габариту і висоти в заданий корпус, якщо перевіряється існуючий; 2) кількість тупикових постів з ТЗ довжиною від порогу; 3) внутрішня площа; 4) периметр за однакової площі. Редагований поріг 8 м, мінімальна ширина групи постів 9 м, правило ширини проїзду L + 2 м і зазори — припущення проєкту. Ціль не означає максимум прибутку. Таблиця порівняння показує, скільки площі коштує відмова від заднього ходу; змінена площа передається у бюджет облаштування. Якщо жоден варіант не вписується, видається зауваження, а не підтвердження придатності.</p>
+<p>Залишаються два типи руху: тупиковий — переднім ходом до зупинки, заднім до проїзду; проїзний — через протилежний торець переднім ходом. Перевіряються обидва осьові маршрути проти прямокутників інших постів, межі приміщення та наскрізна смуга щодо стаціонарного оснащення. Поворотний радіус, габарит при маневрі, одночасний рух і безпека потоків не моделюються. Усі пости — 90° до поперечного проїзду; косокутні, зовнішні проїзди та альтернативне розміщення допоміжних кімнат не перебираються. Ручні координати застосовуються після порівняння та можуть погіршити результат.</p>
+<p>Кімнати 001–004 обмежені зовнішніми стінами, фронтальною перегородкою повної товщини та половинами бокових перегородок на межах кімнат. Формула площі використовує розміри в чистоті; дверні ніші не враховані. Зал 005 займає всю площу до фронтальної перегородки, включно з проїздами. Сума чистих площ і смуг перегородок дорівнює внутрішній площі корпусу. На рисунку кімнат — підкреслені площі до 0,1 м²; при повороті виду зберігається нижній правий кут аркуша. Експлікація й познаки площ орієнтуються на п. 5.3.2 ДСТУ 9243.7:2023; категорії пожежної небезпеки залишено невизначеними.</p>
+<p>Міграція 0.4.0 додає відсутні поля. За наявності ручних координат обирається ручна сітка; інші проєкти отримують автоматичний вибір. Попередні значення кількості у ряду та типу рядів збережені в JSON і доступні у ручному режимі. Координати обладнання не видаляються; після зміни типу поста перевіряйте зауваження або відновіть автоматичне розміщення.</p></main></body></html>
