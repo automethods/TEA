@@ -1,0 +1,61 @@
+{
+  "schema": "technical-module/1",
+  "moduleId": "module.vehicle.battery-consumption",
+  "version": "0.1.0",
+  "contractVersion": "1",
+  "runtime": "ECMAScript module; pure numerical fit/prediction; no dependencies, DOM or filesystem I/O",
+  "originWorkspace": "/media/cigameca/SHARED/Work/Literature/Transport/My_books",
+  "origins": [
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/cycle-energy.js",
+      "sha256": "a0519dedc3917f01d403bdf8f711295d701389e7b5a8d22c6b50440e1e25b758",
+      "locator": "roadLoadFromDesign; roadLoadFromCoastdown; resistanceAt; wheelPowerAt",
+      "snapshot": "validation/origins/automobile-v0.4.36/cycle-energy.js"
+    }
+  ],
+  "modelReferences": [],
+  "variants": [
+    {
+      "id": "effective-battery-energy/1",
+      "origin": "Automobile/new/Vehickle_calculations_assets/cycle-energy.js; integrate loss/regen/auxiliary balance, composed into a new bounded fit",
+      "equations": [
+        "E_b = k_t * E_w+ - k_r * E_w- + P_aux * t"
+      ],
+      "assumptions": [
+        "Same tested configuration, meter basis and operating mode within a cohort",
+        "k_t is 1..2.5; k_r is 0..1; P_aux is 0..3000 W",
+        "Coefficients are effective cohort parameters, not component efficiency maps",
+        "Wheel energy may be reconstructed; its assumptions must remain attached"
+      ]
+    }
+  ],
+  "ports": {
+    "commonInputs": [
+      "wheelTractionEnergyJ",
+      "wheelBrakingEnergyJ",
+      "durationS"
+    ],
+    "observed": [
+      "batteryNetEnergyJ"
+    ],
+    "parameters": [
+      "tractionEnergyMultiplier",
+      "regenerationFraction",
+      "auxiliaryPowerW"
+    ],
+    "outputs": [
+      "batteryNetEnergyJ"
+    ]
+  },
+  "validation": [
+    "tests/battery-consumption.test.mjs"
+  ],
+  "status": "provisional offline calibration; no automatic application to vehicle defaults",
+  "limitations": [
+    "Three independent feature columns required; repeated cycles do not create independent test campaigns",
+    "No thermal/SOC dependence, fuel balance or plug charging losses",
+    "Fit on battery DC basis cannot be used as certified WLTP/EPA outlet consumption",
+    "Signed net energy is permitted; unsuitable PHEV mixed-mode observations must be excluded by the cohort builder"
+  ],
+  "implementationAuthority": "index.mjs owns the bounded least-squares numerical fit and energy prediction; manifest equation is reference metadata."
+}

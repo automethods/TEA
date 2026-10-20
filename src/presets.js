@@ -1,0 +1,18 @@
+// Calculation owner: vehickle_math_models/modules. This file only preserves the host API.
+import {PRESET_VERSION as shared_PRESET_VERSION,CLASS_IDS as shared_CLASS_IDS,VEHICLES as shared_VEHICLES,VEHICLE_CHOICES as shared_VEHICLE_CHOICES,WORKSHOPS as shared_WORKSHOPS,PLANNING_FIELDS as shared_PLANNING_FIELDS,classDefaults as shared_classDefaults,setVehicleChoice as shared_setVehicleChoice,setWorkshopChoice as shared_setWorkshopChoice,addProfileDefaults as shared_addProfileDefaults,mixLabel as shared_mixLabel,CLASS_DESCRIPTIONS as shared_CLASS_DESCRIPTIONS,restoreVehicleDefaults as shared_restoreVehicleDefaults,validVehicleMix as shared_validVehicleMix,balanceVehicleMix as shared_balanceVehicleMix,repairVehicleMix as shared_repairVehicleMix} from '../vendor/technical-modules/service-workshop/src/presets.js';
+export const PRESET_VERSION=shared_PRESET_VERSION;
+export const CLASS_IDS=shared_CLASS_IDS;
+export const VEHICLES=shared_VEHICLES;
+export const VEHICLE_CHOICES=shared_VEHICLE_CHOICES;
+export const WORKSHOPS=shared_WORKSHOPS;
+export const PLANNING_FIELDS=shared_PLANNING_FIELDS;
+export const classDefaults=shared_classDefaults;
+export const setVehicleChoice=shared_setVehicleChoice;
+export const setWorkshopChoice=shared_setWorkshopChoice;
+export const addProfileDefaults=shared_addProfileDefaults;
+export const mixLabel=shared_mixLabel;
+export const CLASS_DESCRIPTIONS=shared_CLASS_DESCRIPTIONS;
+export const restoreVehicleDefaults=shared_restoreVehicleDefaults;
+export const validVehicleMix=shared_validVehicleMix;
+export const balanceVehicleMix=shared_balanceVehicleMix;
+export const repairVehicleMix=shared_repairVehicleMix;

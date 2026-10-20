@@ -1,0 +1,47 @@
+{
+  "schema": "technical-module/1",
+  "moduleId": "module.engine.inputs",
+  "version": "0.1.0",
+  "contractVersion": "1",
+  "runtime": "ESM; no DOM, host state or file I/O",
+  "origins": [
+    {
+      "path": "Engine_motor/ICE/design/src/transfer.mjs",
+      "sha256": "ca44015e009ffdd28daeac9d0ba21728a0c0e504fcf36114d63c91bd71083e52",
+      "locator": "Original calculated engine record and source revisions",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/design/src/transfer.mjs"
+    }
+  ],
+  "modelReferences": [],
+  "variants": [
+    {
+      "id": "ice-calculated-fuel-curves/1",
+      "origin": "Engine_motor/ICE/powertrain/src/engine.mjs",
+      "equations": [
+        "Native per-speed fuel interpolation; original irregular curves retained"
+      ],
+      "assumptions": [
+        "Model-estimated engine, explicit fuel carrier and source revisions"
+      ]
+    }
+  ],
+  "ports": {
+    "commonInputs": [
+      "engineAngularSpeedRadPerS",
+      "engineShaftTorqueNm"
+    ],
+    "outputs": [
+      "fuelMassFlowKgPerS",
+      "engineShaftPowerW",
+      "fuelThermalPowerW",
+      "engineEfficiency"
+    ]
+  },
+  "status": "ICE export and Automobile import",
+  "validation": [
+    "tests/engine-inputs.test.mjs"
+  ],
+  "limitations": [
+    "No extrapolation or measured-data claim; native component packages remain a separate supported format."
+  ]
+}

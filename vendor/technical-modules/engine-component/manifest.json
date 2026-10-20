@@ -1,0 +1,88 @@
+{
+  "schema": "technical-module/1",
+  "moduleId": "module.engine.component",
+  "version": "0.2.0",
+  "contractVersion": "1",
+  "runtime": "ECMAScript module; runtime-neutral SHA-256; no DOM, network or filesystem I/O",
+  "originWorkspace": "/media/cigameca/SHARED/Work/Literature/Transport/My_books",
+  "origins": [
+    {
+      "path": "Engine_motor/ICE/powertrain/src/maps.mjs",
+      "sha256": "3f0f0d5ec531149a07ca7ea64dc3636d511f19240b95422d45bd9b4802cf9f68",
+      "locator": "validateMap; lookup; operatingDomain",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/maps.mjs"
+    },
+    {
+      "path": "Engine_motor/ICE/powertrain/src/component-package.mjs",
+      "sha256": "fb72c70f458e4698c5cde74d2445463ef011d5e092d2849bae455d938295029e",
+      "locator": "makeComponentPackage; installComponent",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/powertrain/src/component-package.mjs"
+    },
+    {
+      "path": "Engine_motor/ICE/vendor/engdoc/runtime.js",
+      "sha256": "4c246b584431d58735178a1f546a7046a8dcf7b4985b464d3b4077459bfa3bf2",
+      "locator": "sha256Text",
+      "snapshot": "validation/origins/pre-foundation/Engine_motor/ICE/vendor/engdoc/runtime.js"
+    }
+  ],
+  "modelReferences": [],
+  "variants": [
+    {
+      "id": "ice-fuel-grid/1",
+      "origin": "Engine_motor/ICE/powertrain/src/component-package.mjs",
+      "equations": [
+        "fuelMassFlowKgPerS = bilinear(source fuel_g_s) / 1000",
+        "engineShaftPowerW = engineAngularSpeedRadPerS * engineShaftTorqueNm",
+        "fuelThermalPowerW = fuelMassFlowKgPerS * fuelLowerHeatingValueJPerKg",
+        "engineEfficiency = engineShaftPowerW / fuelThermalPowerW"
+      ],
+      "assumptions": [
+        "Crankshaft boundary; package supplies LHV and fuel density",
+        "Nonnegative torque inside package operating range and source envelope",
+        "Null cells and validity masks are retained; no extrapolation",
+        "Processed/extrapolated source grids retain their evidence class; not all cells are measurements"
+      ]
+    },
+    {
+      "id": "ice-calculated-fuel-curves/1",
+      "origin": "Engine_motor/ICE/powertrain/src/engine.mjs",
+      "equations": [
+        "Original per-speed fuel curve interpolation followed by interpolation between speed rows"
+      ],
+      "assumptions": [
+        "Model-estimated ICE Design output; no uniform fuel grid or measured data invented"
+      ]
+    }
+  ],
+  "nativeFormat": [
+    "powertrain-component-package/1",
+    "vehicle-engine-inputs/1"
+  ],
+  "implementationAuthority": "SI adapter uses the canonical ice-core numerical kernels; all application copies are verified distributions.",
+  "validation": [
+    "tests/engine-component.test.mjs"
+  ],
+  "status": "Adopted by Automobile and ICE through the common pinned bundle.",
+  "limitations": [
+    "Engine packages only; motor packages require a separate boundary adapter",
+    "No automatic replacement of the vehicle engine curve or carrier",
+    "No idle, overrun, cold-start or transient correction in Automobile cycle integration",
+    "Hashes identify retained content; they do not authenticate a publisher"
+  ],
+  "ports": {
+    "commonInputs": [
+      "engineAngularSpeedRadPerS",
+      "engineShaftTorqueNm"
+    ],
+    "outputs": [
+      "engineShaftPowerW",
+      "fuelMassFlowKgPerS",
+      "fuelThermalPowerW",
+      "engineEfficiency"
+    ],
+    "packageProperties": [
+      "fuelLowerHeatingValueJPerKg",
+      "fuelDensityKgPerM3"
+    ]
+  }
+}

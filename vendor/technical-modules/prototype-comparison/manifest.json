@@ -1,0 +1,38 @@
+{
+  "schema": "technical-module/1",
+  "moduleId": "module.vehicle.prototype-comparison",
+  "version": "0.1.0",
+  "contractVersion": "1",
+  "runtime": "Headless synchronous ECMAScript module",
+  "status": "implemented-with-model-limits",
+  "origins": [
+    {
+      "path": "vehickle_math_models/modules/prototype-comparison/index.mjs",
+      "sha256": "8993b86083be744a26cbe8a84bf48d79b943b37dec7f807c262cec7a58d4e9c6",
+      "locator": "Original implementation, requested Automobile extension 2026-10-08"
+    }
+  ],
+  "modelReferences": [],
+  "ports": {
+    "commonInputs": [],
+    "outputs": []
+  },
+  "variants": [
+    {
+      "id": "prototype-comparison/1",
+      "origin": "Original implementation",
+      "equations": [],
+      "assumptions": [
+        "Nested prototype IDs and published observation records; preserve units and full source context.",
+        "Grouping/interval behavior documented in SPEC.md."
+      ]
+    }
+  ],
+  "validation": [
+    "Automobile/new/scripts/prototype-tools.test.mjs"
+  ],
+  "limitations": [
+    "Nested prototype IDs and published observation records; preserve units and full source context.",
+    "Grouping/interval behavior documented in SPEC.md."
+  ]
+}

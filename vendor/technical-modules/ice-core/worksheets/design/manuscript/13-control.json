@@ -1,0 +1,55 @@
+{
+  "id": "13-control",
+  "title": "13. Спрощена стратегія керування",
+  "group": "Застосування та перевірки",
+  "scope": "all",
+  "paragraphs": [
+    "Для тягового джерела додається перша ланка: τ dP/dt + P = Pcmd. Використано точне дискретне рішення сталої команди; τ та частка навантаження — редаговані навчальні припущення. Перехідний графік є окремою перевіркою, не модифікує тиск поточного циклу ДВЗ.",
+    "У їздовому циклі діє обмежувальна стратегія Powertrain: тяга, заряд/розряд батареї, рекуперація, P2 або послідовний генератор. Відсутня точка карти зупиняє достовірне визначення витрати, а не зникає з балансу. Цей алгоритм не є прошивкою ECU/BMS [first-order-assumptions]."
+  ],
+  "calculations": [
+    {
+      "value": {
+        "id": "value.control_command",
+        "ownerNodeId": "node.value.control_command",
+        "role": "calculation",
+        "label": "Потрібна команда потужності",
+        "symbol": "P_cmd",
+        "valueType": "quantity",
+        "expression": {
+          "source": "u*P",
+          "bindings": [
+            {
+              "token": "u",
+              "valueId": "input.controlLoad"
+            },
+            {
+              "token": "P",
+              "valueId": "value.system_power"
+            }
+          ]
+        },
+        "canonicalUnit": "W"
+      },
+      "chapter": "13-control",
+      "equationNumber": "13.1",
+      "purpose": "Потрібна команда потужності.",
+      "sourceRefs": [
+        "first-order-theory"
+      ],
+      "resultNote": "Це початкова оцінка за явно введеними припущеннями, не допуск до виготовлення.",
+      "displayUnit": "W",
+      "figureIds": [
+        "control-response"
+      ]
+    }
+  ],
+  "governing": [
+    {
+      "number": "13.2",
+      "purpose": "Перший порядок виконавчого тракту. Команда стала на кроці; початково P=0.",
+      "formula": "τ dP/dt + P = Pcmd; P(t) = Pcmd (1 − exp(−t/τ))",
+      "symbols": "τ — стала часу, с; Pcmd — команда потужності, Вт; t — час, с. Ряд обчислюється точним переходом для сталої команди."
+    }
+  ]
+}

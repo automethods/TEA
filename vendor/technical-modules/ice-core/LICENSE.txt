@@ -1,0 +1,44 @@
+NON-COMMERCIAL EDUCATIONAL LICENSE — VERSION 1.0
+
+Copyright © 2026 Hybridtrustmail
+
+1. Scope
+These terms apply only to the original ICE / Power Source application code and teaching
+materials for which Hybridtrustmail holds the relevant rights. Third-party code,
+data, images, quotations and other independently licensed materials are excluded
+and remain subject to their own terms. See THIRD-PARTY-NOTICE.md.
+
+2. Permission
+Permission is granted, without charge, to use, copy, study, modify and share the
+covered work solely for non-commercial educational purposes, including personal
+study, classroom instruction and non-commercial educational research.
+
+3. Conditions
+Copies and adaptations must retain this copyright notice, this license and all
+applicable third-party notices. Adaptations must clearly identify their changes
+and must not imply endorsement by Hybridtrustmail. Redistribution of the covered
+work or adaptations must preserve these non-commercial educational restrictions.
+No permission is granted to sublicense the covered work under broader terms.
+
+4. Commercial and other use
+Use primarily intended for commercial advantage or monetary compensation is not
+permitted without separate written permission from Hybridtrustmail. This includes
+selling the covered work or access to it, integrating it into commercial products
+or services, and using it in paid training or consultancy. A university's or
+school's status alone does not determine whether a particular use is commercial.
+Uses outside the educational purposes above require separate written permission.
+
+5. Reserved rights
+All rights not expressly granted are reserved. These terms do not limit rights
+available under applicable law, including applicable copyright exceptions, and
+do not restrict separately licensed third-party components or public-domain facts.
+No trademark or endorsement rights are granted.
+
+6. Disclaimer
+The covered work is supplied as is, without warranties, to the extent permitted
+by applicable law. Calculations and examples are educational and must be checked
+independently before practical engineering use. To the extent permitted by law,
+Hybridtrustmail is not liable for loss arising from use of the covered work.
+
+This is a custom restricted-use license, not an MIT, GPL, Creative Commons or
+Open Source Initiative approved license.

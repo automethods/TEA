@@ -1,0 +1,42 @@
+{
+  "schema": "technical-module/1",
+  "moduleId": "module.vehicle.chassis-geometry",
+  "version": "0.1.0",
+  "contractVersion": "1",
+  "runtime": "Headless synchronous ECMAScript module",
+  "status": "implemented-with-model-limits",
+  "origins": [
+    {
+      "path": "vehickle_math_models/modules/chassis-geometry/index.mjs",
+      "sha256": "7c2d2ed9e3343fd31818576c9b4439a4e6dc6ff596eaec6331f61c9aecc5b620",
+      "locator": "Original implementation, requested Automobile extension 2026-10-08"
+    }
+  ],
+  "modelReferences": [],
+  "ports": {
+    "commonInputs": [
+      "wheelbaseM",
+      "trackFrontM",
+      "trackRearM"
+    ],
+    "outputs": []
+  },
+  "variants": [
+    {
+      "id": "chassis-geometry/1",
+      "origin": "Original implementation",
+      "equations": [],
+      "assumptions": [
+        "Two-axle nominal geometry; separate camera query.",
+        "Nested tyre/body parameters and sources documented in SPEC.md; SI metres."
+      ]
+    }
+  ],
+  "validation": [
+    "Automobile/new/scripts/prototype-tools.test.mjs"
+  ],
+  "limitations": [
+    "Two-axle nominal geometry; separate camera query.",
+    "Nested tyre/body parameters and sources documented in SPEC.md; SI metres."
+  ]
+}

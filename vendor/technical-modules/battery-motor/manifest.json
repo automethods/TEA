@@ -1,0 +1,74 @@
+{
+  "schema": "technical-module/1",
+  "moduleId": "module.vehicle.battery-motor",
+  "version": "0.1.0",
+  "contractVersion": "1",
+  "runtime": "ECMAScript module, headless and synchronous",
+  "origins": [
+    {
+      "path": "Automobile/new/Vehickle_calculations_assets/battery-design.js",
+      "locator": "traverse: constant OCV/Rint stable root and SOC acceptance",
+      "sha256": "281ff61306ece3020bac7cf87c5938616b81574ce81e90d1b43ca3d52a7c5a57",
+      "snapshot": "validation/origins/battery-design-v0.4.40.js"
+    }
+  ],
+  "modelReferences": [],
+  "ports": {
+    "commonInputs": [
+      "dtS",
+      "chargeRoomEnergyJ",
+      "auxiliaryPowerW",
+      "requestedMotorElectricalPowerW",
+      "requestedMotorShaftPowerW"
+    ],
+    "outputs": [
+      "batteryTerminalPowerW",
+      "batteryChemicalPowerW",
+      "batteryHeatPowerW",
+      "batteryCurrentA",
+      "batteryTerminalVoltageV",
+      "motorElectricalPowerW",
+      "motorShaftPowerW",
+      "mappedLossPowerW",
+      "additionalInverterLossPowerW",
+      "additionalFrictionShaftPowerW",
+      "curtailedElectricalPowerW"
+    ]
+  },
+  "limitations": [
+    "Constant OCV/resistance, no thermal or SOC-dependent impedance.",
+    "Voltage-invariant source loss grid; optional conservative voltage-speed envelope.",
+    "A discharge shortfall refuses backward range rather than silently slowing the vehicle.",
+    "Auxiliaries may consume generated power even when battery charging is unavailable."
+  ],
+  "formulas": [
+    "P_terminal=(U_oc-R*I)*I",
+    "P_chemical=U_oc*I",
+    "P_heat=R*I^2",
+    "P_DC_motor=P_shaft+P_motor_loss+P_inverter_loss"
+  ],
+  "callbackContract": "evaluateMotor({batteryChargePowerLimitW,motorTerminalVoltageV}) returns validated signed motor outputs",
+  "status": "implemented-with-model-limits",
+  "variants": [
+    {
+      "id": "constant-ocv-motor-feedback/1",
+      "origin": "Automobile battery Rint traversal / native motor signed maps",
+      "equations": [
+        "P_terminal=(U_oc-R*I)*I",
+        "P_chemical=U_oc*I",
+        "P_heat=R*I^2",
+        "P_DC_motor=P_shaft+P_motor_loss+P_inverter_loss"
+      ],
+      "assumptions": [
+        "Constant OCV/resistance, no thermal or SOC-dependent impedance.",
+        "Voltage-invariant source loss grid; optional conservative voltage-speed envelope.",
+        "A discharge shortfall refuses backward range rather than silently slowing the vehicle.",
+        "Auxiliaries may consume generated power even when battery charging is unavailable."
+      ]
+    }
+  ],
+  "validation": [
+    "tests/battery-motor.test.mjs",
+    "Automobile/new/scripts/motor-component.test.mjs"
+  ]
+}
